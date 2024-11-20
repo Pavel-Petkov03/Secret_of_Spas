@@ -15,6 +15,7 @@ class Game:
         self.scale_grid()
         self.current_start_pos_x = 100
         self.current_start_pos_y = 100
+        self.movement_speed = 0.7
 
     @staticmethod
     def get_max_dimension():
@@ -44,13 +45,13 @@ class Game:
     def move_player(self):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT]:
-            self.current_start_pos_x = self.current_start_pos_x - 0.7
+            self.current_start_pos_x -= self.movement_speed
         if keys[pygame.K_RIGHT]:
-            self.current_start_pos_x = self.current_start_pos_x + 0.7
+            self.current_start_pos_x += self.movement_speed
         if keys[pygame.K_UP]:
-            self.current_start_pos_y = self.current_start_pos_y - 0.7
+            self.current_start_pos_y -= self.movement_speed
         if keys[pygame.K_DOWN]:
-            self.current_start_pos_y = self.current_start_pos_y + 0.7
+            self.current_start_pos_y += self.movement_speed
 
     def render_map(self):
         for layer in self.tmx_data.visible_layers:
