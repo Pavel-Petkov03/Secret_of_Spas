@@ -1,0 +1,19 @@
+{
+  "player_movement": {
+    "filename": "src/images/sprite_sheets/Player/Player.png",
+    "rows": 10,
+    "cols": 6,
+    "row_max_cols": [
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      4,
+      4,
+      4,
+      4
+    ]
+  }
+}

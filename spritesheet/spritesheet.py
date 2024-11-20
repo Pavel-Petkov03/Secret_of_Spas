@@ -21,7 +21,6 @@ class SpriteSheet:
         for row in range(self.rows):
             row_sprites = []
             for col in range(self.cols):
-                # Extract each sprite frame
                 x = col * self.frame_width
                 y = row * self.frame_height
                 sprite = self.sheet.subsurface(pygame.Rect(x, y, self.frame_width, self.frame_height))
@@ -29,4 +28,8 @@ class SpriteSheet:
                 row_sprites.append(sprite)
             matrix.append(row_sprites)
         return matrix
+
+    @property
+    def matrix(self):
+        return self._matrix
 

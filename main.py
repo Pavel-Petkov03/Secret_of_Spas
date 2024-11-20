@@ -1,14 +1,13 @@
 import math
 import pygame
 from pytmx.util_pygame import load_pygame
-from player.utils import init_player
 import settings
+from player.utils import init_player
 
 
 class Game:
     def __init__(self):
-        self.screen = pygame.display.set_mode(
-            (settings.CURRENT_MAX_DIMENSION - 1 / 6 * settings.CURRENT_MAX_DIMENSION, settings.CURRENT_MAX_DIMENSION - 1 / 6 * settings.CURRENT_MAX_DIMENSION))
+        self.screen = settings.SCREEN
         self.scale_factor = math.ceil(settings.CURRENT_MAX_DIMENSION / settings.TILE_WIDTH / settings.VIEW_PORT_TILES_W)
         self.tmx_data = load_pygame("src/tiles/level_1.tmx")
         self.scale_grid()
