@@ -2,7 +2,6 @@ from settings import CURRENT_MAX_DIMENSION
 from spritesheet.utils import get_animation_matrix
 
 PLAYER_ANIMATION_MATRIX = get_animation_matrix("player_movement")
-print(PLAYER_ANIMATION_MATRIX)
 MAIN_PLAYER_NAME = "Kuncho"
 MAIN_PLAYER_X_POS = CURRENT_MAX_DIMENSION / 2
 MAIN_PLAYER_Y_POS = CURRENT_MAX_DIMENSION / 2

@@ -24,7 +24,7 @@ class SpriteSheet:
                 x = col * self.frame_width
                 y = row * self.frame_height
                 sprite = self.sheet.subsurface(pygame.Rect(x, y, self.frame_width, self.frame_height))
-                sprite = pygame.transform.scale(sprite, (TILE_WIDTH, TILE_HEIGHT))
+                sprite = pygame.transform.scale(sprite, (64, 64))
                 row_sprites.append(sprite)
             matrix.append(row_sprites)
         return matrix

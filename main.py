@@ -11,7 +11,7 @@ class Game:
         self.scale_factor = math.ceil(settings.CURRENT_MAX_DIMENSION / settings.TILE_WIDTH / settings.VIEW_PORT_TILES_W)
         self.tmx_data = load_pygame("src/tiles/level_1.tmx")
         self.scale_grid()
-        self.current_start_pos_x = 800
+        self.current_start_pos_x = 750
         self.current_start_pos_y = 100
         self.player = init_player()
         self.movement_speed = 0.7
@@ -45,10 +45,10 @@ class Game:
                 self.current_start_pos_y):
             self.current_start_pos_x += self.movement_speed
         if (keys[pygame.K_UP] or keys[pygame.K_w]) and not self.collide_with_block(self.current_start_pos_x,
-                                                                                 self.current_start_pos_y - self.movement_speed):
+                                                                                   self.current_start_pos_y - self.movement_speed):
             self.current_start_pos_y -= self.movement_speed
         if (keys[pygame.K_DOWN] or keys[pygame.K_s]) and not self.collide_with_block(self.current_start_pos_x,
-                                                                                   self.current_start_pos_y + self.movement_speed):
+                                                                                     self.current_start_pos_y + self.movement_speed):
             self.current_start_pos_y += self.movement_speed
 
     def collide_with_block(self, new_x, new_y):
@@ -71,7 +71,10 @@ class Game:
     def update(self):
         self.move_player()
         self.render_map()
-        pygame.draw.circle(self.screen, (255, 0, 0), (self.screen.get_width() / 2, self.screen.get_height() / 2), 20)
+        image = self.player.get_current_animation_image()
+        new_x = (self.screen.get_width() / 2 + self.screen.get_width() / 2 - image.get_width()) / 2
+        new_y = (self.screen.get_height() / 2 - image.get_height() + self.screen.get_height() / 2) / 2
+        self.screen.blit(image, (new_x, new_y))
 
     def get_tile_properties(self, x, y, layer):
         if layer and hasattr(layer, 'tiles'):
@@ -79,8 +82,6 @@ class Game:
             properties = self.tmx_data.get_tile_properties_by_gid(gid)
             return properties
         return None
-
-
 
 
 if __name__ == "__main__":
