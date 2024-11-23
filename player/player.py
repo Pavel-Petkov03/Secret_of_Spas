@@ -72,48 +72,57 @@ class CharacterDisplayMixin(ABC):
                 return True
         return False
 
+    def move_to_x_y_plane(self, screen):
+        pass
+
+    def get_animation_props(self):
+        return {
+            "left": {
+                "stand_animation_frame": self._animation_frames[10],
+                "animation_frame": self._animation_frames[11],
+                "moved_pos": (self.x - self.movement_speed, self.y),
+            },
+            "right": {
+                "stand_animation_frame": self._animation_frames[1],
+                "animation_frame": self._animation_frames[4],
+                "moved_pos": (self.x + self.movement_speed, self.y),
+            }, "up": {
+                "stand_animation_frame": self._animation_frames[2],
+                "animation_frame": self._animation_frames[5],
+                "moved_pos": (self.x, self.y - self.movement_speed)
+            }, "down": {
+                "stand_animation_frame": self._animation_frames[0],
+                "animation_frame": self._animation_frames[3],
+                "moved_pos": (self.x, self.y + self.movement_speed)
+            }
+        }
+
+    def change_direction(self, direction):
+        if direction != self.direction:
+            self.current_animation_frame = self.get_animation_props()[direction]["animation_frame"]
+        self.direction = direction
+
+    def is_triggered_movement(self, screen, new_x, new_y, bool_requirements_list):
+        return any(bool_requirements_list) and not self.move_to_block(screen, new_x, new_y)
+
+    def move_to_block(self, screen, new_x, new_y):
+        current_x, current_y = self.get_map_position(screen)
+        player_map_x = int(current_x + new_x / settings.TILE_WIDTH)
+        player_map_y = int(current_y + new_y / settings.TILE_HEIGHT)
+        return self.collides_with_block(player_map_x, player_map_y)
+
+    def get_map_tiled_position(self, screen):
+        return tuple(map(int, self.get_map_position(screen)))
+
 
 class PlayerDisplayMixin(CharacterDisplayMixin):
+
     def _trigger_update(self, screen):
         return True
 
     def update_state(self, screen):
         super().update_state(screen)
-        keys = pygame.key.get_pressed()
-        if self.is_triggered_movement(screen, (keys[pygame.K_LEFT], keys[pygame.K_a]), self.x - self.movement_speed,
-                                      self.y):
-            self.change_direction("left", self._animation_frames[11])
-            self.x -= self.movement_speed
-        elif self.is_triggered_movement(screen, (keys[pygame.K_RIGHT], keys[pygame.K_d]), self.x + self.movement_speed,
-                                        self.y):
-            self.change_direction("right", self._animation_frames[4])
-            self.x += self.movement_speed
-        elif self.is_triggered_movement(screen, (keys[pygame.K_UP], keys[pygame.K_w]), self.x,
-                                        self.y - self.movement_speed):
-            self.change_direction("up", self._animation_frames[5])
-            self.y -= self.movement_speed
-        elif self.is_triggered_movement(screen, (keys[pygame.K_DOWN], keys[pygame.K_s]), self.x,
-                                        self.y + self.movement_speed):
-            self.change_direction("down", self._animation_frames[3])
-            self.y += self.movement_speed
-        else:
-            if self.direction == "down":
-                self.current_animation_frame = self._animation_frames[0]
-            elif self.direction == "right":
-                self.current_animation_frame = self._animation_frames[1]
-            elif self.direction == "up":
-                self.current_animation_frame = self._animation_frames[2]
-            elif self.direction == "left":
-                self.current_animation_frame = self._animation_frames[10]
-            self.direction = "stand_" + self.direction
-
-    def change_direction(self, direction, new_animation_frame):
-        if not self.direction == direction:
-            self.current_animation_frame = new_animation_frame
-        self.direction = direction
-
-    def is_triggered_movement(self, screen, keys_list, new_x, new_y):
-        return any(keys_list) and not self.move_to_block(screen, new_x, new_y)
+        self.move_to_x_y_plane(screen)
 
     def blit(self, screen):
         width = screen.get_width()
@@ -122,26 +131,52 @@ class PlayerDisplayMixin(CharacterDisplayMixin):
         new_y = (height / 2 - self.current_animation.get_height() + height / 2) / 2
         screen.blit(self.current_animation, (new_x, new_y))
 
-    def move_to_block(self, screen, new_x, new_y):
-        current_x, current_y = self.get_map_position(screen)
-        player_map_x = int(current_x + new_x / settings.TILE_WIDTH)
-        player_map_y = int(current_y + new_y / settings.TILE_HEIGHT)
-        return self.collides_with_block(player_map_x, player_map_y)
-
     def get_map_position(self, screen):
         player_map_x = screen.get_width() / 2 / settings.SCALE_FACTOR / settings.TILE_WIDTH
         player_map_y = screen.get_width() / 2 / settings.SCALE_FACTOR / settings.TILE_HEIGHT
         return player_map_x, player_map_y
 
+    def move_to_x_y_plane(self, screen):
+        animation_props = self.get_animation_props()
+        directions = ["left", "right", "up", "down"]
+        for direction in directions:
+            if self.trig_movement_in_direction(screen, direction, animation_props):
+                break
+        else:
+            if animation_props.get(self.direction):
+                self.current_animation_frame = animation_props[self.direction]["stand_animation_frame"]
+            self.direction = "stand_" + self.direction
+
+    def trig_movement_in_direction(self, screen, direction, animation_props):
+        if self.is_triggered_movement(screen,
+                                      *animation_props[direction]["moved_pos"],
+                                      self.get_needed_press_keys_props()[direction]
+                                      ):
+            self.change_direction(direction)
+            self.x, self.y = animation_props[direction]["moved_pos"]
+            return True
+        return False
+
+    @staticmethod
+    def get_needed_press_keys_props():
+        keys = pygame.key.get_pressed()
+        return {
+            "left": (keys[pygame.K_LEFT], keys[pygame.K_a]),
+            "right": (keys[pygame.K_RIGHT], keys[pygame.K_d]),
+            "up": (keys[pygame.K_UP], keys[pygame.K_w]),
+            "down": (keys[pygame.K_DOWN], keys[pygame.K_s])
+        }
+
 
 class EnemyDisplayMixin(CharacterDisplayMixin):
+
     def __init__(self, current_animation_frame, animations_frames, tmx_data, main_player):
         self.tmx_data = tmx_data
         x, y = self.get_random_pos()
         super().__init__(x, y, current_animation_frame, animations_frames, tmx_data)
         self.main_player = main_player
         self.main_player_pos = None
-        self.path_to_player = []
+        self.path_to_player = deque([])
 
     def get_map_position(self, screen):
         map_x = self.x / settings.SCALE_FACTOR / settings.TILE_WIDTH
@@ -152,7 +187,11 @@ class EnemyDisplayMixin(CharacterDisplayMixin):
         while True:
             x = random.randint(0, settings.MAP_WIDTH)
             y = random.randint(0, settings.MAP_HEIGHT)
-            if self.collides_with_block(x, y):
+
+            map_x = int(x / settings.SCALE_FACTOR / settings.TILE_WIDTH)
+            map_y = int(y / settings.SCALE_FACTOR / settings.TILE_HEIGHT)
+
+            if self.collides_with_block(map_x, map_y):
                 continue
             return x, y
 
@@ -165,15 +204,19 @@ class EnemyDisplayMixin(CharacterDisplayMixin):
         return int(distance) < 20
 
     def update_state(self, screen):
+        current_pos = self.get_map_tiled_position(screen)
         super().update_state(screen)
-        current_main_player_pos = self.main_player.get_map_position(screen)
+        self.track_main_player(screen, current_pos)
+        self.move_to_x_y_plane(screen)
+
+    def track_main_player(self, screen, current_pos):
+        current_main_player_pos = self.main_player.get_map_tiled_position(screen)
         if current_main_player_pos != self.main_player_pos:
             if self.main_player_pos:
                 self.path_to_player.append(current_main_player_pos)
             else:
-                current = self.get_map_position(screen)
-                self.get_main_player_trail(current, self.main_player_pos, self.path_to_player, set())
-
+                self.get_main_player_trail(current_pos, self.main_player.get_map_tiled_position(screen), self.path_to_player, set())
+                self.path_to_player.reverse()
 
     def get_main_player_trail(self, current, target, path, visited):
         if current == target:
@@ -197,6 +240,34 @@ class EnemyDisplayMixin(CharacterDisplayMixin):
         ]
         appropriate_neighbors = [pos for pos in appropriate_neighbors if not self.collides_with_block(*pos)]
         return appropriate_neighbors
+
+    def move_to_x_y_plane(self, screen):
+        current_block = self.path_to_player[0]
+        if current_block != self.get_map_tiled_position(screen):
+            self.path_to_player.popleft()
+            return
+        target_block = self.main_player_pos
+        res = []
+        if target_block[0] < current_block[0]:
+            res.append("left")
+        else:
+            res.append("right")
+        if target_block[1] < current_block[1]:
+            res.append("up")
+        else:
+            res.append("down")
+        for direction in res:
+            if self.is_triggered_movement(screen, *self.get_animation_props()[direction], (True,)):
+                self.change_direction(direction)
+                self.x, self.y = self.get_animation_props()[direction]["moved_pos"]
+                return
+
+    def blit(self, screen):
+        if self.main_player.x - settings.TILE_WIDTH <= self.x <= self.main_player.x + settings.VIEW_PORT_TILES_W * settings.TILE_WIDTH + settings.TILE_WIDTH \
+                and self.main_player.y - settings.TILE_WIDTH <= self.y <= self.main_player.y + settings.VIEW_PORT_TILES_H * settings.TILE_HEIGHT + settings.TILE_WIDTH:
+            screen_x = (self.x - self.main_player.x) * settings.SCALE_FACTOR
+            screen_y = (self.y - self.main_player.y) * settings.SCALE_FACTOR
+            screen.blit(self.current_animation, (screen_x, screen_y))
 
 
 class Character:
