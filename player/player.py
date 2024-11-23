@@ -5,7 +5,7 @@ class DeadError(Exception):
 from collections import deque
 
 
-class Player:
+class Character:
     def __init__(self, name, health, x, y, damage, current_animation_frame=None, animations_frames=None):
         self._name = name
         self._health = health
@@ -21,8 +21,6 @@ class Player:
 
     @current_animation_frame.setter
     def current_animation_frame(self, value):
-        if value not in self._animation_frames.values():
-            raise ValueError("Not valid animation frame")
         self._current_animation_frame = value
 
     @property
@@ -41,5 +39,7 @@ class Player:
 
     def get_current_animation_image(self):
         current_image = self._current_animation_frame[0]
-        self._current_animation_frame.append(self._current_animation_frame.popleft())
         return current_image
+
+    def rotate(self):
+        self._current_animation_frame.append(self._current_animation_frame.popleft())
