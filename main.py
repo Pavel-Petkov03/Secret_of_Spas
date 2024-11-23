@@ -6,7 +6,10 @@ from player.utils import init_player
 
 class Game:
     def __init__(self):
-        self.screen = settings.SCREEN
+        self.screen = pygame.display.set_mode(
+            (settings.CURRENT_MAX_DIMENSION - 1 / 6 * settings.CURRENT_MAX_DIMENSION,
+             settings.CURRENT_MAX_DIMENSION - 1 / 6 * settings.CURRENT_MAX_DIMENSION)
+        )
         self.tmx_data = load_pygame("src/tiles/level_1.tmx")
         self.scale_grid()
         self.clock = pygame.time.Clock()
@@ -46,7 +49,6 @@ class Game:
     def update(self):
         self.player.update(self.screen)
         self.render_map()
-        print(self.player.x, self.player.y)
 
 
 if __name__ == "__main__":

@@ -1,3 +1,4 @@
+import math
 import random
 from collections import deque
 from abc import ABC, abstractmethod
@@ -115,10 +116,11 @@ class PlayerDisplayMixin(CharacterDisplayMixin):
         return any(keys_list) and not self.move_to_block(screen, new_x, new_y)
 
     def blit(self, screen):
-        new_x = (settings.SCREEN_WIDTH / 2 + settings.SCREEN_WIDTH / 2 - self.current_animation.get_width()) / 2
-        new_y = (settings.SCREEN_HEIGHT / 2 - self.current_animation.get_height() + settings.SCREEN_HEIGHT / 2) / 2
+        width = screen.get_width()
+        height = screen.get_height()
+        new_x = (width / 2 + width / 2 - self.current_animation.get_width()) / 2
+        new_y = (height / 2 - self.current_animation.get_height() + height / 2) / 2
         screen.blit(self.current_animation, (new_x, new_y))
-
 
     def move_to_block(self, screen, new_x, new_y):
         current_x, current_y = self.get_map_position(screen)
@@ -128,12 +130,73 @@ class PlayerDisplayMixin(CharacterDisplayMixin):
 
     def get_map_position(self, screen):
         player_map_x = screen.get_width() / 2 / settings.SCALE_FACTOR / settings.TILE_WIDTH
-        player_map_y = screen.get_height() / 2 / settings.SCALE_FACTOR / settings.TILE_HEIGHT
+        player_map_y = screen.get_width() / 2 / settings.SCALE_FACTOR / settings.TILE_HEIGHT
         return player_map_x, player_map_y
 
 
 class EnemyDisplayMixin(CharacterDisplayMixin):
-    pass
+    def __init__(self, current_animation_frame, animations_frames, tmx_data, main_player):
+        self.tmx_data = tmx_data
+        x, y = self.get_random_pos()
+        super().__init__(x, y, current_animation_frame, animations_frames, tmx_data)
+        self.main_player = main_player
+        self.main_player_pos = None
+        self.path_to_player = []
+
+    def get_map_position(self, screen):
+        map_x = self.x / settings.SCALE_FACTOR / settings.TILE_WIDTH
+        map_y = self.y / settings.SCALE_FACTOR / settings.TILE_HEIGHT
+        return map_x, map_y
+
+    def get_random_pos(self):
+        while True:
+            x = random.randint(0, settings.MAP_WIDTH)
+            y = random.randint(0, settings.MAP_HEIGHT)
+            if self.collides_with_block(x, y):
+                continue
+            return x, y
+
+    def _trigger_update(self, screen):
+        m_x, m_y = self.main_player.get_map_position(screen)
+        cur_x, cur_y = self.get_map_position(screen)
+        dx = m_x - cur_x
+        dy = m_y - cur_y
+        distance = math.sqrt(dx ** 2 + dy ** 2)
+        return int(distance) < 20
+
+    def update_state(self, screen):
+        super().update_state(screen)
+        current_main_player_pos = self.main_player.get_map_position(screen)
+        if current_main_player_pos != self.main_player_pos:
+            if self.main_player_pos:
+                self.path_to_player.append(current_main_player_pos)
+            else:
+                current = self.get_map_position(screen)
+                self.get_main_player_trail(current, self.main_player_pos, self.path_to_player, set())
+
+
+    def get_main_player_trail(self, current, target, path, visited):
+        if current == target:
+            path.append(current)
+            return True
+        visited.add(current)
+        for neighbor in self.get_neighbors(current):
+            if neighbor not in visited:
+                if self.get_main_player_trail(neighbor, target, path, visited):
+                    path.append(current)
+                    return True
+        return False
+
+    def get_neighbors(self, current):
+        x, y = current
+        appropriate_neighbors = [
+            (x - 1, y),
+            (x + 1, y),
+            (x, y + 1),
+            (x, y - 1),
+        ]
+        appropriate_neighbors = [pos for pos in appropriate_neighbors if not self.collides_with_block(*pos)]
+        return appropriate_neighbors
 
 
 class Character:
@@ -156,20 +219,13 @@ class Character:
 class Player(Character, PlayerDisplayMixin):
     def __init__(self, name, health, x, y, damage, current_animation_frame, animations_frames, tmx_data):
         Character.__init__(self, name, health, damage)
-        CharacterDisplayMixin.__init__(self, x, y, current_animation_frame, animations_frames, tmx_data)
+        PlayerDisplayMixin.__init__(self, x, y, current_animation_frame, animations_frames, tmx_data)
 
 
 class Enemy(Character, EnemyDisplayMixin):
-    def __init__(self, name, health, damage, current_animation_frame, animation_frames, tmx_data):
+    def __init__(self, name, health, damage, current_animation_frame, animation_frames, tmx_data, main_player):
         Character.__init__(self, name, health, damage)
-        self.tmx_data = tmx_data
-        x, y = self.get_random_pos()
-        CharacterDisplayMixin.__init__(self, x, y, current_animation_frame, animation_frames, tmx_data)
+        EnemyDisplayMixin.__init__(self, current_animation_frame, animation_frames, tmx_data, main_player)
 
-    def get_random_pos(self):
-        while True:
-            x = random.randint(0, settings.MAP_WIDTH)
-            y = random.randint(0, settings.MAP_HEIGHT)
-            if self.collides_with_block(x, y):
-                continue
-            return x, y
+    def attack(self):
+        self.main_player.health -= self.damage
