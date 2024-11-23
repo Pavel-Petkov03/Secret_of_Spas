@@ -1,3 +1,4 @@
+import random
 from collections import deque
 from abc import ABC, abstractmethod
 import pygame
@@ -63,6 +64,13 @@ class CharacterDisplayMixin(ABC):
             return properties
         return None
 
+    def collides_with_block(self, x, y):
+        for layer in self.tmx_data.layers:
+            result = self.get_tile_properties(x, y, layer)
+            if result and result["is_block"]:
+                return True
+        return False
+
 
 class PlayerDisplayMixin(CharacterDisplayMixin):
     def _trigger_update(self, screen):
@@ -104,22 +112,19 @@ class PlayerDisplayMixin(CharacterDisplayMixin):
         self.direction = direction
 
     def is_triggered_movement(self, screen, keys_list, new_x, new_y):
-        return any(keys_list) and not self.collide_with_block(screen, new_x, new_y)
+        return any(keys_list) and not self.move_to_block(screen, new_x, new_y)
 
     def blit(self, screen):
         new_x = (settings.SCREEN_WIDTH / 2 + settings.SCREEN_WIDTH / 2 - self.current_animation.get_width()) / 2
         new_y = (settings.SCREEN_HEIGHT / 2 - self.current_animation.get_height() + settings.SCREEN_HEIGHT / 2) / 2
         screen.blit(self.current_animation, (new_x, new_y))
 
-    def move_to(self):
-        pass
 
-    def collide_with_block(self, screen, new_x, new_y):
+    def move_to_block(self, screen, new_x, new_y):
         current_x, current_y = self.get_map_position(screen)
         player_map_x = int(current_x + new_x / settings.TILE_WIDTH)
         player_map_y = int(current_y + new_y / settings.TILE_HEIGHT)
-        result = self.get_tile_properties(player_map_x, player_map_y, self.tmx_data.layers[-1])
-        return result and result["is_block"]
+        return self.collides_with_block(player_map_x, player_map_y)
 
     def get_map_position(self, screen):
         player_map_x = screen.get_width() / 2 / settings.SCALE_FACTOR / settings.TILE_WIDTH
@@ -155,4 +160,16 @@ class Player(Character, PlayerDisplayMixin):
 
 
 class Enemy(Character, EnemyDisplayMixin):
-    pass
+    def __init__(self, name, health, damage, current_animation_frame, animation_frames, tmx_data):
+        Character.__init__(self, name, health, damage)
+        self.tmx_data = tmx_data
+        x, y = self.get_random_pos()
+        CharacterDisplayMixin.__init__(self, x, y, current_animation_frame, animation_frames, tmx_data)
+
+    def get_random_pos(self):
+        while True:
+            x = random.randint(0, settings.MAP_WIDTH)
+            y = random.randint(0, settings.MAP_HEIGHT)
+            if self.collides_with_block(x, y):
+                continue
+            return x, y

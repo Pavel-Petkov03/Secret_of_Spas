@@ -11,6 +11,7 @@ class Game:
         self.scale_grid()
         self.clock = pygame.time.Clock()
         self.player = init_player(self.tmx_data)
+        self.enemies = []
 
     def scale_grid(self):
         for gid, image in enumerate(self.tmx_data.images):
@@ -45,6 +46,7 @@ class Game:
     def update(self):
         self.player.update(self.screen)
         self.render_map()
+        print(self.player.x, self.player.y)
 
 
 if __name__ == "__main__":
