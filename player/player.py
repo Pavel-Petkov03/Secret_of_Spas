@@ -106,7 +106,8 @@ class CharacterDisplayMixin(ABC):
         return any(bool_requirements_list) and not self.move_to_block(screen, new_x, new_y)
 
     def move_to_block(self, screen, new_x, new_y):
-        current_x, current_y = self.get_map_position(screen)
+        current_x = screen.get_width() / 2 / settings.SCALE_FACTOR / settings.TILE_WIDTH
+        current_y = screen.get_height() / 2 / settings.SCALE_FACTOR / settings.TILE_HEIGHT
         player_map_x = int(current_x + new_x / settings.TILE_WIDTH)
         player_map_y = int(current_y + new_y / settings.TILE_HEIGHT)
         return self.collides_with_block(player_map_x, player_map_y)
