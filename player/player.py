@@ -254,7 +254,7 @@ class EnemyDisplayMixin(CharacterDisplayMixin):
             (x, y + 1),
             (x, y - 1),
         ]
-        appropriate_neighbors = [pos for pos in appropriate_neighbors if self.in_bounds(pos)]
+        appropriate_neighbors = [pos for pos in appropriate_neighbors if self.in_bounds(pos) and not self.collides_with_block(*pos)]
         return appropriate_neighbors
 
     def move_to_x_y_plane(self, screen):
