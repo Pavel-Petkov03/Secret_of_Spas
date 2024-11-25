@@ -48,6 +48,7 @@ class Game:
                         screen_y = (y * settings.TILE_HEIGHT - self.player.y) * settings.SCALE_FACTOR
                         self.screen.blit(tile, (screen_x, screen_y))
 
+
     def update(self):
         self.player.update(self.screen)
         self.render_map()
