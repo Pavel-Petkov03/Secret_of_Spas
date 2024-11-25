@@ -12,7 +12,7 @@ class EnemyDisplayMixin(CharacterDisplayMixin):
     def __init__(self, current_animation_frame, animations_frames, tmx_data, main_player):
         self.tmx_data = tmx_data
         x, y = self.get_random_pos()
-        super().__init__(200, 400, current_animation_frame, animations_frames, tmx_data)
+        super().__init__(700, 499, current_animation_frame, animations_frames, tmx_data)
         self.main_player = main_player
         self.main_player_pos = None
         self.path_to_player = deque()
@@ -49,7 +49,7 @@ class EnemyDisplayMixin(CharacterDisplayMixin):
         dx = m_x - cur_x
         dy = m_y - cur_y
         distance = math.sqrt(dx ** 2 + dy ** 2) // settings.TILE_WIDTH // settings.SCALE_FACTOR
-        return int(distance) < 10
+        return int(distance) < 2
 
     def update_state(self, screen):
         current_pos = self.get_map_tiled_position(screen)
@@ -61,12 +61,13 @@ class EnemyDisplayMixin(CharacterDisplayMixin):
         current_main_player_pos = self.main_player.get_map_tiled_position(screen)
         if current_main_player_pos != self.main_player_pos:
             self.get_main_player_trail(current_pos, self.main_player.get_map_tiled_position(screen))
-            print(self.path_to_player)
             self.path_to_player = deque(self.path_to_player)
             self.main_player_pos = self.path_to_player[-1]
 
     def get_main_player_trail(self, current, target):
         queue = deque([(current, [current])])
+        print(current)
+        print(target)
         visited = set()
         while queue:
             node, path = queue.popleft()
@@ -80,7 +81,7 @@ class EnemyDisplayMixin(CharacterDisplayMixin):
         return False
 
     def in_bounds(self, pos):
-        return pos[0] >= 0 and pos[1] >= 0
+        return 0 <= pos[0] <= 32 and 0 <= pos[1] <= 32
 
     def get_neighbors(self, current):
         x, y = current
@@ -94,12 +95,13 @@ class EnemyDisplayMixin(CharacterDisplayMixin):
         return appropriate_neighbors
 
     def clear_update_state(self, screen):
-        self.path_to_player = deque()
+        pass
 
     def move_to_x_y_plane(self, screen):
         if self.path_to_player:
             current_block = self.path_to_player[0]
-            if current_block != self.get_map_tiled_position(screen):
+            print(current_block, self.get_map_tiled_position(screen))
+            if current_block != self.get_map_tiled_position(screen) or current_block == self.main_player:
                 self.path_to_player.popleft()
                 return
             target_block = self.main_player_pos
@@ -123,3 +125,5 @@ class EnemyDisplayMixin(CharacterDisplayMixin):
                 and self.main_player.y - settings.TILE_WIDTH <= self.y <= self.main_player.y + settings.VIEW_PORT_TILES_H * settings.TILE_HEIGHT + settings.TILE_WIDTH:
             screen.blit(self.current_animation, ((self.x - self.main_player.x) * settings.SCALE_FACTOR,
                                                  (self.y - self.main_player.y) * settings.SCALE_FACTOR))
+
+
