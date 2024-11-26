@@ -1,4 +1,6 @@
 import pygame
+
+import settings
 from settings import TILE_WIDTH, TILE_HEIGHT
 
 
@@ -24,7 +26,7 @@ class SpriteSheet:
                 x = col * self.frame_width
                 y = row * self.frame_height
                 sprite = self.sheet.subsurface(pygame.Rect(x, y, self.frame_width, self.frame_height))
-                sprite = pygame.transform.scale(sprite, (80, 80))
+                sprite = pygame.transform.scale(sprite, (self.frame_width * settings.SCALE_FACTOR, self.frame_height * settings.SCALE_FACTOR))
                 row_sprites.append(sprite)
             matrix.append(row_sprites)
         return matrix
