@@ -7,8 +7,8 @@ from player.utils import init_player, init_enemy
 class Game:
     def __init__(self):
         self.screen = pygame.display.set_mode(
-            (settings.CURRENT_MAX_DIMENSION - 1 / 6 * settings.CURRENT_MAX_DIMENSION,
-             settings.CURRENT_MAX_DIMENSION - 1 / 6 * settings.CURRENT_MAX_DIMENSION)
+            (settings.SCREEN_WIDTH,
+             settings.SCREEN_WIDTH)
         )
         self.tmx_data = load_pygame("src/tiles/level_1.tmx")
         self.scale_grid()
@@ -31,9 +31,9 @@ class Game:
                 if event.type == pygame.QUIT:
                     running = False
             self.update()
-            self.player.blit(self.screen)
             for enemy in self.enemies:
                 enemy.blit(self.screen)
+            self.player.blit(self.screen)
             pygame.display.update()
             pygame.display.flip()
             self.clock.tick(60)
@@ -42,6 +42,7 @@ class Game:
         for layer in self.tmx_data.visible_layers:
             if hasattr(layer, "tiles"):
                 for x, y, tile in layer.tiles():
+
                     if self.player.x - settings.TILE_WIDTH <= x * settings.TILE_WIDTH <= self.player.x + settings.VIEW_PORT_TILES_W * settings.TILE_WIDTH + settings.TILE_WIDTH \
                             and self.player.y - settings.TILE_WIDTH <= y * settings.TILE_HEIGHT <= self.player.y + settings.VIEW_PORT_TILES_H * settings.TILE_HEIGHT + settings.TILE_WIDTH:
                         screen_x = (x * settings.TILE_WIDTH - self.player.x) * settings.SCALE_FACTOR
