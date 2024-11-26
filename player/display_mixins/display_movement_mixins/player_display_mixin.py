@@ -9,7 +9,6 @@ class PlayerDisplayMixin(CharacterDisplayMixin):
         return True
 
     def update_state(self, screen):
-        super().update_state(screen)
         self.move_to_x_y_plane(screen)
 
     def blit(self, screen):
@@ -21,10 +20,8 @@ class PlayerDisplayMixin(CharacterDisplayMixin):
         self.get_map_tiled_position(screen)
 
     def get_map_position(self, screen):
-
         tile_x = int(self.x // settings.TILE_WIDTH) + int(settings.VIEW_PORT_TILES_W // 2)
         tile_y = int(self.y // settings.TILE_WIDTH) + int(settings.VIEW_PORT_TILES_W // 2)
-
         return tile_x, tile_y
 
     def move_to_x_y_plane(self, screen):
@@ -57,3 +54,10 @@ class PlayerDisplayMixin(CharacterDisplayMixin):
             "up": (keys[pygame.K_UP], keys[pygame.K_w]),
             "down": (keys[pygame.K_DOWN], keys[pygame.K_s])
         }
+
+    def move_to_block(self, screen, new_x, new_y):
+        current_x = screen.get_width() / 2 / settings.SCALE_FACTOR / settings.TILE_WIDTH
+        current_y = screen.get_height() / 2 / settings.SCALE_FACTOR / settings.TILE_HEIGHT
+        player_map_x = int(current_x + new_x / settings.TILE_WIDTH)
+        player_map_y = int(current_y + new_y / settings.TILE_HEIGHT)
+        return self.collides_with_block(player_map_x, player_map_y)

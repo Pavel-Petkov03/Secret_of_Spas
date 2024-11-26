@@ -32,12 +32,18 @@ class CharacterDisplayMixin(ABC):
     def update(self, screen):
         if self._trigger_update(screen):
             self.update_state(screen)
-        self.clear_update_state(screen)
+            self.iterate_over_frames()
+        else:
+            self.clear_update_state(screen)
+            self.iterate_over_frames()
 
     def clear_update_state(self, screen):
         pass
 
     def update_state(self, screen):
+        pass
+
+    def iterate_over_frames(self):
         if self.counter == 5:
             self.change_frame()
             self.counter = 0
@@ -102,11 +108,7 @@ class CharacterDisplayMixin(ABC):
         return any(bool_requirements_list) and not self.move_to_block(screen, new_x, new_y)
 
     def move_to_block(self, screen, new_x, new_y):
-        current_x = screen.get_width() / 2 / settings.SCALE_FACTOR / settings.TILE_WIDTH
-        current_y = screen.get_height() / 2 / settings.SCALE_FACTOR / settings.TILE_HEIGHT
-        player_map_x = int(current_x + new_x / settings.TILE_WIDTH)
-        player_map_y = int(current_y + new_y / settings.TILE_HEIGHT)
-        return self.collides_with_block(player_map_x, player_map_y)
+        pass
 
     def get_map_tiled_position(self, screen):
         return tuple(map(int, self.get_map_position(screen)))

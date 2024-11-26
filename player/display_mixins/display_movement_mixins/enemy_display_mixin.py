@@ -50,7 +50,6 @@ class EnemyDisplayMixin(CharacterDisplayMixin):
 
     def update_state(self, screen):
         current_pos = self.get_map_tiled_position(screen)
-        super().update_state(screen)
         self.track_main_player(screen, current_pos)
         self.move_to_x_y_plane(screen)
 
@@ -90,7 +89,9 @@ class EnemyDisplayMixin(CharacterDisplayMixin):
         return appropriate_neighbors
 
     def clear_update_state(self, screen):
-        pass
+        if self.get_animation_props().get(self.direction):
+            self.current_animation_frame = self.get_animation_props()[self.direction]["stand_animation_frame"]
+        self.direction = "stand_" + self.direction
 
     def move_to_x_y_plane(self, screen):
         if self.path_to_player:
