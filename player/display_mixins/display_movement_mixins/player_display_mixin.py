@@ -18,11 +18,14 @@ class PlayerDisplayMixin(CharacterDisplayMixin):
         new_x = (width / 2 + width / 2 - self.current_animation.get_width()) / 2
         new_y = (height / 2 - self.current_animation.get_height() + height / 2) / 2
         screen.blit(self.current_animation, (new_x, new_y))
+        self.get_map_tiled_position(screen)
 
     def get_map_position(self, screen):
-        player_map_x = (self.x + screen.get_width() / 2) / settings.SCALE_FACTOR / settings.TILE_WIDTH
-        player_map_y = (self.y + screen.get_height() / 2) / settings.SCALE_FACTOR / settings.TILE_HEIGHT
-        return player_map_x, player_map_y
+
+        tile_x = int(self.x // settings.TILE_WIDTH) + int(settings.VIEW_PORT_TILES_W // 2)
+        tile_y = int(self.y // settings.TILE_WIDTH) + int(settings.VIEW_PORT_TILES_W // 2)
+
+        return tile_x, tile_y
 
     def move_to_x_y_plane(self, screen):
         animation_props = self.get_animation_props()
