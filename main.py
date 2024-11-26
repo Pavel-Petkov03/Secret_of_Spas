@@ -14,7 +14,7 @@ class Game:
         self.scale_grid()
         self.clock = pygame.time.Clock()
         self.player = init_player(self.tmx_data)
-        self.enemies = [init_enemy("Gosho", 100, 100, self.player, self.tmx_data) for _ in range(1)]
+        self.enemies = [init_enemy("Gosho", 100, 100, self.player, self.tmx_data) for _ in range(50)]
 
     def scale_grid(self):
         for gid, image in enumerate(self.tmx_data.images):

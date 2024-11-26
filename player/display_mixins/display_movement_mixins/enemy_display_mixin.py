@@ -12,7 +12,7 @@ class EnemyDisplayMixin(CharacterDisplayMixin):
     def __init__(self, current_animation_frame, animations_frames, tmx_data, main_player):
         self.tmx_data = tmx_data
         x, y = self.get_random_pos()
-        super().__init__(700, 500, current_animation_frame, animations_frames, tmx_data)
+        super().__init__(x, y, current_animation_frame, animations_frames, tmx_data)
         self.main_player = main_player
         self.main_player_pos = None
         self.path_to_player = deque()
@@ -21,40 +21,32 @@ class EnemyDisplayMixin(CharacterDisplayMixin):
     def get_map_position(self, screen):
         x = int(self.x / settings.TILE_WIDTH)
         y = int(self.y / settings.TILE_HEIGHT)
-        screen_x = (x * settings.TILE_WIDTH - self.main_player.x) * settings.SCALE_FACTOR
-        screen_y = (y * settings.TILE_HEIGHT - self.main_player.y) * settings.SCALE_FACTOR
-        pygame.draw.rect(screen, (200, 200, 200),
-                         (
-                             screen_x,
-                             screen_y
-                             , settings.TILE_WIDTH * settings.SCALE_FACTOR,
-                             settings.TILE_WIDTH * settings.SCALE_FACTOR
-                         )
-                         )
-        return int(x), int(y)
+        return x, y
+
+    def move_to_block(self, screen, new_x, new_y):
+        x = int(new_x / settings.TILE_WIDTH)
+        y = int(new_y / settings.TILE_HEIGHT)
+        return self.collides_with_block(x, y)
 
     def get_random_pos(self):
         while True:
             x = random.randint(0, settings.MAP_WIDTH)
             y = random.randint(0, settings.MAP_HEIGHT)
 
-            map_x = int(x / settings.SCALE_FACTOR / settings.TILE_WIDTH)
-            map_y = int(y / settings.SCALE_FACTOR / settings.TILE_HEIGHT)
+            map_x = int(x / settings.TILE_WIDTH)
+            map_y = int(y / settings.TILE_HEIGHT)
 
             if self.collides_with_block(map_x, map_y):
                 continue
             return x, y
 
     def _trigger_update(self, screen):
-        m_x, m_y = (self.x - self.main_player.x) * settings.SCALE_FACTOR, (
-                self.y - self.main_player.y) * settings.SCALE_FACTOR
-        cur_x, cur_y = screen.get_width() / 2, screen.get_height() / 2
-        dx = m_x - cur_x
-        dy = m_y - cur_y
-        distance = math.sqrt(dx ** 2 + dy ** 2) // settings.TILE_WIDTH
-        print(self.get_map_position(screen))
-        print(self.main_player.get_map_position(screen))
-        return int(distance) < 0
+        current_tile_x, current_tile_y = self.get_map_position(screen)
+        main_player_x, main_player_y = self.main_player.get_map_position(screen)
+        dx = current_tile_x - main_player_x
+        dy = current_tile_y - main_player_y
+        distance = math.sqrt(dx ** 2 + dy ** 2)
+        return int(distance) < 5
 
     def update_state(self, screen):
         current_pos = self.get_map_tiled_position(screen)
@@ -84,7 +76,7 @@ class EnemyDisplayMixin(CharacterDisplayMixin):
         return False
 
     def in_bounds(self, pos):
-        return 0 <= pos[0] <= 32 and 0 <= pos[1] <= 32
+        return 0 <= pos[0] < 100 and 0 <= pos[1] < 100
 
     def get_neighbors(self, current):
         x, y = current
@@ -94,7 +86,7 @@ class EnemyDisplayMixin(CharacterDisplayMixin):
             (x, y + 1),
             (x, y - 1),
         ]
-        appropriate_neighbors = [pos for pos in appropriate_neighbors if self.in_bounds(pos)]
+        appropriate_neighbors = [pos for pos in appropriate_neighbors if self.in_bounds(pos) and not self.collides_with_block(*pos)]
         return appropriate_neighbors
 
     def clear_update_state(self, screen):
@@ -103,14 +95,14 @@ class EnemyDisplayMixin(CharacterDisplayMixin):
     def move_to_x_y_plane(self, screen):
         if self.path_to_player:
             current_block = self.path_to_player[0]
-            if current_block != self.get_map_tiled_position(screen) or current_block == self.main_player:
+            if current_block != self.get_map_tiled_position(screen):
                 self.path_to_player.popleft()
                 return
             target_block = self.main_player_pos
             res = []
             if target_block[0] < current_block[0]:
                 res.append("left")
-            elif target_block[0] < current_block[0]:
+            elif target_block[0] > current_block[0]:
                 res.append("right")
             if target_block[1] < current_block[1]:
                 res.append("up")
