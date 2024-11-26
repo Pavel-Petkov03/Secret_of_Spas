@@ -1,5 +1,5 @@
 import settings
-from player.display_mixins.animation_frame_requester import AnimationFrameRequester
+from player.display_mixins.animation_frame_requester import MoveAnimationFrameRequester
 from player.display_mixins.display_movement_mixins.base_display_character_mixin import CharacterDisplayMixin
 import pygame
 
@@ -7,7 +7,7 @@ import pygame
 class PlayerDisplayMixin(CharacterDisplayMixin):
     def __init__(self, *args, **kwargs):
         CharacterDisplayMixin.__init__(self, *args, **kwargs)
-        self.main_animation_frame_requester = AnimationFrameRequester(self._current_animation_frame, 20, 20)
+        self.main_animation_frame_requester = MoveAnimationFrameRequester(self._current_animation_frame, 20, 20)
 
     def _trigger_update(self, screen):
         return True

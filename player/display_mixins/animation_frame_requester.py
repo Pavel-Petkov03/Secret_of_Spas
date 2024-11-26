@@ -1,4 +1,5 @@
 from collections import deque
+from abc import ABC, abstractmethod
 
 
 class AnimationFrameDoneError(Exception):
@@ -7,8 +8,8 @@ class AnimationFrameDoneError(Exception):
         self.next_animation_frame = next_animation_frame
 
 
-class AnimationFrameRequester:
-    def __init__(self, animation_frame, frames_count_for_animation_frame, frames_count_for_animation, is_repeated=True ,
+class AnimationFrameRequester(ABC):
+    def __init__(self, animation_frame, frames_count_for_animation_frame, frames_count_for_animation, is_repeated=True,
                  next_animation_request=None):
         self.__counter = 0
         self.__frame_counter = 0
@@ -25,10 +26,11 @@ class AnimationFrameRequester:
     def __change_frame_to_display(self):
         self.__current_animation_frame.append(self.__current_animation_frame.popleft())
 
-    def run(self):
+    def run(self, screen, additional_data):
         if self.__counter >= self.__frames_count_for_animation_frame:
             self.__counter = 0
             if not self.is_repeated:
+                self.cleanup_func_after_animation(screen, additional_data)
                 raise AnimationFrameDoneError("Animation done", self.next_animation_request)
         self.__counter += 1
         self.__frame_counter += 1
@@ -37,9 +39,6 @@ class AnimationFrameRequester:
             self.__frame_counter = 0
         return self.current_animation_frame
 
-    def __reset(self):
-        self.counter = 0
-
     @property
     def current_animation_frame(self):
         return self.__current_animation_frame
@@ -47,3 +46,27 @@ class AnimationFrameRequester:
     @current_animation_frame.setter
     def current_animation_frame(self, value):
         self.__current_animation_frame = deque(value)
+
+    @abstractmethod
+    def cleanup_func_after_animation(self, screen, additional_data):
+        pass
+
+
+class MoveAnimationFrameRequester(AnimationFrameRequester):
+    def cleanup_func_after_animation(self, screen, additional_data):
+        pass
+
+
+class InfantryAttackAnimationFrameRequester(AnimationFrameRequester):
+    def cleanup_func_after_animation(self, screen, additional_data):
+        pass
+
+
+class ArcherAttackAnimationFrameRequester(AnimationFrameRequester):
+    def cleanup_func_after_animation(self, screen, additional_data):
+        pass
+
+
+class DieEnemyAnimationFrameRequester(AnimationFrameRequester):
+    def cleanup_func_after_animation(self, screen, additional_data):
+        pass

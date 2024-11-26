@@ -18,10 +18,10 @@ class CharacterDisplayMixin(ABC):
         try:
             if self._trigger_update(screen):
                 self.update_state(screen)
-                self.main_animation_frame_requester.run()
+                self.main_animation_frame_requester.run(screen, self.__dict__)
             else:
                 self.clear_update_state(screen)
-                self.main_animation_frame_requester.run()
+                self.main_animation_frame_requester.run(screen, self.__dict__)
         except AnimationFrameDoneError as error:
             self.main_animation_frame_requester = error.next_animation_frame
 
