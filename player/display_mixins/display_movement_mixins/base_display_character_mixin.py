@@ -2,6 +2,7 @@ from collections import deque
 from abc import ABC, abstractmethod
 from player.display_mixins.animation_frame_requester import AnimationFrameDoneError, MoveAnimationFrameRequester
 
+
 class CharacterDisplayMixin(ABC):
     def __init__(self, x, y, current_animation_frame, animation_frames, tmx_data):
         self.x = x
@@ -15,14 +16,14 @@ class CharacterDisplayMixin(ABC):
         self.movement_speed = 0.7
         self.counter = 0
 
-    def update(self, screen):
+    def update(self, screen, delta_time):
         try:
             if self._trigger_update(screen):
                 self.update_state(screen)
-                self.main_animation_frame_requester.run(screen, self.__dict__)
+                self.main_animation_frame_requester.run(screen, self.__dict__, delta_time)
             else:
                 self.clear_update_state(screen)
-                self.main_animation_frame_requester.run(screen, self.__dict__)
+                self.main_animation_frame_requester.run(screen, self.__dict__, delta_time)
         except AnimationFrameDoneError as error:
             self.main_animation_frame_requester = error.next_animation_frame
 

@@ -15,6 +15,7 @@ class Game:
         self.clock = pygame.time.Clock()
         self.player = init_player(self.tmx_data)
         self.enemies = [init_enemy("Gosho", 100, 100, self.player, self.tmx_data) for _ in range(50)]
+        self.fps = 60
 
     def scale_grid(self):
         for gid, image in enumerate(self.tmx_data.images):
@@ -34,15 +35,15 @@ class Game:
             for enemy in self.enemies:
                 enemy.blit(self.screen)
             self.player.blit(self.screen)
+
             pygame.display.update()
             pygame.display.flip()
-            self.clock.tick(60)
+            self.clock.tick(self.fps)
 
     def render_map(self):
         for layer in self.tmx_data.visible_layers:
             if hasattr(layer, "tiles"):
                 for x, y, tile in layer.tiles():
-
                     if self.player.x - settings.TILE_WIDTH <= x * settings.TILE_WIDTH <= self.player.x + settings.VIEW_PORT_TILES_W * settings.TILE_WIDTH + settings.TILE_WIDTH \
                             and self.player.y - settings.TILE_WIDTH <= y * settings.TILE_HEIGHT <= self.player.y + settings.VIEW_PORT_TILES_H * settings.TILE_HEIGHT + settings.TILE_WIDTH:
                         screen_x = (x * settings.TILE_WIDTH - self.player.x) * settings.SCALE_FACTOR
@@ -50,10 +51,11 @@ class Game:
                         self.screen.blit(tile, (screen_x, screen_y))
 
     def update(self):
-        self.player.update(self.screen)
+        delta_time = self.clock.tick(60) / 1000
+        self.player.update(self.screen, delta_time)
         self.render_map()
         for enemy in self.enemies:
-            enemy.update(self.screen)
+            enemy.update(self.screen, delta_time)
 
 
 if __name__ == "__main__":

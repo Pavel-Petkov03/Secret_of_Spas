@@ -26,7 +26,7 @@ class AnimationFrameRequester(ABC):
     def __change_frame_to_display(self):
         self.__current_animation_frame.append(self.__current_animation_frame.popleft())
 
-    def run(self, screen, additional_data):
+    def run(self, screen, additional_data, delta):
         if self.__counter >= self.__frames_count_for_animation_frame:
             self.__counter = 0
             self.__frame_counter = 0
