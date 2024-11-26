@@ -53,20 +53,42 @@ class AnimationFrameRequester(ABC):
 
 
 class MoveAnimationFrameRequester(AnimationFrameRequester):
+    """
+    No cleanup function for movement because it is not ending animation
+    """
     def cleanup_func_after_animation(self, screen, additional_data):
         pass
 
 
 class InfantryAttackAnimationFrameRequester(AnimationFrameRequester):
+    """
+    Here the health of the player is lowered because the animation is done
+    """
     def cleanup_func_after_animation(self, screen, additional_data):
         pass
 
 
 class ArcherAttackAnimationFrameRequester(AnimationFrameRequester):
+    """
+    Here the arrow object is created and we trigure the arrow animation
+    """
     def cleanup_func_after_animation(self, screen, additional_data):
         pass
 
 
 class DieEnemyAnimationFrameRequester(AnimationFrameRequester):
+    """
+    Here when the enemy dies it drops goods and tracks in the quest bar
+    """
+    def cleanup_func_after_animation(self, screen, additional_data):
+        pass
+
+
+class ArrowAttackAnimationFrameRequester(AnimationFrameRequester):
+    """
+    Here then the arrow reaches the player or goes out of range it either:
+        -- if jt touched the player it reduces health points
+        -- if it touched the end range it doesn't do anything
+    """
     def cleanup_func_after_animation(self, screen, additional_data):
         pass
