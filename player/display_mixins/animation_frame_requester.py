@@ -29,6 +29,7 @@ class AnimationFrameRequester(ABC):
     def run(self, screen, additional_data):
         if self.__counter >= self.__frames_count_for_animation_frame:
             self.__counter = 0
+            self.__frame_counter = 0
             if not self.is_repeated:
                 self.cleanup_func_after_animation(screen, additional_data)
                 raise AnimationFrameDoneError("Animation done", self.next_animation_request)

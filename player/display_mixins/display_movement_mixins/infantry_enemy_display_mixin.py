@@ -9,22 +9,21 @@ class InfantryEnemyDisplayMixin(EnemyDisplayMixin):
         EnemyDisplayMixin.__init__(self, *args, **kwargs)
         self.stay_animation_frame_requester = MoveAnimationFrameRequester(
             self.get_animation_props()[self.direction]["stand_animation_frame"],
-            50, 50, is_repeated=False
+            20, 5, is_repeated=False
             )
         self.attack_animation_frame_requester = InfantryAttackAnimationFrameRequester(
-            self.get_attack_props()[self.direction], 10, 10,
+            self.get_attack_props()[self.direction], 20, 5,
             is_repeated=False)
 
         self.stay_animation_frame_requester.next_animation_request = self.attack_animation_frame_requester
         self.attack_animation_frame_requester.next_animation_request = self.stay_animation_frame_requester
-        self.main_animation_frame_requester = self.attack_animation_frame_requester
+        self.current_direction = self.direction
 
     def update_state(self, screen):
         if self.get_distance_to_player(screen) <= 1:
-            self.stay_animation_frame_requester.current_animation_frame = self.get_animation_props()[self.direction][
-                "stand_animation_frame"]
-            self.attack_animation_frame_requester.current_animation_frame = self.get_attack_props()[self.direction]
+            self.main_animation_frame_requester = self.attack_animation_frame_requester
         else:
+            self.main_animation_frame_requester = self.move_animation_frame_requester
             super().update_state(screen)
 
     def get_attack_props(self):

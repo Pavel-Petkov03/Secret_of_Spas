@@ -15,7 +15,6 @@ class EnemyDisplayMixin(CharacterDisplayMixin):
         super().__init__(x, y, current_animation_frame, animations_frames, tmx_data)
         self.main_player = main_player
         self.main_player_pos = None
-        self.main_animation_frame_requester = MoveAnimationFrameRequester(current_animation_frame, 20, 20)
         self.path_to_player = deque()
         self.player_is_target = False
 

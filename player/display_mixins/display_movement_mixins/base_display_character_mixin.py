@@ -1,6 +1,6 @@
 from collections import deque
 from abc import ABC, abstractmethod
-from player.display_mixins.animation_frame_requester import AnimationFrameDoneError
+from player.display_mixins.animation_frame_requester import AnimationFrameDoneError, MoveAnimationFrameRequester
 
 class CharacterDisplayMixin(ABC):
     def __init__(self, x, y, current_animation_frame, animation_frames, tmx_data):
@@ -8,7 +8,8 @@ class CharacterDisplayMixin(ABC):
         self.y = y
         self._current_animation_frame = deque(current_animation_frame)
         self.direction = "down"
-        self.main_animation_frame_requester = None
+        self.move_animation_frame_requester = MoveAnimationFrameRequester(self._current_animation_frame, 20, 5)
+        self.main_animation_frame_requester = self.move_animation_frame_requester
         self._animation_frames = animation_frames
         self.tmx_data = tmx_data
         self.movement_speed = 0.7
