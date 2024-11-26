@@ -7,7 +7,7 @@ import pygame
 
 def get_character_matrix(key):
     player_matrix = get_animation_matrix(key)
-    for right_index in (1, 4):
+    for right_index in (1, 4, 7):
         current_row = list(map(lambda cur: pygame.transform.flip(cur, True, False), player_matrix[right_index]))
         player_matrix.append(current_row)
     return player_matrix

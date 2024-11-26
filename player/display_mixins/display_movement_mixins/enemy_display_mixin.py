@@ -41,12 +41,14 @@ class EnemyDisplayMixin(CharacterDisplayMixin):
             return x, y
 
     def _trigger_update(self, screen):
+        return self.get_distance_to_player(screen) < 5
+
+    def get_distance_to_player(self, screen):
         current_tile_x, current_tile_y = self.get_map_position(screen)
         main_player_x, main_player_y = self.main_player.get_map_position(screen)
         dx = current_tile_x - main_player_x
         dy = current_tile_y - main_player_y
-        distance = math.sqrt(dx ** 2 + dy ** 2)
-        return int(distance) < 5
+        return math.sqrt(dx ** 2 + dy ** 2)
 
     def update_state(self, screen):
         current_pos = self.get_map_tiled_position(screen)
@@ -85,7 +87,8 @@ class EnemyDisplayMixin(CharacterDisplayMixin):
             (x, y + 1),
             (x, y - 1),
         ]
-        appropriate_neighbors = [pos for pos in appropriate_neighbors if self.in_bounds(pos) and not self.collides_with_block(*pos)]
+        appropriate_neighbors = [pos for pos in appropriate_neighbors if
+                                 self.in_bounds(pos) and not self.collides_with_block(*pos)]
         return appropriate_neighbors
 
     def clear_update_state(self, screen):

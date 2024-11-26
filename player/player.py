@@ -1,4 +1,5 @@
 from player.display_mixins.display_movement_mixins.enemy_display_mixin import EnemyDisplayMixin
+from player.display_mixins.display_movement_mixins.infantry_enemy_display_mixin import InfantryEnemyDisplayMixin
 from player.display_mixins.display_movement_mixins.player_display_mixin import PlayerDisplayMixin
 
 
@@ -29,10 +30,10 @@ class Player(Character, PlayerDisplayMixin):
         PlayerDisplayMixin.__init__(self, x, y, current_animation_frame, animations_frames, tmx_data)
 
 
-class Enemy(Character, EnemyDisplayMixin):
+class Enemy(Character, InfantryEnemyDisplayMixin):
     def __init__(self, name, health, damage, current_animation_frame, animation_frames, tmx_data, main_player):
         Character.__init__(self, name, health, damage)
-        EnemyDisplayMixin.__init__(self, current_animation_frame, animation_frames, tmx_data, main_player)
+        InfantryEnemyDisplayMixin.__init__(self, current_animation_frame, animation_frames, tmx_data, main_player)
 
     def attack(self):
         self.main_player.health -= self.damage
