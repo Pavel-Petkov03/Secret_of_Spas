@@ -1,9 +1,13 @@
 import settings
+from player.display_mixins.animation_frame_requester import AnimationFrameRequester
 from player.display_mixins.display_movement_mixins.base_display_character_mixin import CharacterDisplayMixin
 import pygame
 
 
 class PlayerDisplayMixin(CharacterDisplayMixin):
+    def __init__(self, *args, **kwargs):
+        CharacterDisplayMixin.__init__(self, *args, **kwargs)
+        self.main_animation_frame_requester = AnimationFrameRequester(self._current_animation_frame, 20, 20)
 
     def _trigger_update(self, screen):
         return True
@@ -14,9 +18,10 @@ class PlayerDisplayMixin(CharacterDisplayMixin):
     def blit(self, screen):
         width = screen.get_width()
         height = screen.get_height()
-        new_x = (width / 2 + width / 2 - self.current_animation.get_width()) / 2
-        new_y = (height / 2 - self.current_animation.get_height() + height / 2) / 2
-        screen.blit(self.current_animation, (new_x, new_y))
+        current_animation = self.main_animation_frame_requester.current_animation
+        new_x = (width / 2 + width / 2 - current_animation.get_width()) / 2
+        new_y = (height / 2 - current_animation.get_height() + height / 2) / 2
+        screen.blit(current_animation, (new_x, new_y))
         self.get_map_tiled_position(screen)
 
     def get_map_position(self, screen):
@@ -32,7 +37,8 @@ class PlayerDisplayMixin(CharacterDisplayMixin):
                 break
         else:
             if animation_props.get(self.direction):
-                self.current_animation_frame = animation_props[self.direction]["stand_animation_frame"]
+                self.main_animation_frame_requester.current_animation_frame = animation_props[self.direction][
+                    "stand_animation_frame"]
             self.direction = "stand_" + self.direction
 
     def trig_movement_in_direction(self, screen, direction, animation_props):

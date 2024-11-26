@@ -1,7 +1,7 @@
 import math
 
+from player.display_mixins.animation_frame_requester import AnimationFrameRequester
 from player.display_mixins.display_movement_mixins.base_display_character_mixin import CharacterDisplayMixin
-import pygame
 import settings
 from collections import deque
 import random
@@ -15,6 +15,7 @@ class EnemyDisplayMixin(CharacterDisplayMixin):
         super().__init__(x, y, current_animation_frame, animations_frames, tmx_data)
         self.main_player = main_player
         self.main_player_pos = None
+        self.main_animation_frame_requester = AnimationFrameRequester(current_animation_frame, 20, 20)
         self.path_to_player = deque()
         self.player_is_target = False
 
@@ -93,7 +94,8 @@ class EnemyDisplayMixin(CharacterDisplayMixin):
 
     def clear_update_state(self, screen):
         if self.get_animation_props().get(self.direction):
-            self.current_animation_frame = self.get_animation_props()[self.direction]["stand_animation_frame"]
+            self.main_animation_frame_requester.current_animation_frame = self.get_animation_props()[self.direction][
+                "stand_animation_frame"]
         self.direction = "stand_" + self.direction
 
     def move_to_x_y_plane(self, screen):
@@ -123,6 +125,7 @@ class EnemyDisplayMixin(CharacterDisplayMixin):
                 and self.main_player.y <= self.y <= self.main_player.y + settings.VIEW_PORT_TILES_H * settings.TILE_HEIGHT:
             screen_x = (self.x - self.main_player.x) * settings.SCALE_FACTOR
             screen_y = (self.y - self.main_player.y) * settings.SCALE_FACTOR
-            screen_x = (2 * screen_x - self.current_animation.get_width()) / 2
-            screen_y = (2 * screen_y - self.current_animation.get_height()) / 2
-            screen.blit(self.current_animation, (screen_x, screen_y))
+            current_animation = self.main_animation_frame_requester.current_animation
+            screen_x = (2 * screen_x - current_animation.get_width()) / 2
+            screen_y = (2 * screen_y - current_animation.get_height()) / 2
+            screen.blit(current_animation, (screen_x, screen_y))

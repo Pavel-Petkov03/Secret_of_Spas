@@ -1,53 +1,35 @@
-import settings
 from collections import deque
 from abc import ABC, abstractmethod
-
+from player.display_mixins.animation_frame_requester import AnimationFrameDoneError
 
 class CharacterDisplayMixin(ABC):
     def __init__(self, x, y, current_animation_frame, animation_frames, tmx_data):
         self.x = x
         self.y = y
         self._current_animation_frame = deque(current_animation_frame)
-        self._animation_frames = animation_frames
         self.direction = "down"
+        self.main_animation_frame_requester = None
+        self._animation_frames = animation_frames
         self.tmx_data = tmx_data
         self.movement_speed = 0.7
         self.counter = 0
 
-    def change_frame(self):
-        self._current_animation_frame.append(self._current_animation_frame.popleft())
-
-    @property
-    def current_animation(self):
-        return self._current_animation_frame[0]
-
-    @property
-    def current_animation_frame(self):
-        return self._current_animation_frame
-
-    @current_animation_frame.setter
-    def current_animation_frame(self, value):
-        self._current_animation_frame = deque(value)
-
     def update(self, screen):
-        if self._trigger_update(screen):
-            self.update_state(screen)
-            self.iterate_over_frames()
-        else:
-            self.clear_update_state(screen)
-            self.iterate_over_frames()
+        try:
+            if self._trigger_update(screen):
+                self.update_state(screen)
+                self.main_animation_frame_requester.run()
+            else:
+                self.clear_update_state(screen)
+                self.main_animation_frame_requester.run()
+        except AnimationFrameDoneError as error:
+            self.main_animation_frame_requester = error.next_animation_frame
 
     def clear_update_state(self, screen):
         pass
 
     def update_state(self, screen):
         pass
-
-    def iterate_over_frames(self):
-        if self.counter == 5:
-            self.change_frame()
-            self.counter = 0
-        self.counter += 1
 
     @abstractmethod
     def _trigger_update(self, screen):
@@ -102,7 +84,8 @@ class CharacterDisplayMixin(ABC):
 
     def change_direction(self, direction):
         if direction != self.direction:
-            self.current_animation_frame = self.get_animation_props()[direction]["animation_frame"]
+            self.main_animation_frame_requester.current_animation_frame = self.get_animation_props()[direction][
+                "animation_frame"]
         self.direction = direction
 
     def is_triggered_movement(self, screen, new_x, new_y, bool_requirements_list):
