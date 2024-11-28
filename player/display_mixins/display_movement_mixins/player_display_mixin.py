@@ -21,7 +21,6 @@ class PlayerDisplayMixin(CharacterDisplayMixin):
         new_x = (width / 2 + width / 2 - current_animation.get_width()) / 2
         new_y = (height / 2 - current_animation.get_height() + height / 2) / 2
         screen.blit(current_animation, (new_x, new_y))
-        self.get_map_tiled_position(screen)
 
     def get_map_position(self, screen):
         tile_x = int(self.x // settings.TILE_WIDTH) + int(settings.VIEW_PORT_TILES_W // 2)

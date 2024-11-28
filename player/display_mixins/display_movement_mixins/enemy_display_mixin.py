@@ -1,5 +1,7 @@
 import math
 
+import pygame.draw
+
 from player.display_mixins.animation_frame_requester import  MoveAnimationFrameRequester
 from player.display_mixins.display_movement_mixins.base_display_character_mixin import CharacterDisplayMixin
 import settings

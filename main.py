@@ -3,7 +3,6 @@ from pytmx.util_pygame import load_pygame
 import settings
 from player.utils import init_player, init_enemy
 
-
 class Game:
     def __init__(self):
         self.screen = pygame.display.set_mode(
@@ -31,14 +30,14 @@ class Game:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
-            self.update()
+            delta_time = self.clock.tick(self.fps)
+            self.update(delta_time / 1000)
+            self.player.blit(self.screen)
             for enemy in self.enemies:
                 enemy.blit(self.screen)
-            self.player.blit(self.screen)
 
             pygame.display.update()
             pygame.display.flip()
-            self.clock.tick(self.fps)
 
     def render_map(self):
         for layer in self.tmx_data.visible_layers:
@@ -50,8 +49,7 @@ class Game:
                         screen_y = (y * settings.TILE_HEIGHT - self.player.y) * settings.SCALE_FACTOR
                         self.screen.blit(tile, (screen_x, screen_y))
 
-    def update(self):
-        delta_time = self.clock.tick(60) / 1000
+    def update(self, delta_time):
         self.player.update(self.screen, delta_time)
         self.render_map()
         for enemy in self.enemies:
