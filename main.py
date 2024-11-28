@@ -32,9 +32,9 @@ class Game:
                     running = False
             delta_time = self.clock.tick(self.fps)
             self.update(delta_time / 1000)
-            self.player.blit(self.screen)
             for enemy in self.enemies:
                 enemy.blit(self.screen)
+            self.player.blit(self.screen)
 
             pygame.display.update()
             pygame.display.flip()
