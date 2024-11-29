@@ -1,8 +1,4 @@
 import math
-
-import pygame.draw
-
-from player.display_mixins.animation_frame_requester import  MoveAnimationFrameRequester
 from player.display_mixins.display_movement_mixins.base_display_character_mixin import CharacterDisplayMixin
 import settings
 from collections import deque
@@ -18,7 +14,7 @@ class EnemyDisplayMixin(CharacterDisplayMixin):
         self.main_player = main_player
         self.main_player_pos = None
         self.path_to_player = deque()
-        self.player_is_target = False
+        self.no_path_to_player = False
 
     def get_map_position(self, screen):
         x = int(self.x / settings.TILE_WIDTH)
@@ -43,7 +39,11 @@ class EnemyDisplayMixin(CharacterDisplayMixin):
             return x, y
 
     def _trigger_update(self, screen):
-        return self.get_distance_to_player(screen) < 5
+        distance = self.get_distance_to_player(screen)
+        is_in_range = distance < 5
+        if self.no_path_to_player:
+            self.no_path_to_player = is_in_range
+        return is_in_range and not self.no_path_to_player
 
     def get_distance_to_player(self, screen):
         current_tile_x, current_tile_y = self.get_map_position(screen)
@@ -62,13 +62,19 @@ class EnemyDisplayMixin(CharacterDisplayMixin):
         if current_main_player_pos != self.main_player_pos:
             self.get_main_player_trail(current_pos, self.main_player.get_map_tiled_position(screen))
             self.path_to_player = deque(self.path_to_player)
-            self.main_player_pos = self.path_to_player[-1]
+            if self.path_to_player:
+                self.main_player_pos = self.path_to_player[-1]
 
     def get_main_player_trail(self, current, target):
         queue = deque([(current, [current])])
         visited = set()
+        counter = 0
         while queue:
             node, path = queue.popleft()
+            counter += 1
+            if counter == 1000:
+                self.no_path_to_player = True
+                return False
             if node == target:
                 self.path_to_player = path
                 return True
@@ -78,7 +84,8 @@ class EnemyDisplayMixin(CharacterDisplayMixin):
                     queue.append((neighbor, path + [neighbor]))
         return False
 
-    def in_bounds(self, pos):
+    @staticmethod
+    def in_bounds(pos):
         return 0 <= pos[0] < 100 and 0 <= pos[1] < 100
 
     def get_neighbors(self, current):
@@ -105,21 +112,24 @@ class EnemyDisplayMixin(CharacterDisplayMixin):
             if current_block != self.get_map_tiled_position(screen):
                 self.path_to_player.popleft()
                 return
-            target_block = self.main_player_pos
-            res = []
-            if target_block[0] < current_block[0]:
-                res.append("left")
-            elif target_block[0] > current_block[0]:
-                res.append("right")
-            if target_block[1] < current_block[1]:
-                res.append("up")
-            elif target_block[1] > current_block[1]:
-                res.append("down")
-            for direction in res:
+            for direction in self.get_position_array():
                 if self.is_triggered_movement(screen, *self.get_animation_props()[direction]["moved_pos"], (True,)):
                     self.change_direction(direction)
                     self.x, self.y = self.get_animation_props()[direction]["moved_pos"]
                     return
+
+    def get_position_array(self):
+        current_block = self.path_to_player[0]
+        res = []
+        if self.main_player_pos[0] < current_block[0]:
+            res.append("left")
+        elif self.main_player_pos[0] > current_block[0]:
+            res.append("right")
+        if self.main_player_pos[1] < current_block[1]:
+            res.append("up")
+        elif self.main_player_pos[1] > current_block[1]:
+            res.append("down")
+        return res
 
     def blit(self, screen):
         if self.main_player.x <= self.x <= self.main_player.x + settings.VIEW_PORT_TILES_W * settings.TILE_WIDTH \

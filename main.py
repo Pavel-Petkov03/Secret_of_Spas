@@ -1,7 +1,9 @@
 import pygame
+import pygame_menu
 from pytmx.util_pygame import load_pygame
 import settings
 from player.utils import init_player, init_enemy
+
 
 class Game:
     def __init__(self):
@@ -9,12 +11,17 @@ class Game:
             (settings.SCREEN_WIDTH,
              settings.SCREEN_WIDTH)
         )
-        self.tmx_data = load_pygame("src/tiles/level_1.tmx")
+        self.tmx_data = load_pygame("src/tile_maps/first_level.tmx")
         self.scale_grid()
         self.clock = pygame.time.Clock()
         self.player = init_player(self.tmx_data)
         self.enemies = [init_enemy("Gosho", 100, 100, self.player, self.tmx_data) for _ in range(50)]
         self.fps = 60
+        # self.menu = pygame_menu.Menu("Settings", 200, 300)
+        # self.menu.add.range_slider("Background", 50, (0, 100), increment=1, width=1)
+        # self.menu.add.button("Yes")
+        # self.menu.add.button("No")
+
 
     def scale_grid(self):
         for gid, image in enumerate(self.tmx_data.images):
@@ -35,7 +42,8 @@ class Game:
             for enemy in self.enemies:
                 enemy.blit(self.screen)
             self.player.blit(self.screen)
-
+            # self.menu.update(pygame.event.get())
+            # self.menu.draw(self.screen)
             pygame.display.update()
             pygame.display.flip()
 

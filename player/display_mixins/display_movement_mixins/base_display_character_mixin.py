@@ -67,7 +67,6 @@ class CharacterDisplayMixin(ABC):
                 "stand_animation_frame": self._animation_frames[10],
                 "animation_frame": self._animation_frames[11],
                 "moved_pos": (self.x - self.movement_speed, self.y),
-
             },
             "right": {
                 "stand_animation_frame": self._animation_frames[1],
