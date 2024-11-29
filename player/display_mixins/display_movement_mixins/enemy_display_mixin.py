@@ -28,8 +28,8 @@ class EnemyDisplayMixin(CharacterDisplayMixin):
 
     def get_random_pos(self):
         while True:
-            x = random.randint(0, settings.MAP_WIDTH)
-            y = random.randint(0, settings.MAP_HEIGHT)
+            x = random.randint(0, settings.MAP_WIDTH - settings.TILE_WIDTH)
+            y = random.randint(0, settings.MAP_HEIGHT - settings.TILE_HEIGHT)
 
             map_x = int(x / settings.TILE_WIDTH)
             map_y = int(y / settings.TILE_HEIGHT)
