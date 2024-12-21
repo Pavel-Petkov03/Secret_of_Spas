@@ -1,4 +1,5 @@
 import settings
+from player.display_mixins.display_movement_mixins.archer_enemy_display_mixin import PlayerArrow
 from player.player import Player, Enemy
 import player.settings as player_settings
 from spritesheet.utils import get_animation_matrix
@@ -39,17 +40,4 @@ def init_enemy(name, health, damage, dungeon_data):
     )
 
 
-def init_arrow():
-    arrow_matrix = get_animation_matrix("arrow_projectile")
-    degrees_rotate = [90, 180, 270]
-    for i in range(3):
-        current_degrees = degrees_rotate[i]
-        for row in range(len(arrow_matrix)):
-            arr = []
-            for col in range(len(arrow_matrix[0])):
-                current_image = arrow_matrix[row][col]
-                rotated_image = pygame.transform.rotate(current_image, current_degrees)
-                arr.append(rotated_image)
-            arrow_matrix.append(arr)
-    pass
 

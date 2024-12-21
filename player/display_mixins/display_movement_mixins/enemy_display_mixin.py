@@ -21,11 +21,6 @@ class EnemyDisplayMixin(CharacterDisplayMixin):
         self.no_path_to_player = False
         self.player = self.dungeon_data.player
 
-    def get_map_position(self):
-        x = int(self.x / settings.TILE_WIDTH)
-        y = int(self.y / settings.TILE_HEIGHT)
-        return x, y
-
     def move_to_block(self, screen, new_x, new_y):
         x = int(new_x / settings.TILE_WIDTH)
         y = int(new_y / settings.TILE_HEIGHT)
@@ -136,17 +131,6 @@ class EnemyDisplayMixin(CharacterDisplayMixin):
         elif self.main_player_pos[1] > current_block[1]:
             res.append("down")
         return res
-
-    def blit(self, screen):
-        self.__blit(self.x, self.y, screen, self.main_animation_frame_requester.current_animation)
-
-    @IsInBlitRange
-    def __blit(self, x, y, screen, image):
-        screen_x = (x - self.player.x) * settings.SCALE_FACTOR
-        screen_y = (y - self.player.y) * settings.SCALE_FACTOR
-        screen_x = (2 * screen_x - image.get_width()) / 2
-        screen_y = (2 * screen_y - image.get_height()) / 2
-        screen.blit(image, (screen_x, screen_y))
 
     def update(self, screen, delta_time, *args, **kwargs):
         try:

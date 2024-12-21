@@ -34,7 +34,7 @@
     ]
   },
   "arrow_projectile": {
-    "filename": "",
+    "filename": "src/images/sprite_sheets/Arrow.png",
     "rows": 2,
     "cols": 2,
     "row_max_cols": [

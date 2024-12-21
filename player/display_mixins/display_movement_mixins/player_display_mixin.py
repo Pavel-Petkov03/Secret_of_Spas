@@ -4,6 +4,8 @@ import settings
 from errors import DeadError
 from player.display_mixins.animation_frame_requester import MoveAnimationFrameRequester, \
     DiePlayerAnimationFrameRequester, PlayerAttackAnimationFrameRequester, DieEnemyAnimationFrameRequester
+from player.display_mixins.display_movement_mixins.archer_enemy_display_mixin import PlayerArrow
+from player.display_mixins.display_movement_mixins.arrow_utils import init_player_arrow
 from player.display_mixins.display_movement_mixins.base_display_character_mixin import CharacterDisplayMixin
 import pygame
 
@@ -27,8 +29,8 @@ class PlayerDisplayMixin(CharacterDisplayMixin):
         width = screen.get_width()
         height = screen.get_height()
         current_animation = self.main_animation_frame_requester.current_animation
-        new_x = (width / 2 + width / 2 - current_animation.get_width()) / 2
-        new_y = (height / 2 - current_animation.get_height() + height / 2) / 2
+        new_x = (width - current_animation.get_width()) / 2
+        new_y = (height - current_animation.get_height()) / 2
         screen.blit(current_animation, (new_x, new_y))
 
     def get_map_position(self):
@@ -96,12 +98,15 @@ class PlayerAttackDisplayMixin(PlayerDisplayMixin):
         for event in event_list:
             if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
                 self.attack_enemies()
-                self.main_animation_frame_requester = PlayerAttackAnimationFrameRequester(
-                    self.get_attack_props()[self.direction], 20, 5, is_repeated=False,
-                    next_animation_request=self.move_animation_frame_requester
-                )
+                if not isinstance(self.main_animation_frame_requester, PlayerAttackAnimationFrameRequester):
+                    self.main_animation_frame_requester = PlayerAttackAnimationFrameRequester(
+                        self.get_attack_props()[self.direction], 20, 5, is_repeated=False,
+                        next_animation_request=self.move_animation_frame_requester
+                    )
             elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
-                print("nive")
+                self.dungeon_data.player.arrows.append(
+                    init_player_arrow(40, self.dungeon_data)
+                )
 
     def attack_enemies(self):
         x, y = self.get_map_position()

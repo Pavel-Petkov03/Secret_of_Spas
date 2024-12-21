@@ -1,5 +1,8 @@
 from collections import deque
 from abc import ABC, abstractmethod
+
+import settings
+from decorators.is_in_blit_range import IsInBlitRange
 from player.display_mixins.animation_frame_requester import AnimationFrameDoneError, MoveAnimationFrameRequester, \
     DieEnemyAnimationFrameRequester
 
@@ -12,6 +15,7 @@ class DisplayMixin(ABC):
         self.animation_frames = animation_frames
         self.dungeon_data = dungeon_data
         self.main_animation_frame_requester = None
+        self.direction = None
 
     def update(self, screen, delta_time, *args, **kwargs):
         try:
@@ -34,7 +38,20 @@ class DisplayMixin(ABC):
         pass
 
     def blit(self, screen):
-        pass
+        self.__blit(self.x, self.y, screen, self.main_animation_frame_requester.current_animation)
+
+    @IsInBlitRange
+    def __blit(self, x, y, screen, image):
+        screen_x = (x - self.dungeon_data.player.x) * settings.SCALE_FACTOR
+        screen_y = (y - self.dungeon_data.player.y) * settings.SCALE_FACTOR
+        screen_x = (2 * screen_x - image.get_width()) / 2
+        screen_y = (2 * screen_y - image.get_height()) / 2
+        screen.blit(image, (screen_x, screen_y))
+
+    def get_map_position(self):
+        tile_x = self.x // settings.TILE_WIDTH
+        tile_y = self.y // settings.TILE_WIDTH
+        return tile_x, tile_y
 
 
 class CharacterDisplayMixin(DisplayMixin):
@@ -45,10 +62,6 @@ class CharacterDisplayMixin(DisplayMixin):
         self.move_animation_frame_requester = MoveAnimationFrameRequester(self.current_animation_frame, 20, 5)
         self.main_animation_frame_requester = self.move_animation_frame_requester
         self.movement_speed = 2
-
-    @abstractmethod
-    def get_map_position(self):
-        pass
 
     def get_tile_properties(self, x, y, layer):
         if layer and hasattr(layer, 'tiles'):

@@ -25,6 +25,17 @@ class Player(Character, PlayerAttackDisplayMixin):
     def __init__(self, name, health, x, y, damage, current_animation_frame, animations_frames, dungeon_data):
         Character.__init__(self, name, health, damage)
         PlayerAttackDisplayMixin.__init__(self, x, y, current_animation_frame, animations_frames, dungeon_data)
+        self.arrows = []
+
+    def update(self, *args, **kwargs):
+        for arrow in self.arrows:
+            arrow.update(*args, **kwargs)
+        super().update(*args, **kwargs)
+
+    def blit(self, screen):
+        for arrow in self.arrows:
+            arrow.blit(screen)
+        super().blit(screen)
 
 
 class Enemy(Character, InfantryEnemyDisplayMixin):
