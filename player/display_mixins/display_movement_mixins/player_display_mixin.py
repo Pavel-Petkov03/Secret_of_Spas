@@ -85,8 +85,11 @@ class PlayerAttackDisplayMixin(PlayerDisplayMixin):
         super().__init__(*args, **kwargs)
 
     def update_state(self, screen, delta_time, event_list, *args, **kwargs):
-        self.add_attacks(event_list)
-        if not isinstance(self.main_animation_frame_requester, PlayerAttackAnimationFrameRequester):
+        if kwargs["is_shooting_allowed"]:
+            self.add_attacks(event_list)
+            if not isinstance(self.main_animation_frame_requester, PlayerAttackAnimationFrameRequester):
+                super().update_state(screen, delta_time, event_list, *args, **kwargs)
+        else:
             super().update_state(screen, delta_time, event_list, *args, **kwargs)
 
     def add_attacks(self, event_list):
@@ -113,15 +116,16 @@ class PlayerAttackDisplayMixin(PlayerDisplayMixin):
         for enemy in self.dungeon_data.enemies:
             if enemy.get_map_position() == dir_dict[self.direction] or enemy.get_map_position() == self.get_map_position():
                 try:
-                    enemy.health -= 10000
+                    enemy.health -= self.dungeon_data.player.damage
                 except DeadError:
                     if not isinstance(enemy.main_animation_frame_requester, DieEnemyAnimationFrameRequester):
-                        enemy.main_animation_frame_requester = DieEnemyAnimationFrameRequester(enemy.animation_frames[9],
-                                                                                               20,
-                                                                                               5,
-                                                                                               is_repeated=False,
-                                                                                               to_remove=enemy
-                                                                                               )
+                        enemy.main_animation_frame_requester = DieEnemyAnimationFrameRequester(
+                            enemy.animation_frames[9],
+                            20,
+                            5,
+                            is_repeated=False,
+                            to_remove=enemy
+                        )
 
     def get_attack_props(self):
         return {

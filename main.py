@@ -81,12 +81,9 @@ class Dungeon(BaseDungeon):
         self.player.blit(screen)
 
     def update(self, screen, delta_time, event_list):
-        try:
-            super().update(screen, delta_time, event_list)
-            for enemy in self.enemies:
-                enemy.update(screen, delta_time, event_list)
-        except RemoveEnemyFromScreenError as error:
-            self.enemies.remove(error.enemy)
+        super().update(screen, delta_time, event_list)
+        for enemy in self.enemies:
+            enemy.update(screen, delta_time, event_list)
 
 
 class Village(BaseDungeon):
