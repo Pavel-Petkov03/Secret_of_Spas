@@ -1,25 +1,26 @@
 from collections import deque
 from abc import ABC, abstractmethod
-from player.display_mixins.animation_frame_requester import AnimationFrameDoneError, MoveAnimationFrameRequester
+from player.display_mixins.animation_frame_requester import AnimationFrameDoneError, MoveAnimationFrameRequester, \
+    DieEnemyAnimationFrameRequester
 
 
 class CharacterDisplayMixin(ABC):
-    def __init__(self, x, y, current_animation_frame, animation_frames, tmx_data):
+    def __init__(self, x, y, current_animation_frame, animation_frames, dungeon_data):
+        self.tmx_data = dungeon_data.tmx_data
+        self.dungeon_data = dungeon_data
         self.x = x
         self.y = y
         self._current_animation_frame = deque(current_animation_frame)
         self.direction = "down"
         self.move_animation_frame_requester = MoveAnimationFrameRequester(self._current_animation_frame, 20, 5)
         self.main_animation_frame_requester = self.move_animation_frame_requester
-        self._animation_frames = animation_frames
-        self.tmx_data = tmx_data
-        self.movement_speed = 0.7
-        self.counter = 0
+        self.animation_frames = animation_frames
+        self.movement_speed = 2
 
-    def update(self, screen, delta_time):
+    def update(self, screen, delta_time, *args, **kwargs):
         try:
             if self._trigger_update(screen):
-                self.update_state(screen)
+                self.update_state(screen, delta_time, *args, **kwargs)
                 self.main_animation_frame_requester.run(screen, self.__dict__, delta_time)
             else:
                 self.clear_update_state(screen)
@@ -30,7 +31,7 @@ class CharacterDisplayMixin(ABC):
     def clear_update_state(self, screen):
         pass
 
-    def update_state(self, screen):
+    def update_state(self, screen, delta_time, event_list, *args, **kwargs):
         pass
 
     @abstractmethod
@@ -41,7 +42,7 @@ class CharacterDisplayMixin(ABC):
         pass
 
     @abstractmethod
-    def get_map_position(self, screen):
+    def get_map_position(self):
         pass
 
     def get_tile_properties(self, x, y, layer):
@@ -64,21 +65,21 @@ class CharacterDisplayMixin(ABC):
     def get_animation_props(self):
         return {
             "left": {
-                "stand_animation_frame": self._animation_frames[10],
-                "animation_frame": self._animation_frames[11],
+                "stand_animation_frame": self.animation_frames[10],
+                "animation_frame": self.animation_frames[11],
                 "moved_pos": (self.x - self.movement_speed, self.y),
             },
             "right": {
-                "stand_animation_frame": self._animation_frames[1],
-                "animation_frame": self._animation_frames[4],
+                "stand_animation_frame": self.animation_frames[1],
+                "animation_frame": self.animation_frames[4],
                 "moved_pos": (self.x + self.movement_speed, self.y),
             }, "up": {
-                "stand_animation_frame": self._animation_frames[2],
-                "animation_frame": self._animation_frames[5],
+                "stand_animation_frame": self.animation_frames[2],
+                "animation_frame": self.animation_frames[5],
                 "moved_pos": (self.x, self.y - self.movement_speed)
             }, "down": {
-                "stand_animation_frame": self._animation_frames[0],
-                "animation_frame": self._animation_frames[3],
+                "stand_animation_frame": self.animation_frames[0],
+                "animation_frame": self.animation_frames[3],
                 "moved_pos": (self.x, self.y + self.movement_speed)
             }
         }
@@ -95,5 +96,3 @@ class CharacterDisplayMixin(ABC):
     def move_to_block(self, screen, new_x, new_y):
         pass
 
-    def get_map_tiled_position(self, screen):
-        return tuple(map(int, self.get_map_position(screen)))

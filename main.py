@@ -2,6 +2,8 @@ import pygame
 import pygame_menu
 from pytmx.util_pygame import load_pygame
 import settings
+from decorators.is_in_blit_range import IsInBlitRange
+from errors import RemoveEnemyFromScreenError
 from player.utils import init_player, init_enemy
 
 
@@ -11,17 +13,31 @@ class Game:
             (settings.SCREEN_WIDTH,
              settings.SCREEN_WIDTH)
         )
-        self.tmx_data = load_pygame("src/tile_maps/first_level.tmx")
-        self.scale_grid()
         self.clock = pygame.time.Clock()
-        self.player = init_player(self.tmx_data)
-        self.enemies = [init_enemy("Gosho", 100, 100, self.player, self.tmx_data) for _ in range(50)]
+        self.dungeon = Dungeon("src/tile_maps/first_level.tmx")
         self.fps = 60
-        # self.menu = pygame_menu.Menu("Settings", 200, 300)
-        # self.menu.add.range_slider("Background", 50, (0, 100), increment=1, width=1)
-        # self.menu.add.button("Yes")
-        # self.menu.add.button("No")
 
+    def run(self):
+        running = True
+        while running:
+            event_list = pygame.event.get()
+            for event in event_list:
+                if event.type == pygame.QUIT:
+                    running = False
+            delta_time = self.clock.tick(self.fps)
+            self.dungeon.update(self.screen, delta_time, event_list)
+            self.dungeon.blit(self.screen)
+            pygame.display.update()
+            pygame.display.flip()
+
+
+class BaseDungeon:
+    is_shooting_allowed = None
+
+    def __init__(self, tmx_string):
+        self.tmx_data = load_pygame(tmx_string)
+        self.scale_grid()
+        self.player = init_player(self)
 
     def scale_grid(self):
         for gid, image in enumerate(self.tmx_data.images):
@@ -31,37 +47,50 @@ class Game:
                 scaled_image = pygame.transform.scale(image, (new_width, new_height))
                 self.tmx_data.images[gid] = scaled_image
 
-    def run(self):
-        running = True
-        while running:
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    running = False
-            delta_time = self.clock.tick(self.fps)
-            self.update(delta_time / 1000)
-            for enemy in self.enemies:
-                enemy.blit(self.screen)
-            self.player.blit(self.screen)
-            # self.menu.update(pygame.event.get())
-            # self.menu.draw(self.screen)
-            pygame.display.update()
-            pygame.display.flip()
+    def update(self, screen, delta_time, event_list):
+        self.player.update(screen, delta_time, event_list, is_shooting_allowed=self.is_shooting_allowed)
 
-    def render_map(self):
+    def blit(self, screen):
+        self.render_map(screen)
+        self.player.blit(screen)
+
+    def render_map(self, screen):
         for layer in self.tmx_data.visible_layers:
             if hasattr(layer, "tiles"):
                 for x, y, tile in layer.tiles():
-                    if self.player.x - settings.TILE_WIDTH <= x * settings.TILE_WIDTH <= self.player.x + settings.VIEW_PORT_TILES_W * settings.TILE_WIDTH + settings.TILE_WIDTH \
-                            and self.player.y - settings.TILE_WIDTH <= y * settings.TILE_HEIGHT <= self.player.y + settings.VIEW_PORT_TILES_H * settings.TILE_HEIGHT + settings.TILE_WIDTH:
-                        screen_x = (x * settings.TILE_WIDTH - self.player.x) * settings.SCALE_FACTOR
-                        screen_y = (y * settings.TILE_HEIGHT - self.player.y) * settings.SCALE_FACTOR
-                        self.screen.blit(tile, (screen_x, screen_y))
+                    self.blit_tile(x * settings.TILE_WIDTH, y*settings.TILE_WIDTH, screen, tile)
 
-    def update(self, delta_time):
-        self.player.update(self.screen, delta_time)
-        self.render_map()
+    @IsInBlitRange
+    def blit_tile(self, x, y, screen, tile):
+        screen_x = (x - self.player.x) * settings.SCALE_FACTOR
+        screen_y = (y - self.player.y) * settings.SCALE_FACTOR
+        screen.blit(tile, (screen_x, screen_y))
+
+
+class Dungeon(BaseDungeon):
+    is_shooting_allowed = True
+
+    def __init__(self, tmx_string):
+        super().__init__(tmx_string)
+        self.enemies = [init_enemy("Gosho", 100, 0, self) for _ in range(50)]
+
+    def blit(self, screen):
+        self.render_map(screen)
         for enemy in self.enemies:
-            enemy.update(self.screen, delta_time)
+            enemy.blit(screen)
+        self.player.blit(screen)
+
+    def update(self, screen, delta_time, event_list):
+        try:
+            super().update(screen, delta_time, event_list)
+            for enemy in self.enemies:
+                enemy.update(screen, delta_time, event_list)
+        except RemoveEnemyFromScreenError as error:
+            self.enemies.remove(error.enemy)
+
+
+class Village(BaseDungeon):
+    is_shooting_allowed = False
 
 
 if __name__ == "__main__":

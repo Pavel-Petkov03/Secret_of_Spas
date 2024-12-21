@@ -20,8 +20,8 @@ class InfantryEnemyDisplayMixin(EnemyDisplayMixin):
         self.current_direction = None
         self.is_in_range = False
 
-    def update_state(self, screen):
-        if self.get_distance_to_player(screen) <= 1:
+    def update_state(self, screen, event_list, *args, **kwargs):
+        if self.get_distance_to_player() <= 1:
             if not self.is_in_range:
                 self.main_animation_frame_requester = self.stay_animation_frame_requester
             if self.current_direction != self.direction:
@@ -32,12 +32,12 @@ class InfantryEnemyDisplayMixin(EnemyDisplayMixin):
         else:
             self.main_animation_frame_requester = self.move_animation_frame_requester
             self.is_in_range = False
-            super().update_state(screen)
+            super().update_state(screen, event_list, *args, **kwargs)
 
     def get_attack_props(self):
         return {
-            "left": self._animation_frames[12],
-            "right": self._animation_frames[7],
-            "up": self._animation_frames[8],
-            "down": self._animation_frames[6],
+            "left": self.animation_frames[12],
+            "right": self.animation_frames[7],
+            "up": self.animation_frames[8],
+            "down": self.animation_frames[6],
         }

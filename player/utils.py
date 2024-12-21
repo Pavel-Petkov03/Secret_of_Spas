@@ -13,7 +13,7 @@ def get_character_matrix(key):
     return player_matrix
 
 
-def init_player(tmx_data):
+def init_player(dungeon_data):
     player_matrix = get_character_matrix("player_movement")
     return Player(
         player_settings.MAIN_PLAYER_NAME,
@@ -23,11 +23,11 @@ def init_player(tmx_data):
         player_settings.MAIN_PLAYER_DAMAGE_POINTS,
         player_matrix[0],
         player_matrix,
-        tmx_data
+        dungeon_data
     )
 
 
-def init_enemy(name, health, damage, main_player, tmx_data):
+def init_enemy(name, health, damage, dungeon_data):
     player_matrix = get_character_matrix("enemy_movement")
     return Enemy(
         name,
@@ -35,8 +35,7 @@ def init_enemy(name, health, damage, main_player, tmx_data):
         damage,
         player_matrix[0],
         player_matrix,
-        tmx_data,
-        main_player
+        dungeon_data
     )
 
 

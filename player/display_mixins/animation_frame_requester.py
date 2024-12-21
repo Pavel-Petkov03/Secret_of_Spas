@@ -1,6 +1,8 @@
 from collections import deque
 from abc import ABC, abstractmethod
 
+from errors import RedirectToVillageError, RemoveEnemyFromScreenError
+
 
 class AnimationFrameDoneError(Exception):
     def __init__(self, message, next_animation_frame):
@@ -10,7 +12,7 @@ class AnimationFrameDoneError(Exception):
 
 class AnimationFrameRequester(ABC):
     def __init__(self, animation_frame, frames_count_for_animation_frame, frames_count_for_animation, is_repeated=True,
-                 next_animation_request=None):
+                 next_animation_request=None, **kwargs):
         self.__counter = 0
         self.__frame_counter = 0
         self.__frames_count_for_animation_frame = frames_count_for_animation_frame
@@ -18,6 +20,8 @@ class AnimationFrameRequester(ABC):
         self.__current_animation_frame = deque(animation_frame)
         self.is_repeated = is_repeated
         self.next_animation_request = next_animation_request
+        self.is_done = False
+        self.additional_data = kwargs
 
     @property
     def current_animation(self):
@@ -31,7 +35,8 @@ class AnimationFrameRequester(ABC):
             self.__counter = 0
             self.__frame_counter = 0
             if not self.is_repeated:
-                self.cleanup_func_after_animation(screen, additional_data)
+                self.cleanup_func_after_animation(screen, additional_data | self.additional_data)
+                self.is_done = True
                 raise AnimationFrameDoneError("Animation done", self.next_animation_request)
         self.__counter += 1
         self.__frame_counter += 1
@@ -57,6 +62,7 @@ class MoveAnimationFrameRequester(AnimationFrameRequester):
     """
     No cleanup function for movement because it is not ending animation
     """
+
     def cleanup_func_after_animation(self, screen, additional_data):
         pass
 
@@ -65,14 +71,21 @@ class InfantryAttackAnimationFrameRequester(AnimationFrameRequester):
     """
     Here the health of the player is lowered because the animation is done
     """
+
     def cleanup_func_after_animation(self, screen, additional_data):
-        pass
+        additional_data["player"].health -= additional_data["damage"]
+
+
+class PlayerAttackAnimationFrameRequester(AnimationFrameRequester):
+    def cleanup_func_after_animation(self, screen, additional_data):
+        print("baba")
 
 
 class ArcherAttackAnimationFrameRequester(AnimationFrameRequester):
     """
     Here the arrow object is created and we trigure the arrow animation
     """
+
     def cleanup_func_after_animation(self, screen, additional_data):
         pass
 
@@ -81,8 +94,14 @@ class DieEnemyAnimationFrameRequester(AnimationFrameRequester):
     """
     Here when the enemy dies it drops goods and tracks in the quest bar
     """
+
     def cleanup_func_after_animation(self, screen, additional_data):
-        pass
+        additional_data["dungeon_data"].enemies.remove(additional_data["to_remove"])
+
+
+class DiePlayerAnimationFrameRequester(AnimationFrameRequester):
+    def cleanup_func_after_animation(self, screen, additional_data):
+        raise RedirectToVillageError("redirect to village")
 
 
 class ArrowAttackAnimationFrameRequester(AnimationFrameRequester):
@@ -91,5 +110,6 @@ class ArrowAttackAnimationFrameRequester(AnimationFrameRequester):
         -- if jt touched the player it reduces health points
         -- if it touched the end range it doesn't do anything
     """
+
     def cleanup_func_after_animation(self, screen, additional_data):
         pass

@@ -16,7 +16,7 @@ class IsInBlitRange:
         return wrapper
 
     @staticmethod
-    def is_in_x_range(instance, x, ):
+    def is_in_x_range(instance, x):
         left_bond = instance.player.x - settings.TILE_WIDTH
         right_bond = instance.player.x + settings.VIEW_PORT_TILES_W * settings.TILE_WIDTH + settings.TILE_WIDTH
         return left_bond <= x <= right_bond

@@ -1,5 +1,9 @@
+from collections import deque
+
 import settings
-from player.display_mixins.animation_frame_requester import MoveAnimationFrameRequester
+from errors import DeadError
+from player.display_mixins.animation_frame_requester import MoveAnimationFrameRequester, \
+    DiePlayerAnimationFrameRequester, PlayerAttackAnimationFrameRequester, DieEnemyAnimationFrameRequester
 from player.display_mixins.display_movement_mixins.base_display_character_mixin import CharacterDisplayMixin
 import pygame
 
@@ -7,11 +11,16 @@ import pygame
 class PlayerDisplayMixin(CharacterDisplayMixin):
     def __init__(self, *args, **kwargs):
         CharacterDisplayMixin.__init__(self, *args, **kwargs)
+        self.die_animation_frame_requester = DiePlayerAnimationFrameRequester(self.animation_frames[9],
+                                                                              20,
+                                                                              5,
+                                                                              is_repeated=False
+                                                                              )
 
     def _trigger_update(self, screen):
         return True
 
-    def update_state(self, screen):
+    def update_state(self, screen, delta_time, event_list, *args, **kwargs):
         self.move_to_x_y_plane(screen)
 
     def blit(self, screen):
@@ -22,14 +31,14 @@ class PlayerDisplayMixin(CharacterDisplayMixin):
         new_y = (height / 2 - current_animation.get_height() + height / 2) / 2
         screen.blit(current_animation, (new_x, new_y))
 
-    def get_map_position(self, screen):
+    def get_map_position(self):
         tile_x = int(self.x // settings.TILE_WIDTH) + int(settings.VIEW_PORT_TILES_W // 2)
         tile_y = int(self.y // settings.TILE_WIDTH) + int(settings.VIEW_PORT_TILES_W // 2)
         return tile_x, tile_y
 
     def move_to_x_y_plane(self, screen):
         animation_props = self.get_animation_props()
-        directions = ["left", "right", "up", "down"]
+        directions = ("left", "right", "up", "down")
         for direction in directions:
             if self.trig_movement_in_direction(screen, direction, animation_props):
                 break
@@ -37,7 +46,8 @@ class PlayerDisplayMixin(CharacterDisplayMixin):
             if animation_props.get(self.direction):
                 self.main_animation_frame_requester.current_animation_frame = animation_props[self.direction][
                     "stand_animation_frame"]
-            self.direction = "stand_" + self.direction
+            if self.direction in directions:
+                self.direction = "stand_" + self.direction
 
     def trig_movement_in_direction(self, screen, direction, animation_props):
         if self.is_triggered_movement(screen,
@@ -65,3 +75,62 @@ class PlayerDisplayMixin(CharacterDisplayMixin):
         player_map_x = int(current_x + new_x / settings.TILE_WIDTH)
         player_map_y = int(current_y + new_y / settings.TILE_HEIGHT)
         return self.collides_with_block(player_map_x, player_map_y)
+
+    def die(self):
+        self.main_animation_frame_requester = self.die_animation_frame_requester
+
+
+class PlayerAttackDisplayMixin(PlayerDisplayMixin):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    def update_state(self, screen, delta_time, event_list, *args, **kwargs):
+        self.add_attacks(event_list)
+        if not isinstance(self.main_animation_frame_requester, PlayerAttackAnimationFrameRequester):
+            super().update_state(screen, delta_time, event_list, *args, **kwargs)
+
+    def add_attacks(self, event_list):
+        for event in event_list:
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
+                self.attack_enemies()
+                self.main_animation_frame_requester = PlayerAttackAnimationFrameRequester(
+                    self.get_attack_props()[self.direction], 20, 5, is_repeated=False,
+                    next_animation_request=self.move_animation_frame_requester
+                )
+
+    def attack_enemies(self):
+        x, y = self.get_map_position()
+        dir_dict = {
+            "left": (x - 1, y),
+            "right": (x + 1, y),
+            "up": (x, y - 1),
+            "down": (x, y + 1),
+            "stand_left": (x - 1, y),
+            "stand_right": (x + 1, y),
+            "stand_up": (x, y - 1),
+            "stand_down": (x, y + 1)
+        }
+        for enemy in self.dungeon_data.enemies:
+            if enemy.get_map_position() == dir_dict[self.direction] or enemy.get_map_position() == self.get_map_position():
+                try:
+                    enemy.health -= 10000
+                except DeadError:
+                    if not isinstance(enemy.main_animation_frame_requester, DieEnemyAnimationFrameRequester):
+                        enemy.main_animation_frame_requester = DieEnemyAnimationFrameRequester(enemy.animation_frames[9],
+                                                                                               20,
+                                                                                               5,
+                                                                                               is_repeated=False,
+                                                                                               to_remove=enemy
+                                                                                               )
+
+    def get_attack_props(self):
+        return {
+            "left": self.animation_frames[12],
+            "right": self.animation_frames[7],
+            "up": self.animation_frames[8],
+            "down": self.animation_frames[6],
+            "stand_left": self.animation_frames[12],
+            "stand_right": self.animation_frames[7],
+            "stand_up": self.animation_frames[8],
+            "stand_down": self.animation_frames[6],
+        }
