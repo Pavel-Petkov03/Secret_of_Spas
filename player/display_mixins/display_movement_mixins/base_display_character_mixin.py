@@ -4,18 +4,14 @@ from player.display_mixins.animation_frame_requester import AnimationFrameDoneEr
     DieEnemyAnimationFrameRequester
 
 
-class CharacterDisplayMixin(ABC):
+class DisplayMixin(ABC):
     def __init__(self, x, y, current_animation_frame, animation_frames, dungeon_data):
-        self.tmx_data = dungeon_data.tmx_data
-        self.dungeon_data = dungeon_data
         self.x = x
         self.y = y
-        self._current_animation_frame = deque(current_animation_frame)
-        self.direction = "down"
-        self.move_animation_frame_requester = MoveAnimationFrameRequester(self._current_animation_frame, 20, 5)
-        self.main_animation_frame_requester = self.move_animation_frame_requester
+        self.current_animation_frame = deque(current_animation_frame)
         self.animation_frames = animation_frames
-        self.movement_speed = 2
+        self.dungeon_data = dungeon_data
+        self.main_animation_frame_requester = None
 
     def update(self, screen, delta_time, *args, **kwargs):
         try:
@@ -31,15 +27,24 @@ class CharacterDisplayMixin(ABC):
     def clear_update_state(self, screen):
         pass
 
-    def update_state(self, screen, delta_time, event_list, *args, **kwargs):
+    def _trigger_update(self, screen):
         pass
 
-    @abstractmethod
-    def _trigger_update(self, screen):
+    def update_state(self, screen, delta_time, event_list, *args, **kwargs):
         pass
 
     def blit(self, screen):
         pass
+
+
+class CharacterDisplayMixin(DisplayMixin):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.tmx_data = self.dungeon_data.tmx_data
+        self.direction = "down"
+        self.move_animation_frame_requester = MoveAnimationFrameRequester(self.current_animation_frame, 20, 5)
+        self.main_animation_frame_requester = self.move_animation_frame_requester
+        self.movement_speed = 2
 
     @abstractmethod
     def get_map_position(self):
@@ -95,4 +100,3 @@ class CharacterDisplayMixin(ABC):
 
     def move_to_block(self, screen, new_x, new_y):
         pass
-

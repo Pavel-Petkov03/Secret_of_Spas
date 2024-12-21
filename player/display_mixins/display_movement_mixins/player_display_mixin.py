@@ -100,6 +100,8 @@ class PlayerAttackDisplayMixin(PlayerDisplayMixin):
                     self.get_attack_props()[self.direction], 20, 5, is_repeated=False,
                     next_animation_request=self.move_animation_frame_requester
                 )
+            elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                print("nive")
 
     def attack_enemies(self):
         x, y = self.get_map_position()

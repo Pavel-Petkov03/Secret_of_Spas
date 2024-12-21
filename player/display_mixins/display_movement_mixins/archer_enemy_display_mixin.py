@@ -1,5 +1,13 @@
-from player.display_mixins.display_movement_mixins.enemy_display_mixin import EnemyDisplayMixin
+from player.display_mixins.display_movement_mixins.base_display_character_mixin import DisplayMixin
 
 
-class InfantryEnemyDisplayMixin(EnemyDisplayMixin):
+class ArrowDisplayMixin(DisplayMixin):
+    pass
+
+
+class PlayerArrowDisplayMixin(ArrowDisplayMixin):
+    pass
+
+
+class EnemyArrowDisplayMixin(ArrowDisplayMixin):
     pass

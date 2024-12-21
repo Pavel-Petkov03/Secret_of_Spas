@@ -16,7 +16,7 @@
       4
     ]
   },
-  "enemy_movement" : {
+  "enemy_movement": {
     "filename": "src/images/sprite_sheets/Player/enemy.png",
     "rows": 10,
     "cols": 6,
@@ -31,6 +31,15 @@
       4,
       4,
       4
+    ]
+  },
+  "arrow_projectile": {
+    "filename": "",
+    "rows": 2,
+    "cols": 2,
+    "row_max_cols": [
+      2,
+      2
     ]
   }
 }
