@@ -1,9 +1,10 @@
+import math
 from abc import ABC, abstractmethod
 
 import settings
-from decorators.is_in_blit_range import IsInBlitRange
 from errors import DeadError
-from player.display_mixins.animation_frame_requester import ArrowAttackAnimationFrameRequester
+from player.display_mixins.animation_frame_requester import ArrowAttackAnimationFrameRequester, \
+    DieEnemyAnimationFrameRequester
 from player.display_mixins.display_movement_mixins.base_display_character_mixin import DisplayMixin
 
 
@@ -24,22 +25,22 @@ class ArrowDisplayMixin(DisplayMixin, ABC):
     def update_state(self, screen, delta_time, event_list, *args, **kwargs):
         target_attacked = self.target_touched()
         if target_attacked:
-            try:
-                target_attacked.health -= self.damage
-            except DeadError:
-                pass
+            self.decrease_damage_to_target(target_attacked)
             self.dungeon_data.player.arrows.remove(self)
-        elif self.arrow_out_of_range():
+        elif self.arrow_out_of_range() or self.collides_with_block(*self.get_map_position()):
             self.dungeon_data.player.arrows.remove(self)
         else:
             self.move_arrow_on_x_y_plane()
+
+    def decrease_damage_to_target(self, target):
+        pass
 
     @abstractmethod
     def target_touched(self):
         pass
 
     def arrow_out_of_range(self):
-        return max(abs(self.x - self.mem_x), abs(self.y - self.mem_y)) // settings.TILE_WIDTH >= 15
+        return max(abs(self.x - self.mem_x), abs(self.y - self.mem_y)) // settings.TILE_WIDTH >= 30
 
     def move_arrow_on_x_y_plane(self):
         change_dir = {
@@ -62,6 +63,19 @@ class PlayerArrowDisplayMixin(ArrowDisplayMixin):
         for enemy in self.dungeon_data.enemies:
             if current_pos == enemy.get_map_position():
                 return enemy
+
+    def decrease_damage_to_target(self, target):
+        try:
+            target.health -= self.damage
+        except DeadError:
+            if not isinstance(target.main_animation_frame_requester, DieEnemyAnimationFrameRequester):
+                target.main_animation_frame_requester = DieEnemyAnimationFrameRequester(
+                    target.animation_frames[9],
+                    20,
+                    5,
+                    is_repeated=False,
+                    to_remove=target
+                )
 
     def get_map_position(self):
         tile_x = int(self.x // settings.TILE_WIDTH) + int(settings.VIEW_PORT_TILES_W // 2)

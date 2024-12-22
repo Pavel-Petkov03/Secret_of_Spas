@@ -132,8 +132,3 @@ class EnemyDisplayMixin(CharacterDisplayMixin):
             res.append("down")
         return res
 
-    def update(self, screen, delta_time, *args, **kwargs):
-        try:
-            super().update(screen, delta_time, *args, **kwargs)
-        except DeadError as error:
-            error.character.die()

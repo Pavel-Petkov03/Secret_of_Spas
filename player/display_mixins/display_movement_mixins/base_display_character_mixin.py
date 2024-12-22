@@ -14,6 +14,7 @@ class DisplayMixin(ABC):
         self.current_animation_frame = deque(current_animation_frame)
         self.animation_frames = animation_frames
         self.dungeon_data = dungeon_data
+        self.tmx_data = self.dungeon_data.tmx_data
         self.main_animation_frame_requester = None
         self.direction = None
 
@@ -53,16 +54,6 @@ class DisplayMixin(ABC):
         tile_y = self.y // settings.TILE_WIDTH
         return tile_x, tile_y
 
-
-class CharacterDisplayMixin(DisplayMixin):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.tmx_data = self.dungeon_data.tmx_data
-        self.direction = "down"
-        self.move_animation_frame_requester = MoveAnimationFrameRequester(self.current_animation_frame, 20, 5)
-        self.main_animation_frame_requester = self.move_animation_frame_requester
-        self.movement_speed = 2
-
     def get_tile_properties(self, x, y, layer):
         if layer and hasattr(layer, 'tiles'):
             gid = layer.data[y][x]
@@ -76,6 +67,17 @@ class CharacterDisplayMixin(DisplayMixin):
             if result and result["is_block"]:
                 return True
         return False
+
+
+class CharacterDisplayMixin(DisplayMixin):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.tmx_data = self.dungeon_data.tmx_data
+        self.direction = "down"
+        self.move_animation_frame_requester = MoveAnimationFrameRequester(self.current_animation_frame, 20, 5)
+        self.main_animation_frame_requester = self.move_animation_frame_requester
+        self.movement_speed = 2
+
 
     def move_to_x_y_plane(self, screen):
         pass
