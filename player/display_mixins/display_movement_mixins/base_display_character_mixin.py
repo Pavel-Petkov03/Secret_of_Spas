@@ -49,7 +49,7 @@ class DisplayMixin(ABC):
         screen_y = (2 * screen_y - image.get_height()) / 2
         screen.blit(image, (screen_x, screen_y))
 
-    def get_map_position(self):
+    def get_map_position(self, screen):
         tile_x = self.x // settings.TILE_WIDTH
         tile_y = self.y // settings.TILE_WIDTH
         return tile_x, tile_y
@@ -77,7 +77,6 @@ class CharacterDisplayMixin(DisplayMixin):
         self.move_animation_frame_requester = MoveAnimationFrameRequester(self.current_animation_frame, 20, 5)
         self.main_animation_frame_requester = self.move_animation_frame_requester
         self.movement_speed = 2
-
 
     def move_to_x_y_plane(self, screen):
         pass

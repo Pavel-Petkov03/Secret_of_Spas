@@ -21,7 +21,7 @@ class InfantryEnemyDisplayMixin(EnemyDisplayMixin):
         self.is_in_range = False
 
     def update_state(self, screen, event_list, *args, **kwargs):
-        if self.get_distance_to_player() <= 1:
+        if self.get_distance_to_player(screen) <= 1:
             if not self.is_in_range:
                 self.main_animation_frame_requester = self.stay_animation_frame_requester
             if self.current_direction != self.direction:

@@ -23,11 +23,12 @@ class ArrowDisplayMixin(DisplayMixin, ABC):
         return True
 
     def update_state(self, screen, delta_time, event_list, *args, **kwargs):
-        target_attacked = self.target_touched()
+        target_attacked = self.target_touched(screen)
         if target_attacked:
             self.decrease_damage_to_target(target_attacked)
             self.dungeon_data.player.arrows.remove(self)
-        elif self.arrow_out_of_range() or self.collides_with_block(*self.get_map_position()):
+            target_attacked.get_map_position(screen)
+        elif self.arrow_out_of_range() or self.collides_with_block(*self.get_map_position(screen)):
             self.dungeon_data.player.arrows.remove(self)
         else:
             self.move_arrow_on_x_y_plane()
@@ -36,11 +37,11 @@ class ArrowDisplayMixin(DisplayMixin, ABC):
         pass
 
     @abstractmethod
-    def target_touched(self):
+    def target_touched(self, screen):
         pass
 
     def arrow_out_of_range(self):
-        return max(abs(self.x - self.mem_x), abs(self.y - self.mem_y)) // settings.TILE_WIDTH >= 30
+        return max(abs(self.x - self.mem_x), abs(self.y - self.mem_y)) / settings.TILE_WIDTH / settings.SCALE_FACTOR >= 15
 
     def move_arrow_on_x_y_plane(self):
         change_dir = {
@@ -58,10 +59,10 @@ class ArrowDisplayMixin(DisplayMixin, ABC):
 
 class PlayerArrowDisplayMixin(ArrowDisplayMixin):
 
-    def target_touched(self):
-        current_pos = self.get_map_position()
+    def target_touched(self, screen):
+        current_pos = self.get_map_position(screen)
         for enemy in self.dungeon_data.enemies:
-            if current_pos == enemy.get_map_position():
+            if current_pos == enemy.get_map_position(screen):
                 return enemy
 
     def decrease_damage_to_target(self, target):
@@ -77,14 +78,16 @@ class PlayerArrowDisplayMixin(ArrowDisplayMixin):
                     to_remove=target
                 )
 
-    def get_map_position(self):
-        tile_x = int(self.x // settings.TILE_WIDTH) + int(settings.VIEW_PORT_TILES_W // 2)
-        tile_y = int(self.y // settings.TILE_WIDTH) + int(settings.VIEW_PORT_TILES_W // 2)
-        return tile_x, tile_y
+    def get_map_position(self, screen):
+        current_x = screen.get_width() / 2 / settings.SCALE_FACTOR / settings.TILE_WIDTH
+        current_y = screen.get_height() / 2 / settings.SCALE_FACTOR / settings.TILE_HEIGHT
+        player_map_x = int(current_x + self.x / settings.TILE_WIDTH)
+        player_map_y = int(current_y + self.y / settings.TILE_HEIGHT)
+        return player_map_x, player_map_y
 
     def blit(self, screen):
-        screen_x = (self.x - self.dungeon_data.player.x) + settings.SCREEN_WIDTH / 2
-        screen_y = (self.y - self.dungeon_data.player.y) + settings.SCREEN_HEIGHT / 2
+        screen_x = (self.x - self.dungeon_data.player.x) * settings.SCALE_FACTOR + settings.SCREEN_WIDTH / 2
+        screen_y = (self.y - self.dungeon_data.player.y) * settings.SCALE_FACTOR + settings.SCREEN_HEIGHT / 2
         screen_x = (2 * screen_x - self.main_animation_frame_requester.current_animation.get_width()) / 2
         screen_y = (2 * screen_y - self.main_animation_frame_requester.current_animation.get_height()) / 2
         screen.blit(self.main_animation_frame_requester.current_animation, (screen_x, screen_y))
@@ -92,8 +95,8 @@ class PlayerArrowDisplayMixin(ArrowDisplayMixin):
 
 class EnemyArrowDisplayMixin(ArrowDisplayMixin):
 
-    def target_touched(self):
-        if self.get_map_position() == self.dungeon_data.player.get_map_position():
+    def target_touched(self, screen):
+        if self.get_map_position(screen) == self.dungeon_data.player.get_map_position(screen):
             return self.dungeon_data.player
 
 

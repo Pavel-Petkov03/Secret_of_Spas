@@ -1,9 +1,7 @@
 import pygame
-import pygame_menu
 from pytmx.util_pygame import load_pygame
 import settings
 from decorators.is_in_blit_range import IsInBlitRange
-from errors import RemoveEnemyFromScreenError
 from player.utils import init_player, init_enemy
 
 

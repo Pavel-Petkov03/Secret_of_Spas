@@ -33,7 +33,7 @@ class PlayerDisplayMixin(CharacterDisplayMixin):
         new_y = (height - current_animation.get_height()) / 2
         screen.blit(current_animation, (new_x, new_y))
 
-    def get_map_position(self):
+    def get_map_position(self, screen):
         tile_x = int(self.x // settings.TILE_WIDTH) + int(settings.VIEW_PORT_TILES_W // 2)
         tile_y = int(self.y // settings.TILE_WIDTH) + int(settings.VIEW_PORT_TILES_W // 2)
         return tile_x, tile_y
@@ -88,16 +88,16 @@ class PlayerAttackDisplayMixin(PlayerDisplayMixin):
 
     def update_state(self, screen, delta_time, event_list, *args, **kwargs):
         if kwargs["is_shooting_allowed"]:
-            self.add_attacks(event_list)
+            self.add_attacks(screen, event_list)
             if not isinstance(self.main_animation_frame_requester, PlayerAttackAnimationFrameRequester):
                 super().update_state(screen, delta_time, event_list, *args, **kwargs)
         else:
             super().update_state(screen, delta_time, event_list, *args, **kwargs)
 
-    def add_attacks(self, event_list):
+    def add_attacks(self, screen, event_list):
         for event in event_list:
             if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
-                self.attack_enemies()
+                self.attack_enemies(screen)
                 if not isinstance(self.main_animation_frame_requester, PlayerAttackAnimationFrameRequester):
                     self.main_animation_frame_requester = PlayerAttackAnimationFrameRequester(
                         self.get_attack_props()[self.direction], 20, 5, is_repeated=False,
@@ -105,11 +105,11 @@ class PlayerAttackDisplayMixin(PlayerDisplayMixin):
                     )
             elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                 self.dungeon_data.player.arrows.append(
-                    init_player_arrow(40, self.dungeon_data)
+                    init_player_arrow(1000, self.dungeon_data)
                 )
 
-    def attack_enemies(self):
-        x, y = self.get_map_position()
+    def attack_enemies(self, screen):
+        x, y = self.get_map_position(screen)
         dir_dict = {
             "left": (x - 1, y),
             "right": (x + 1, y),
@@ -121,7 +121,8 @@ class PlayerAttackDisplayMixin(PlayerDisplayMixin):
             "stand_down": (x, y + 1)
         }
         for enemy in self.dungeon_data.enemies:
-            if enemy.get_map_position() == dir_dict[self.direction] or enemy.get_map_position() == self.get_map_position():
+            if enemy.get_map_position(screen) == dir_dict[self.direction] or enemy.get_map_position(
+                    screen) == self.get_map_position(screen):
                 try:
                     enemy.health -= self.dungeon_data.player.damage
                 except DeadError:

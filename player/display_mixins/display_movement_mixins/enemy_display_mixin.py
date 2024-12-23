@@ -39,28 +39,28 @@ class EnemyDisplayMixin(CharacterDisplayMixin):
             return x, y
 
     def _trigger_update(self, screen):
-        distance = self.get_distance_to_player()
+        distance = self.get_distance_to_player(screen)
         is_in_range = distance < 5
         if self.no_path_to_player:
             self.no_path_to_player = is_in_range
         return is_in_range and not self.no_path_to_player
 
-    def get_distance_to_player(self):
-        current_tile_x, current_tile_y = self.get_map_position()
-        main_player_x, main_player_y = self.player.get_map_position()
+    def get_distance_to_player(self, screen):
+        current_tile_x, current_tile_y = self.get_map_position(screen)
+        main_player_x, main_player_y = self.player.get_map_position(screen)
         dx = current_tile_x - main_player_x
         dy = current_tile_y - main_player_y
         return math.sqrt(dx ** 2 + dy ** 2)
 
     def update_state(self, screen, event_list, *args, **kwargs):
-        current_pos = self.get_map_position()
+        current_pos = self.get_map_position(screen)
         self.track_main_player(screen, current_pos)
         self.move_to_x_y_plane(screen)
 
     def track_main_player(self, screen, current_pos):
-        current_main_player_pos = self.player.get_map_position()
+        current_main_player_pos = self.player.get_map_position(screen)
         if current_main_player_pos != self.main_player_pos:
-            self.get_main_player_trail(current_pos, self.player.get_map_position())
+            self.get_main_player_trail(current_pos, self.player.get_map_position(screen))
             self.path_to_player = deque(self.path_to_player)
             if self.path_to_player:
                 self.main_player_pos = self.path_to_player[-1]
@@ -110,7 +110,7 @@ class EnemyDisplayMixin(CharacterDisplayMixin):
     def move_to_x_y_plane(self, screen):
         if self.path_to_player:
             current_block = self.path_to_player[0]
-            if current_block != self.get_map_position():
+            if current_block != self.get_map_position(screen):
                 self.path_to_player.popleft()
                 return
             for direction in self.get_position_array():
