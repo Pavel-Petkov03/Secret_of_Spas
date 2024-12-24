@@ -1,11 +1,9 @@
 import pygame
-
-from player.display_mixins.display_movement_mixins.archer_enemy_display_mixin import PlayerArrow
 from spritesheet.utils import get_animation_matrix
 
 
-def init_player_arrow(damage, dungeon_data):
-    player = dungeon_data.player
+def init_arrow(damage, dungeon_data, executor, arrow_class):
+    player = executor
     arrow_matrix = get_animation_matrix("arrow_projectile")
     arrow_matrix[0].extend(arrow_matrix[1])
     result = [arrow_matrix[0]]
@@ -29,8 +27,7 @@ def init_player_arrow(damage, dungeon_data):
         "stand_up": 2,
         "stand_left": 3,
     }
-
-    return PlayerArrow(damage,
+    return arrow_class(executor, damage,
                        player.direction,
                        player.x,
                        player.y,

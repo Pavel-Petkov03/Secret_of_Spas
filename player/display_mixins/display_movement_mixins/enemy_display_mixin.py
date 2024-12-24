@@ -120,15 +120,16 @@ class EnemyDisplayMixin(CharacterDisplayMixin):
                     return
 
     def get_position_array(self):
-        current_block = self.path_to_player[0]
         res = []
-        if self.main_player_pos[0] < current_block[0]:
-            res.append("left")
-        elif self.main_player_pos[0] > current_block[0]:
-            res.append("right")
-        if self.main_player_pos[1] < current_block[1]:
-            res.append("up")
-        elif self.main_player_pos[1] > current_block[1]:
-            res.append("down")
+        if self.path_to_player:
+            current_block = self.path_to_player[0]
+            if self.main_player_pos[0] < current_block[0]:
+                res.append("left")
+            elif self.main_player_pos[0] > current_block[0]:
+                res.append("right")
+            if self.main_player_pos[1] < current_block[1]:
+                res.append("up")
+            elif self.main_player_pos[1] > current_block[1]:
+                res.append("down")
         return res
 

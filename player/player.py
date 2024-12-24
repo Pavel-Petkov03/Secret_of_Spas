@@ -1,4 +1,5 @@
 from errors import DeadError
+from player.display_mixins.display_movement_mixins.archer_enemy_display_mixin import ArcherEnemyDisplayMixin
 from player.display_mixins.display_movement_mixins.infantry_enemy_display_mixin import InfantryEnemyDisplayMixin
 from player.display_mixins.display_movement_mixins.player_display_mixin import PlayerDisplayMixin, \
     PlayerAttackDisplayMixin
@@ -38,10 +39,24 @@ class Player(Character, PlayerAttackDisplayMixin):
         super().blit(screen)
 
 
-class Enemy(Character, InfantryEnemyDisplayMixin):
+class EnemyInfantry(Character, InfantryEnemyDisplayMixin):
     def __init__(self, name, health, damage, current_animation_frame, animation_frames, dungeon_data):
         Character.__init__(self, name, health, damage)
         InfantryEnemyDisplayMixin.__init__(self, current_animation_frame, animation_frames, dungeon_data)
 
-    def attack(self):
-        self.player.health -= self.damage
+
+class EnemyArcher(Character, ArcherEnemyDisplayMixin):
+    def __init__(self, name, health, damage, current_animation_frame, animation_frames, dungeon_data):
+        ArcherEnemyDisplayMixin.__init__(self, current_animation_frame, animation_frames, dungeon_data)
+        Character.__init__(self, name, health, damage)
+        self.arrows = []
+
+    def blit(self, screen):
+        for arrow in self.arrows:
+            arrow.blit(screen)
+        super().blit(screen)
+
+    def update(self, *args, **kwargs):
+        for arrow in self.arrows:
+            arrow.update(*args, **kwargs)
+        super().update(*args, **kwargs)

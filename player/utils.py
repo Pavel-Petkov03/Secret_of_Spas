@@ -1,6 +1,6 @@
 import settings
-from player.display_mixins.display_movement_mixins.archer_enemy_display_mixin import PlayerArrow
-from player.player import Player, Enemy
+from player.display_mixins.display_movement_mixins.arrow_display_mixin import PlayerArrow
+from player.player import Player, EnemyArcher, EnemyInfantry
 import player.settings as player_settings
 from spritesheet.utils import get_animation_matrix
 import pygame
@@ -28,9 +28,10 @@ def init_player(dungeon_data):
     )
 
 
-def init_enemy(name, health, damage, dungeon_data):
+def enemy_factory(name, health, damage, dungeon_data, is_infantry):
     player_matrix = get_character_matrix("enemy_movement")
-    return Enemy(
+    create_class = EnemyInfantry if is_infantry else EnemyArcher
+    return create_class(
         name,
         health,
         damage,

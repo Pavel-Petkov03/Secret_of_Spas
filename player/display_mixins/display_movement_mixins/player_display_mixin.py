@@ -4,8 +4,8 @@ import settings
 from errors import DeadError
 from player.display_mixins.animation_frame_requester import MoveAnimationFrameRequester, \
     DiePlayerAnimationFrameRequester, PlayerAttackAnimationFrameRequester, DieEnemyAnimationFrameRequester
-from player.display_mixins.display_movement_mixins.archer_enemy_display_mixin import PlayerArrow
-from player.display_mixins.display_movement_mixins.arrow_utils import init_player_arrow
+from player.display_mixins.display_movement_mixins.arrow_display_mixin import PlayerArrow
+from player.display_mixins.display_movement_mixins.arrow_utils import init_arrow
 from player.display_mixins.display_movement_mixins.base_display_character_mixin import CharacterDisplayMixin
 import pygame
 
@@ -105,7 +105,7 @@ class PlayerAttackDisplayMixin(PlayerDisplayMixin):
                     )
             elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                 self.dungeon_data.player.arrows.append(
-                    init_player_arrow(1000, self.dungeon_data)
+                    init_arrow(1000, self.dungeon_data, self.dungeon_data.player, PlayerArrow)
                 )
 
     def attack_enemies(self, screen):

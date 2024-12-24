@@ -17,7 +17,7 @@ class AnimationFrameRequester(ABC):
         self.__frame_counter = 0
         self.__frames_count_for_animation_frame = frames_count_for_animation_frame
         self.__frames_count_for_animation = frames_count_for_animation
-        self.__current_animation_frame = deque(animation_frame)
+        self._current_animation_frame = deque(animation_frame)
         self.is_repeated = is_repeated
         self.next_animation_request = next_animation_request
         self.is_done = False
@@ -25,10 +25,10 @@ class AnimationFrameRequester(ABC):
 
     @property
     def current_animation(self):
-        return self.__current_animation_frame[0]
+        return self._current_animation_frame[0]
 
-    def __change_frame_to_display(self):
-        self.__current_animation_frame.append(self.__current_animation_frame.popleft())
+    def _change_frame_to_display(self):
+        self._current_animation_frame.append(self._current_animation_frame.popleft())
 
     def run(self, screen, additional_data, delta):
         if self.__counter >= self.__frames_count_for_animation_frame:
@@ -41,21 +41,25 @@ class AnimationFrameRequester(ABC):
         self.__counter += 1
         self.__frame_counter += 1
         if self.__frame_counter >= self.__frames_count_for_animation:
-            self.__change_frame_to_display()
+            self._change_frame_to_display()
             self.__frame_counter = 0
         return self.current_animation_frame
 
     @property
     def current_animation_frame(self):
-        return self.__current_animation_frame
+        return self._current_animation_frame
 
     @current_animation_frame.setter
     def current_animation_frame(self, value):
-        self.__current_animation_frame = deque(value)
+        self._current_animation_frame = deque(value)
 
     @abstractmethod
     def cleanup_func_after_animation(self, screen, additional_data):
         pass
+
+
+# class CustomImageChangingAnimationFrameRequester(AnimationFrameRequester):
+#     pass
 
 
 class MoveAnimationFrameRequester(AnimationFrameRequester):

@@ -1,8 +1,10 @@
+import random
+
 import pygame
 from pytmx.util_pygame import load_pygame
 import settings
 from decorators.is_in_blit_range import IsInBlitRange
-from player.utils import init_player, init_enemy
+from player.utils import init_player, enemy_factory
 
 
 class Game:
@@ -56,7 +58,7 @@ class BaseDungeon:
         for layer in self.tmx_data.visible_layers:
             if hasattr(layer, "tiles"):
                 for x, y, tile in layer.tiles():
-                    self.blit_tile(x * settings.TILE_WIDTH, y*settings.TILE_WIDTH, screen, tile)
+                    self.blit_tile(x * settings.TILE_WIDTH, y * settings.TILE_WIDTH, screen, tile)
 
     @IsInBlitRange
     def blit_tile(self, x, y, screen, tile):
@@ -70,7 +72,7 @@ class Dungeon(BaseDungeon):
 
     def __init__(self, tmx_string):
         super().__init__(tmx_string)
-        self.enemies = [init_enemy("Gosho", 100, 0, self) for _ in range(50)]
+        self.enemies = [enemy_factory("Gosho", 100, 0, self, random.choice([True, False])) for _ in range(50)]
 
     def blit(self, screen):
         self.render_map(screen)
