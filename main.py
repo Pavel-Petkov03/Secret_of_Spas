@@ -5,9 +5,12 @@ from pytmx.util_pygame import load_pygame
 import settings
 from decorators.is_in_blit_range import IsInBlitRange
 from player.utils import init_player, enemy_factory
+from errors import RedirectToVillageError, DeadError
 
 
 class Game:
+    DUNGEON_FOLDER_DIR = "src/tile_maps/"
+
     def __init__(self):
         self.screen = pygame.display.set_mode(
             (settings.SCREEN_WIDTH,
@@ -25,10 +28,22 @@ class Game:
                 if event.type == pygame.QUIT:
                     running = False
             delta_time = self.clock.tick(self.fps)
-            self.dungeon.update(self.screen, delta_time, event_list)
+            self.screen.fill((255, 0, 0))
+            self.update(delta_time, event_list)
             self.dungeon.blit(self.screen)
             pygame.display.update()
             pygame.display.flip()
+
+    def update(self, delta_time, event_list):
+        try:
+            self.dungeon.update(self.screen, delta_time, event_list)
+        except RedirectToVillageError:
+            self.change_dungeon("village", is_village=True)
+            self.dungeon.player.x, self.dungeon.player.y = settings.PLAYER_POS_DUNGEON_LOGGER["village"]
+
+    def change_dungeon(self, dungeon_name, is_village=False):
+        create_class = Village if is_village else Dungeon
+        self.dungeon = create_class(self.DUNGEON_FOLDER_DIR + dungeon_name + ".tmx")
 
 
 class BaseDungeon:
@@ -72,7 +87,7 @@ class Dungeon(BaseDungeon):
 
     def __init__(self, tmx_string):
         super().__init__(tmx_string)
-        self.enemies = [enemy_factory("Gosho", 100, 0, self, random.choice([True, False])) for _ in range(50)]
+        self.enemies = [enemy_factory("Gosho", 100, 100, self, random.choice([True, False])) for _ in range(50)]
 
     def blit(self, screen):
         self.render_map(screen)

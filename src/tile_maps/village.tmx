@@ -1,0 +1,2384 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="1">
+ <tileset firstgid="1" name="GRASS+" tilewidth="16" tileheight="16" tilecount="350" columns="25">
+  <image source="../tiles/GRASS+.png" width="400" height="224"/>
+  <tile id="152">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="285">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="351" name="CHURCH - DAY" tilewidth="16" tileheight="16" tilecount="56" columns="8">
+  <image source="../tiles/TILESET VILLAGE TOP DOWN/CHURCH - DAY.png" width="128" height="112"/>
+ </tileset>
+ <tileset firstgid="407" name="tiles" tilewidth="16" tileheight="16" tilecount="350" columns="25">
+  <image source="../tiles/houses.png" width="400" height="224"/>
+  <tile id="26">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="27">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="28">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="29">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="30">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="31">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="45">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="46">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="47">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="48">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="51">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="52">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="53">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="54">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="55">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="56">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="58">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="59">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="60">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="61">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="63">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="64">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="65">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="66">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="67">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="68">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="70">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="71">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="72">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="73">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="76">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="77">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="78">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="79">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="80">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="81">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="83">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="84">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="85">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="86">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="88">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="89">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="90">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="91">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="92">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="93">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="95">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="96">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="97">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="98">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="101">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="102">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="103">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="104">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="105">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="106">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="108">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="109">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="110">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="111">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="113">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="114">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="115">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="116">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="117">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="118">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="120">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="121">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="122">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="123">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="126">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="127">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="128">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="129">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="130">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="131">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="133">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="134">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="135">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="136">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="138">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="139">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="140">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="141">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="142">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="143">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="145">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="146">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="147">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="148">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="176">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="177">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="178">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="179">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="180">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="181">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="182">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="183">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="184">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="201">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="209">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="226">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="234">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="251">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="252">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="253">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="254">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="256">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="257">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="258">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="757" name="Path_Middle" tilewidth="16" tileheight="16" tilecount="1" columns="1">
+  <image source="../tiles/Path_Middle.png" width="16" height="16"/>
+ </tileset>
+ <tileset firstgid="758" name="blonde_girl" tilewidth="16" tileheight="16" tilecount="4096" columns="64">
+  <image source="../../../../Downloads/blonde_girl.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="4854" name="blonde_girl_avatar_detailed_32x48" tilewidth="16" tileheight="16" tilecount="6" columns="2">
+  <image source="../../../../Downloads/blonde_girl_avatar_detailed_32x48.png" width="32" height="48"/>
+ </tileset>
+ <tileset firstgid="4860" name="Water+" tilewidth="16" tileheight="16" tilecount="168" columns="12">
+  <image source="../tiles/Water+.png" width="192" height="224"/>
+ </tileset>
+ <tileset firstgid="5028" name="house1" tilewidth="16" tileheight="16" tilecount="140" columns="10">
+  <image source="../tiles/house1.png" width="163" height="228"/>
+  <tile id="4">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="13">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="14">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="15">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="22">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="23">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="24">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="25">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="26">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="31">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="32">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="33">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="34">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="35">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="36">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="37">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="40">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="41">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="42">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="43">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="44">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="45">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="46">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="47">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="48">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="50">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="51">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="52">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="53">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="54">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="55">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="56">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="57">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="58">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="60">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="61">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="62">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="63">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="64">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="65">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="66">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="67">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="68">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="70">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="71">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="72">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="73">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="74">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="75">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="76">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="77">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="78">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="80">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="81">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="82">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="83">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="84">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="85">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="86">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="87">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="88">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="90">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="91">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="92">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="93">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="94">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="95">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="96">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="97">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="98">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="100">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="101">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="102">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="103">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="104">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="105">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="106">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="107">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="110">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="111">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="112">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="113">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="114">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="115">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="116">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="117">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="120">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="121">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="122">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="123">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="124">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="125">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="126">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="127">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="130">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="131">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="132">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="133">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="134">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="135">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="136">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="137">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="5168" name="tilesheet" tilewidth="16" tileheight="16" tilecount="1960" columns="20">
+  <image source="../images/sprite_sheets/browserquest-images/img/1/tilesheet.png" width="320" height="1568"/>
+  <tile id="44">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="45">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="46">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="47">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="48">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="49">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="64">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="65">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="66">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="67">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="68">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="69">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="84">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="85">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="86">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="87">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="88">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="89">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="104">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="105">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="106">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="107">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="108">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="109">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="124">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="125">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="126">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="127">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="128">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="129">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="144">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="145">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="146">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="147">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="148">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="149">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="164">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="165">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="166">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="167">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="168">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="169">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="184">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="185">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="186">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="187">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="188">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="189">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="206">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="213">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="214">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="225">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="226">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="227">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="232">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="233">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="234">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="235">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="243">
+   <properties>
+    <property name="is_block" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="244">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="245">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="246">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="247">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="248">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="249">
+   <properties>
+    <property name="is_block" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="252">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="253">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="254">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="255">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="265">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="266">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="267">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="268">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="269">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="272">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="273">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="274">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="275">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="283">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="284">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="285">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="286">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="287">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="288">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="289">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="293">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="294">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="300">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="301">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="303">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="304">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="305">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="306">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="307">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="308">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="309">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="320">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="321">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="323">
+   <properties>
+    <property name="is_block" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="324">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="325">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="326">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="327">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="328">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="329">
+   <properties>
+    <property name="is_block" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="340">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="341">
+   <properties>
+    <property name="is_block" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="343">
+   <properties>
+    <property name="is_block" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="344">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="345">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="346">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="347">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="348">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="349">
+   <properties>
+    <property name="is_block" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="363">
+   <properties>
+    <property name="is_block" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="364">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="365">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="366">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="367">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="368">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="369">
+   <properties>
+    <property name="is_block" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="1474">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="1475">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="1493">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="1494">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="1495">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="1496">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="1512">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="1513">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="1514">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="1515">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="1516">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="1517">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="1532">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="1533">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="1534">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="1535">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="1536">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="1537">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="1552">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="1553">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="1554">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="1555">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="1556">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="1557">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="1572">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="1573">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="1574">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="1575">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="1576">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="1577">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="1592">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="1593">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="1594">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="1595">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="1596">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="1597">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="1612">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="1613">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="1614">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="1615">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="1616">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="1617">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="1632">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="1633">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="1634">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="1635">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="1636">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+  <tile id="1637">
+   <properties>
+    <property name="is_block" value="True"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="7128" name="scientist" tilewidth="16" tileheight="16" tilecount="3" columns="3">
+  <image source="../images/sprite_sheets/browserquest-images/img/1/scientist.png" width="48" height="24"/>
+ </tileset>
+ <tileset firstgid="7131" name="agent" tilewidth="16" tileheight="16" tilecount="16" columns="4">
+  <image source="../images/sprite_sheets/browserquest-images/img/1/agent.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="7147" name="villagegirl" tilewidth="16" tileheight="16" tilecount="3" columns="3">
+  <image source="../images/sprite_sheets/browserquest-images/img/1/villagegirl.png" width="48" height="24"/>
+ </tileset>
+ <tileset firstgid="7150" name="agent" tilewidth="8" tileheight="8" tilecount="64" columns="8">
+  <image source="../images/sprite_sheets/browserquest-images/img/1/agent.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="7214" name="agent" tilewidth="16" tileheight="16" tilecount="16" columns="4">
+  <image source="../images/sprite_sheets/browserquest-images/img/1/agent.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="7230" name="scientist_64x64" tilewidth="16" tileheight="16" tilecount="16" columns="4">
+  <image source="../images/sprite_sheets/browserquest-images/img/1/scientist_64x64.png" width="64" height="64"/>
+  <tile id="0">
+   <properties>
+    <property name="is_snitch" type="bool" value="true"/>
+    <property name="snitch_name" value="Spas"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="is_snitch" type="bool" value="true"/>
+    <property name="snitch_name" value="Spas"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="is_snitch" type="bool" value="true"/>
+    <property name="snitch_name" value="Spas"/>
+   </properties>
+  </tile>
+  <tile id="5">
+   <properties>
+    <property name="is_snitch" type="bool" value="true"/>
+    <property name="snitch_name" value="Spas"/>
+   </properties>
+  </tile>
+  <tile id="8">
+   <properties>
+    <property name="is_snitch" type="bool" value="true"/>
+    <property name="snitch_name" value="Spas"/>
+   </properties>
+  </tile>
+  <tile id="9">
+   <properties>
+    <property name="is_snitch" type="bool" value="true"/>
+    <property name="snitch_name" value="Spas"/>
+   </properties>
+  </tile>
+  <tile id="12">
+   <properties>
+    <property name="is_snitch" type="bool" value="true"/>
+    <property name="snitch_name" value="Spas"/>
+   </properties>
+  </tile>
+  <tile id="13">
+   <properties>
+    <property name="is_snitch" type="bool" value="true"/>
+    <property name="snitch_name" value="Spas"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="7246" name="rick" tilewidth="16" tileheight="16" tilecount="16" columns="8">
+  <image source="../images/sprite_sheets/browserquest-images/img/1/rick.png" width="128" height="32"/>
+  <tile id="0">
+   <properties>
+    <property name="snitch" type="bool" value="true"/>
+    <property name="snitch_name" value="Vladi"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="snitch" type="bool" value="true"/>
+    <property name="snitch_name" value="Vladi"/>
+   </properties>
+  </tile>
+  <tile id="8">
+   <properties>
+    <property name="snitch" type="bool" value="true"/>
+    <property name="snitch_name" value="Vladi"/>
+   </properties>
+  </tile>
+  <tile id="9">
+   <properties>
+    <property name="snitch" type="bool" value="true"/>
+    <property name="snitch_name" value="Vladi"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="7262" name="BRIDGE - DAY" tilewidth="16" tileheight="16" tilecount="18" columns="6">
+  <image source="../tiles/TILESET VILLAGE TOP DOWN/BRIDGE - DAY.png" width="96" height="48"/>
+ </tileset>
+ <tileset firstgid="7280" name="villagegirl" tilewidth="16" tileheight="16" tilecount="16" columns="4">
+  <image source="../images/sprite_sheets/browserquest-images/img/1/villagegirl.png" width="64" height="64"/>
+  <tile id="0">
+   <properties>
+    <property name="is_snitch" type="bool" value="true"/>
+    <property name="snitch_name" value="Vili"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="is_snitch" type="bool" value="true"/>
+    <property name="snitch_name" value="Vili"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="is_snitch" type="bool" value="true"/>
+    <property name="snitch_name" value="Vili"/>
+   </properties>
+  </tile>
+  <tile id="5">
+   <properties>
+    <property name="is_snitch" type="bool" value="true"/>
+    <property name="snitch_name" value="Vili"/>
+   </properties>
+  </tile>
+  <tile id="8">
+   <properties>
+    <property name="is_snitch" type="bool" value="true"/>
+    <property name="snitch_name" value="Vili"/>
+   </properties>
+  </tile>
+  <tile id="9">
+   <properties>
+    <property name="is_snitch" type="bool" value="true"/>
+    <property name="snitch_name" value="Vili"/>
+   </properties>
+  </tile>
+  <tile id="12">
+   <properties>
+    <property name="is_snitch" type="bool" value="true"/>
+    <property name="snitch_name" value="Vili"/>
+   </properties>
+  </tile>
+  <tile id="13">
+   <properties>
+    <property name="is_snitch" type="bool" value="true"/>
+    <property name="snitch_name" value="Vili"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="7296" name="villager" tilewidth="16" tileheight="16" tilecount="3" columns="3">
+  <image source="../images/sprite_sheets/browserquest-images/img/1/villager.png" width="48" height="24"/>
+ </tileset>
+ <tileset firstgid="7299" name="villager" tilewidth="16" tileheight="16" tilecount="3" columns="3">
+  <image source="../images/sprite_sheets/browserquest-images/img/1/villager.png" width="48" height="24"/>
+ </tileset>
+ <tileset firstgid="7302" name="villager" tilewidth="16" tileheight="16" tilecount="16" columns="4">
+  <image source="../images/sprite_sheets/browserquest-images/img/1/villager.png" width="64" height="64"/>
+  <tile id="4">
+   <properties>
+    <property name="is_snitch" type="bool" value="true"/>
+    <property name="snitch_name" value="Gosho"/>
+   </properties>
+  </tile>
+  <tile id="5">
+   <properties>
+    <property name="is_snitch" type="bool" value="true"/>
+    <property name="snitch_name" value="Gosho"/>
+   </properties>
+  </tile>
+  <tile id="8">
+   <properties>
+    <property name="is_snitch" type="bool" value="true"/>
+    <property name="snitch_name" value="Gosho"/>
+   </properties>
+  </tile>
+  <tile id="9">
+   <properties>
+    <property name="is_snitch" type="bool" value="true"/>
+    <property name="snitch_name" value="Gosho"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="7318" name="agent" tilewidth="16" tileheight="16" tilecount="16" columns="4">
+  <image source="../images/sprite_sheets/browserquest-images/img/1/agent.png" width="64" height="64"/>
+  <tile id="0">
+   <properties>
+    <property name="is_snitch" type="bool" value="true"/>
+    <property name="snitch_name" value="Pesho"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="is_snitch" type="bool" value="true"/>
+    <property name="snitch_name" value="Pesho"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="is_snitch" type="bool" value="true"/>
+    <property name="snitch_name" value="Pesho"/>
+   </properties>
+  </tile>
+  <tile id="5">
+   <properties>
+    <property name="is_snitch" type="bool" value="true"/>
+    <property name="snitch_name" value="Pesho"/>
+   </properties>
+  </tile>
+  <tile id="8">
+   <properties>
+    <property name="is_snitch" type="bool" value="true"/>
+    <property name="snitch_name" value="Pesho"/>
+   </properties>
+  </tile>
+  <tile id="9">
+   <properties>
+    <property name="is_snitch" type="bool" value="true"/>
+    <property name="snitch_name" value="Pesho"/>
+   </properties>
+  </tile>
+  <tile id="12">
+   <properties>
+    <property name="is_snitch" type="bool" value="true"/>
+    <property name="snitch_name" value="Pesho"/>
+   </properties>
+  </tile>
+  <tile id="13">
+   <properties>
+    <property name="is_snitch" type="bool" value="true"/>
+    <property name="snitch_name" value="Pesho"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer id="2" name="Tile Layer 2" width="100" height="100">
+  <data encoding="csv">
+153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,583,659,659,659,659,659,659,659,659,591,757,757,757,235,235,235,235,235,235,235,235,235,235,757,757,757,235,235,235,235,235,235,235,235,235,235,757,757,235,235,235,235,235,235,235,235,235,235,757,757,235,235,235,235,235,235,235,235,235,235,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,633,609,610,611,609,610,611,612,613,633,757,757,757,235,634,635,636,610,610,639,640,640,235,757,757,757,235,635,635,635,635,635,635,635,635,235,757,757,235,0,0,0,0,0,0,0,0,235,757,757,235,0,0,0,0,0,0,0,0,235,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,633,634,635,636,634,635,636,637,638,633,757,757,757,235,636,637,636,636,636,636,636,637,235,757,757,757,235,635,635,635,635,635,635,635,635,235,757,757,235,636,636,636,636,636,636,636,636,235,757,757,235,636,636,636,636,636,636,636,636,235,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,633,634,634,635,636,637,638,639,640,633,757,757,757,235,636,637,637,637,637,637,637,637,235,757,757,757,235,635,635,635,635,635,635,635,635,235,757,757,235,636,636,636,636,636,636,636,636,235,757,757,235,636,636,636,636,636,636,636,636,235,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,633,634,634,635,636,637,638,639,640,633,757,757,757,235,636,636,636,636,637,636,636,637,235,757,757,757,235,635,635,635,635,635,635,635,635,235,757,757,235,636,636,636,636,636,636,636,636,235,757,757,235,636,636,636,636,636,636,636,636,235,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,633,634,635,636,637,638,639,640,640,633,757,757,757,235,637,636,637,637,637,636,637,637,235,757,757,757,235,635,635,635,635,635,635,635,635,235,757,757,235,636,636,636,636,636,636,636,636,235,757,757,235,636,636,636,636,636,636,636,636,235,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,633,634,634,635,636,637,638,639,640,633,757,757,757,235,637,636,636,636,636,636,637,637,235,757,757,757,235,635,635,635,635,635,635,635,635,235,757,757,235,636,636,636,636,636,636,636,636,235,757,757,235,636,636,636,636,636,636,636,636,235,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,633,634,634,635,636,637,638,639,640,633,757,757,757,235,636,636,636,637,636,637,637,637,235,757,757,757,235,635,635,635,635,635,635,635,635,235,757,757,235,636,636,636,636,636,636,636,636,235,757,757,235,636,636,636,636,636,636,636,636,235,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,633,634,634,635,636,637,638,639,640,633,757,757,757,235,636,637,637,637,636,637,637,637,235,757,757,757,235,635,635,635,635,635,635,635,635,235,757,757,235,636,636,636,636,636,636,636,636,235,757,757,235,636,636,636,636,636,636,636,636,235,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,633,634,634,635,636,637,638,639,640,633,757,757,757,235,636,636,636,636,636,636,636,637,235,757,757,757,235,635,635,635,635,635,636,635,635,235,757,757,235,636,636,636,636,636,636,636,636,235,757,757,235,636,636,636,636,636,636,636,636,235,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,633,634,634,635,636,637,638,639,640,633,757,757,757,235,636,636,636,636,636,636,636,637,235,757,757,757,235,636,636,636,635,635,636,636,636,235,757,757,235,636,636,636,636,636,636,636,636,235,757,757,235,636,636,636,636,636,636,636,636,235,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,633,634,634,635,636,637,638,639,640,633,757,757,757,235,636,636,636,636,636,636,637,637,235,757,757,757,235,636,636,636,635,635,636,636,636,235,757,757,235,636,636,636,636,636,636,636,636,235,757,757,235,636,636,636,636,636,636,636,636,235,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,633,634,634,635,636,637,638,639,640,633,757,757,757,235,636,636,637,637,637,636,636,637,235,757,757,757,235,636,636,636,636,636,636,636,636,235,757,757,235,636,636,636,636,636,636,636,636,235,757,757,235,636,636,636,636,636,636,636,636,235,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,633,634,634,635,636,637,638,639,640,633,757,757,757,235,636,637,637,637,637,636,636,637,235,757,757,757,235,636,636,636,636,636,636,636,636,235,757,757,235,636,636,636,636,636,636,636,636,235,757,757,235,636,636,636,636,636,636,636,636,235,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,633,634,634,635,636,637,638,639,640,633,757,757,757,235,636,637,637,637,637,637,637,637,235,757,757,757,235,635,635,635,635,635,635,635,635,235,757,757,0,636,636,636,636,636,636,636,636,235,757,757,235,636,636,636,636,636,636,636,636,235,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,658,659,659,659,659,235,659,659,659,666,757,757,757,235,235,235,235,636,637,235,235,235,235,757,757,757,235,235,235,235,235,235,235,235,235,235,757,757,235,235,235,235,0,235,235,235,235,235,757,757,235,235,235,235,636,636,235,235,235,235,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,757,757,757,757,0,0,757,757,757,757,757,757,757,757,757,757,757,0,0,757,757,757,757,757,757,757,757,757,757,757,0,0,757,757,757,757,757,757,757,757,757,757,0,0,757,757,757,757,757,757,757,757,757,757,636,636,757,757,757,757,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,153,757,757,757,757,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,153,757,757,757,757,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,153,757,757,757,757,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,153,757,757,757,757,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,153,757,757,757,757,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,153,757,757,757,757,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,153,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,153,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,153,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,757,757,757,5346,5347,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,153,757,757,757,757,153,6994,6995,6994,6995,6995,6995,6995,6995,6995,153,757,757,757,5366,5367,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,153,757,757,757,757,153,6994,6995,6994,6995,7015,6994,6995,7015,7015,153,757,757,757,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,153,757,757,757,757,153,6994,6995,6994,6994,6994,7014,7015,7014,7015,153,757,757,757,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,153,757,757,757,757,153,6994,6995,6994,6995,7014,7014,7015,7014,7015,153,757,757,757,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,153,757,757,757,757,153,6994,6995,7014,7015,7015,7015,6994,7014,7015,153,757,757,757,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,153,757,757,757,757,153,6994,6994,6994,6994,6994,6995,6994,7014,7015,153,757,757,757,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,153,757,757,757,757,153,6994,7014,7014,6994,6994,6994,7014,7014,7015,153,757,757,757,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,153,757,757,757,757,153,7014,7014,7015,7014,7014,7014,7014,7014,7015,153,757,757,757,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,153,757,757,757,153,153,153,153,153,153,153,153,153,153,153,153,757,757,757,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5346,5347,5347,5347,5347,5347,5347,5347,5347,5346,5347,5347,5347,5347,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,153,757,757,757,153,5466,5466,5466,5466,5466,5466,5466,5467,5466,5467,153,757,757,757,155,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,155,155,155,155,155,5366,5367,5367,5367,5367,5367,5367,5367,5367,5346,5347,5367,5367,5367,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,153,757,757,757,153,5486,5486,5486,5486,5486,5486,5486,5487,5466,5467,153,757,757,757,155,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,155,5919,5919,5919,155,155,155,155,155,155,155,155,155,155,5366,5346,5347,5366,5367,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,153,757,757,757,153,5506,5506,5506,5506,5506,5506,5506,5507,5466,5467,153,757,757,757,155,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,155,5919,5919,5939,5919,5919,5919,5919,5919,5919,5919,5919,5919,5919,155,5346,5347,5366,5367,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,153,757,757,757,153,5526,5526,5526,5526,5526,5526,5526,5527,5466,5467,153,757,757,757,155,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5340,5340,5340,5340,5340,5340,5342,5342,155,5919,5919,5919,5919,5919,5919,5919,5919,5919,5919,5919,5919,5939,155,5346,5347,5366,5367,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,153,757,757,757,153,5546,5546,5546,5546,5546,5546,5546,5547,5466,5467,153,757,757,757,155,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5342,5340,757,757,757,757,5340,5342,5342,155,5919,5919,5939,5939,5939,5939,5939,5939,5939,5939,5939,5939,5939,155,5346,5347,5366,5367,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,153,757,757,757,153,5566,5566,5566,5566,5566,5566,5566,5567,5466,5467,153,757,757,757,155,5340,5340,5340,5340,155,155,155,155,5342,5342,5342,5342,5342,5340,757,757,757,757,5340,5342,5342,155,5919,5919,5919,5919,5919,5919,5919,5919,5919,5919,5919,5939,5939,155,5346,5346,5347,5367,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,153,757,757,757,153,5566,5567,5567,5487,5507,5487,5487,5467,5467,5467,153,757,757,757,155,5340,5340,5340,155,4903,4903,4903,155,155,5342,5342,5342,5340,5340,757,757,757,757,5340,5342,5342,155,5919,5939,5939,5939,5939,5939,5939,5939,5939,5939,5939,5939,5939,155,5366,5346,5347,5367,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,153,757,757,757,153,5526,5566,5567,5507,5527,5507,5507,5487,5487,5487,153,757,757,757,155,5340,5340,155,155,4903,4903,4906,4903,155,5342,5342,5342,5340,5340,757,757,757,757,5340,5342,5342,155,5919,0,0,0,0,0,0,5919,5919,5919,5939,5939,5939,155,5346,5347,5347,5367,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,153,757,757,757,153,5546,5566,5567,5527,5547,5527,5527,5507,5507,5507,153,757,757,757,155,5340,5340,155,4903,4928,4903,4903,4903,155,155,5342,5342,5340,5340,757,757,757,757,5340,5342,5342,155,5919,0,0,0,0,0,0,5939,5939,5939,5939,5919,5919,155,5366,5367,5347,5367,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,153,757,757,757,153,5566,5566,5567,5547,5567,5547,5547,5527,5527,5527,153,757,757,757,155,5340,5340,155,4903,4903,4903,4903,4903,4903,155,5342,5342,5340,5340,757,757,757,757,5340,5342,5342,155,5919,0,0,0,0,0,0,5939,5939,5939,5939,5939,5939,155,5366,5367,5367,5367,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,153,757,757,757,153,5566,5567,5567,5567,5567,5567,5567,5547,5547,5547,153,757,757,757,155,155,155,4903,4903,4906,4903,4903,4918,4903,4903,155,5342,5340,5340,757,757,757,757,5340,5342,5342,155,5919,5919,5919,5919,5919,5919,5919,5919,5919,5919,5919,5919,5939,155,5366,5367,5366,5367,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,153,757,757,757,153,153,153,153,5566,5567,5566,5567,5567,5567,5567,153,757,757,757,155,155,4903,4903,4903,4903,4903,4903,4903,4903,4903,155,5342,5340,5340,757,757,757,757,5340,5342,5342,155,5939,5939,5939,5939,5939,5939,5939,5939,5939,5939,5939,5939,5939,155,5366,5367,5366,5367,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,153,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,155,4903,4918,4903,4903,4903,4903,4903,4903,4903,155,155,155,5340,757,757,757,757,5340,155,155,155,155,757,757,757,757,757,757,155,155,155,155,155,155,155,5366,5367,5366,5367,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,153,5325,5326,5326,5326,153,153,153,153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,155,5325,5326,5327,5327,5327,5327,5327,5327,5327,5327,5327,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,153,5325,5325,5325,5326,0,0,0,0,0,0,5325,5325,5325,5325,5325,5325,5325,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,155,5325,5326,5327,5325,5326,5327,5327,5327,5325,5326,5327,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,153,5325,5326,5326,5326,0,0,0,0,0,0,5325,5326,5326,5326,5326,5326,5326,5326,155,0,4903,4903,4903,4903,4903,4903,4903,4903,4903,155,155,155,155,155,155,155,155,155,155,155,155,155,155,757,757,757,757,155,5325,5326,5327,5325,5326,5327,5326,5327,5325,5326,5327,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,153,5325,5325,5326,5326,0,0,0,0,0,0,5325,5326,5326,5326,5326,5326,5326,5326,5326,155,4903,4903,4929,4903,4903,4903,4903,4903,155,155,5583,5583,5583,5583,5583,5583,5583,5583,5583,5583,5583,5583,155,757,757,757,757,155,5325,5326,5325,5326,5327,5325,5326,5327,5325,5326,5327,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,153,5325,5325,5325,5326,0,0,0,0,0,0,5325,5325,5325,5325,5325,5325,5326,5325,5326,155,4903,4903,4903,4903,4903,4903,4929,4903,155,5583,5583,5583,5583,5583,5583,5583,5583,5583,5583,5583,5583,5583,155,757,757,757,757,155,5325,5326,5325,5326,5327,5325,5326,5327,5325,5326,5327,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,153,5325,5325,5325,5326,0,0,0,0,0,0,5325,5325,5325,5325,5325,5325,5325,5325,5326,155,155,4903,4903,4906,4903,4903,4903,4903,155,5583,5583,5583,5583,5583,5583,5583,5583,5583,5583,5583,5583,5583,155,757,757,757,757,155,5325,5326,5325,5326,5327,5325,5326,5327,5325,5326,5327,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,153,5325,5325,5325,5326,0,0,0,0,0,0,5325,5326,5326,5326,5326,5326,5326,5326,5326,5326,155,155,155,155,155,155,155,155,155,155,5583,5583,5583,5583,5583,5583,5583,5583,5583,5583,5583,5583,155,757,757,757,757,155,5325,5326,5327,5325,5326,5327,5326,5327,5325,5326,5327,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,153,5325,5326,153,153,757,757,757,757,757,757,5325,5325,5325,5325,5325,5325,5325,5325,5325,5325,5325,5326,153,757,757,757,757,757,757,5583,5583,5583,5583,5583,5583,5583,5583,5583,5583,5583,5583,5583,155,757,757,757,757,155,5325,5326,5327,5325,5326,5327,5326,5327,5325,5326,5327,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,153,5325,5326,153,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,155,5583,5583,5583,5583,5583,5583,5583,5583,5583,5583,5583,5583,155,757,757,757,757,155,5325,5326,5327,5325,5326,5327,5326,5327,5325,5326,5327,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,153,5325,5326,153,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,155,5583,5583,5583,5583,5583,5583,5583,5583,5583,5583,5583,5583,155,757,757,757,757,155,5325,5325,5325,5325,5325,5326,5327,5327,5325,5326,5327,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,153,5325,5326,153,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,155,5583,5583,5583,5583,5583,5583,5583,5583,5583,5583,5583,5583,155,757,757,757,757,155,5325,5326,5325,5326,5327,5325,5326,5327,5325,5326,5327,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,153,5325,5326,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,155,5583,5583,5583,5583,5583,0,5583,5583,5583,5583,5583,5583,155,757,757,757,757,155,5325,5326,5325,5326,5325,5325,5326,5327,5325,5326,5327,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,153,5325,5326,153,757,757,757,757,757,757,757,757,5773,5774,5774,5773,5774,5774,5774,5773,5774,5773,5774,153,757,757,757,757,757,757,155,5583,5583,5583,5583,5583,5583,5583,5583,5583,5583,5583,5583,155,757,757,757,757,155,5325,5326,5325,5326,5325,5326,5327,5327,5325,5326,5327,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,153,5325,5326,153,757,757,757,757,757,757,757,757,5773,5774,5774,5773,5774,5794,5774,5773,5774,5793,5794,153,757,757,757,757,757,757,155,155,155,155,155,155,0,0,0,0,0,0,155,155,757,757,757,757,155,5325,5326,5325,5325,5326,5325,5326,5327,5327,5327,5327,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,153,5325,5326,153,757,757,757,757,757,757,757,757,5793,5794,5774,5773,5774,5794,5774,5793,5794,5773,5774,153,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,155,5325,5326,5327,5325,5326,5327,5325,5325,5325,5326,5327,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,153,5325,5326,153,153,153,153,153,153,153,153,153,153,5773,5774,5773,5774,5794,5794,5773,5774,5773,5774,153,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,155,5325,5326,5327,5325,5325,5325,5326,5327,5327,5327,5327,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,153,5325,5325,5325,5325,5325,5325,5325,5325,5325,5325,5325,5325,5793,5794,5793,5794,5793,5794,5793,5794,5793,5794,153,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,5325,5325,5325,5326,5327,5325,5325,5325,5325,5325,5326,5327,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,757,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,
+153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153,153
+</data>
+ </layer>
+ <layer id="1" name="Tile Layer 1" width="100" height="100">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,583,584,584,584,584,584,584,584,584,591,0,0,0,583,664,664,664,664,664,664,664,664,591,0,0,583,584,584,585,586,587,588,589,590,591,0,0,583,584,584,585,586,587,588,589,590,591,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,633,609,609,610,354,355,613,614,615,616,0,0,0,608,358,433,434,435,436,437,438,0,608,0,0,608,609,609,610,611,612,613,614,615,608,0,0,608,609,610,611,612,613,614,615,615,608,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,0,305,305,452,453,454,455,305,305,0,0,0,0,633,359,360,361,362,363,364,365,366,616,0,0,0,608,0,458,459,460,461,462,463,0,608,0,0,608,465,466,467,468,465,466,467,468,608,0,0,608,0,0,0,7230,7231,0,0,0,608,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,0,0,0,477,478,479,480,0,0,0,0,0,0,633,367,368,369,370,371,372,373,374,616,0,0,0,608,0,483,484,485,486,487,488,0,608,0,0,608,490,491,492,493,490,491,492,493,608,0,0,608,0,0,0,7234,7235,0,0,0,608,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,0,0,0,502,503,504,505,0,0,0,0,0,0,633,375,376,377,378,379,380,381,382,616,0,0,0,608,0,508,509,510,511,512,513,0,608,0,0,608,515,516,517,518,515,516,517,518,608,0,0,608,0,0,0,7238,7239,0,0,0,608,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,0,0,0,527,528,529,530,0,0,0,0,0,0,633,383,384,385,386,387,388,389,390,616,0,0,0,608,0,533,534,535,536,537,538,0,608,0,0,608,540,541,542,543,540,541,542,543,608,0,0,608,0,0,0,7242,7243,0,0,0,608,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,0,334,334,552,553,554,555,334,334,0,0,0,0,633,391,392,393,394,395,396,397,398,616,0,0,0,608,0,558,559,560,561,562,563,0,608,0,0,608,0,566,567,0,0,566,567,0,608,0,0,608,0,0,0,0,0,0,0,0,608,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,633,399,400,401,402,403,404,405,406,616,0,0,0,608,0,0,0,0,0,0,0,0,608,0,0,608,0,0,0,0,0,0,0,0,608,0,0,608,0,0,0,0,0,0,0,0,608,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,0,0,0,0,337,337,0,0,0,0,0,0,0,633,0,0,0,0,0,0,0,0,616,0,0,0,608,0,0,0,0,0,0,0,0,608,0,0,608,0,0,0,0,0,0,0,0,608,0,0,608,0,0,0,0,0,0,0,0,608,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,0,0,470,471,472,473,474,475,0,0,0,0,0,633,0,0,0,0,0,0,0,0,616,0,0,0,608,0,0,0,0,0,0,0,0,608,0,0,608,0,0,0,0,0,0,0,0,608,0,0,608,0,0,0,0,0,0,0,0,608,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,0,0,495,496,497,498,499,500,0,0,0,0,0,633,0,0,0,0,0,0,0,0,616,0,0,0,633,0,0,0,0,0,0,0,0,608,0,0,608,0,0,0,0,0,0,0,0,608,0,0,608,0,0,0,0,0,0,0,0,608,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,0,0,520,521,522,523,524,525,0,0,0,0,0,633,0,0,0,0,0,0,0,0,616,0,0,0,608,0,0,0,0,0,0,0,0,608,0,0,608,0,0,0,0,0,0,0,0,608,0,0,608,0,0,0,0,0,0,0,0,608,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,0,0,545,546,547,548,549,550,0,0,0,0,0,633,0,0,0,0,0,0,0,0,616,0,0,0,608,0,0,0,0,0,0,0,0,608,0,0,608,0,0,0,0,0,0,0,0,608,0,0,608,0,0,0,0,0,0,0,0,608,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,633,0,0,0,0,0,0,0,0,616,0,0,0,608,0,0,0,0,0,0,0,0,608,0,0,608,0,0,0,0,0,0,0,0,608,0,0,608,0,0,0,0,0,0,0,0,608,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,633,0,0,0,0,0,0,0,0,616,0,0,0,633,0,0,0,0,0,0,0,0,633,0,0,633,0,0,0,0,0,0,0,0,633,0,0,633,0,0,0,0,0,0,0,0,633,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,0,0,0,0,636,636,0,563,0,0,0,0,0,658,661,661,661,637,637,665,665,665,666,0,0,0,658,659,664,664,636,636,664,664,665,666,0,0,658,665,665,665,636,636,665,665,665,666,0,0,658,659,659,660,0,0,659,659,660,666,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,683,684,685,686,636,636,688,689,690,691,0,0,0,683,684,685,686,637,637,689,690,691,691,0,0,0,683,684,685,686,636,636,688,689,690,691,0,0,683,684,685,686,636,636,688,689,690,691,0,0,683,684,685,686,0,0,688,689,690,691,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,286,5028,5029,5030,0,286,5380,5381,5382,5383,5380,5381,5382,5383,5380,5381,5382,5383,5380,5381,5382,5383,5380,5381,5382,5383,5380,5381,5382,5383,5380,5381,5382,5383,5380,5381,5382,5383,5380,5381,5382,5383,5380,5381,5382,5383,5380,5381,5382,5383,5380,5381,5382,5383,5380,5381,5382,5383,5035,5036,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,286,5038,0,0,0,286,5400,5401,5402,5403,5400,5401,5402,5403,5400,5401,5402,5403,5400,5401,5402,5403,5400,5401,5402,5403,5400,5401,5402,5403,5400,5401,5402,5403,5400,5401,5402,5403,5400,5401,5402,5403,5400,5401,5402,5403,5400,5401,5402,5403,5400,5401,5402,5403,5400,5401,5402,5403,5045,5046,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,286,5048,0,0,0,286,5420,5421,5422,5423,5420,5421,5422,5423,5420,5421,5422,5423,5420,5421,5422,5423,5420,5421,5422,5423,5420,5421,5422,5423,5420,5421,5422,5423,5420,5421,5422,5423,5420,5421,5422,5423,5420,5421,5422,5423,5420,5421,5422,5423,5420,5421,5422,5423,5420,5421,5422,5423,0,0,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,286,0,0,0,0,286,5440,5441,5442,5443,5440,5441,5442,5443,5440,5441,5442,5443,5440,5441,5442,5443,5440,5441,5442,5443,5440,5441,5442,5443,5440,5441,5442,5443,5440,5441,5442,5443,5440,5441,5442,5443,5440,5441,5442,5443,5440,5441,5442,5443,5440,5441,5442,5443,5440,5441,5442,5443,0,0,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,286,0,0,0,0,286,5460,5461,5462,5463,5460,5461,5462,5463,5460,5461,5462,5463,5460,5461,5462,5463,5460,5461,5462,5463,5460,5461,5462,5463,5460,5461,5462,5463,5460,5461,5462,5463,5460,5461,5462,5463,5460,5461,5462,5463,5460,5461,5462,5463,5460,5461,5462,5463,5460,5461,5462,5463,0,0,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,286,0,0,0,0,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,286,0,0,0,0,286,286,286,286,286,286,286,286,286,286,286,0,0,0,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,286,0,0,0,0,286,5172,5172,5172,5172,5172,5172,5172,5172,5172,286,0,0,0,286,0,0,0,5380,5381,5382,5383,5380,5381,5382,5383,5380,5381,5382,5383,5380,5381,5382,5383,0,5380,5381,5382,5383,5380,5381,5382,5383,0,5380,5381,5382,5383,0,0,5380,5381,5382,5383,0,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,286,0,0,0,0,286,5192,5192,5192,5192,5192,5192,5192,5192,5192,286,0,0,0,286,0,0,0,5400,5401,5402,5403,5400,5401,5402,5403,5400,5401,5402,5403,5400,5401,5402,5403,0,5400,5401,5402,5403,5400,5401,5402,5403,0,5400,5401,5402,5403,0,0,5400,5401,5402,5403,0,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,286,0,0,0,0,286,5172,5172,5172,5172,5172,5172,5172,5172,5172,286,0,0,0,286,0,0,0,5420,5421,5422,5423,5420,5421,5422,5423,5420,5421,5422,5423,5420,5421,5422,5423,0,5420,5421,5422,5423,5420,5421,5422,5423,0,5420,5421,5422,5423,0,0,5420,5421,5422,5423,0,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,286,0,0,0,0,286,5192,5192,5192,5192,5192,5192,5192,5192,5192,286,0,0,0,286,0,0,0,5440,5441,5442,5443,5440,5441,5442,5443,5440,5441,5442,5443,5440,5441,5442,5443,0,5440,5441,5442,5443,5440,5441,5442,5443,0,5440,5441,5442,5443,0,0,5440,5441,5442,5443,0,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,286,0,0,0,0,286,5172,5172,5172,5172,5172,5172,5172,5172,5172,286,0,0,0,286,0,0,0,5460,5461,5462,5463,5460,5461,5462,5463,5460,5461,5462,5463,5460,5461,5462,5463,0,5460,5461,5462,5463,5460,5461,5462,5463,0,5460,5461,5462,5463,0,0,5460,5461,5462,5463,0,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,286,0,0,0,0,286,5192,5192,5192,5192,5192,5192,5192,5192,5192,286,0,0,0,286,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,286,0,0,0,0,286,5172,5172,5172,5172,5172,5172,5172,5172,5172,286,0,0,0,286,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,286,0,0,0,0,286,5192,5192,5192,5192,5192,5192,5192,5192,5192,286,0,0,0,286,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,286,0,0,0,286,286,286,286,286,286,286,286,286,286,286,286,0,0,0,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,286,0,0,0,286,5380,5381,5382,5383,0,0,0,0,0,0,286,0,0,0,286,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,286,0,0,0,286,5400,5401,5402,5403,0,0,0,0,0,0,286,0,0,0,286,0,0,7306,7307,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,7318,7319,0,286,286,286,286,286,286,286,286,286,286,286,0,0,0,0,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,286,0,0,0,286,5420,5421,5422,5423,0,0,0,0,0,0,286,0,0,0,286,0,0,7310,7311,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,7322,7323,0,0,0,0,0,0,0,0,0,0,0,286,0,0,0,0,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,286,0,0,0,286,5440,5441,5442,5443,5372,5373,5374,5375,5376,5377,286,0,0,0,286,0,0,0,0,0,0,0,0,0,0,0,0,0,286,286,286,0,286,286,0,0,286,7326,7327,6621,6622,6623,6624,6625,6626,5380,5381,5382,5383,0,286,0,0,0,0,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,286,0,0,0,286,5460,5461,5462,5463,5392,5393,5394,5395,5396,5397,286,0,0,0,286,0,0,0,0,0,0,0,0,0,0,0,0,0,286,0,0,0,0,286,0,0,286,7330,7331,6641,6642,6643,6644,6645,6646,5400,5401,5402,5403,0,286,0,0,0,0,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,286,0,0,0,286,5480,5481,5482,5411,5412,5413,5414,5415,5416,5417,286,0,0,0,286,0,0,0,286,286,286,286,286,0,0,0,0,0,286,0,0,0,0,286,0,0,286,6659,6660,6661,6662,6663,6664,6665,6666,5420,5421,5422,5423,0,286,0,0,0,0,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,286,0,0,0,286,5448,5449,5450,5431,5432,5433,5434,5435,5436,5437,286,0,0,0,286,0,0,0,286,0,0,0,286,286,0,0,0,0,286,0,0,0,0,286,0,0,286,6679,6680,6681,6682,6683,6684,6685,6686,5440,5441,5442,5443,0,286,0,0,0,0,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,286,0,0,0,286,5468,5469,5470,5451,5452,5453,5454,5455,5456,5457,286,0,0,0,286,0,0,286,286,0,0,0,0,286,0,0,0,0,286,0,0,0,0,286,0,0,286,6699,6700,6701,6702,6703,6704,6705,6706,5460,5461,5462,5463,0,286,0,0,0,0,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,286,0,0,0,286,5488,5489,5490,5471,5472,5473,5474,5475,5476,5477,286,0,0,0,286,0,0,286,0,0,0,0,0,286,286,0,0,0,286,0,0,0,0,286,0,0,286,6719,6720,6721,6722,6723,6724,6725,6726,5480,5481,5482,5483,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,286,0,0,0,286,5508,5509,5510,5491,5492,5493,5494,5495,5496,5497,286,0,0,0,286,0,286,286,0,0,0,0,0,0,286,286,0,0,286,0,0,0,0,286,0,0,286,6739,6740,6741,6742,6743,6744,6745,6746,0,0,0,0,0,286,0,0,0,0,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,286,0,0,0,286,5528,5529,5530,5511,5512,5513,5514,5515,5516,5517,286,0,0,0,286,286,286,0,0,0,0,0,0,0,0,286,0,0,286,0,0,0,0,286,0,0,286,6759,6760,6761,6762,6763,6764,6765,6766,0,0,0,0,0,286,0,0,0,0,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,286,0,0,0,286,286,286,286,5531,5532,5533,5534,5535,5536,5537,286,0,0,0,286,286,0,0,0,0,0,0,0,0,0,286,0,0,286,0,0,0,0,286,0,0,286,6779,6780,6781,6782,6783,6784,6785,6786,0,0,0,0,0,286,0,0,0,0,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,286,0,0,0,6619,0,0,0,0,0,0,0,6806,0,0,0,0,0,0,0,286,7262,7263,7264,7265,7264,7265,7264,7265,7267,286,286,286,286,0,0,0,0,286,286,286,286,286,6800,6801,6802,6803,6804,6805,286,286,286,286,286,286,286,0,0,0,0,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,0,0,0,7268,7269,7270,7271,7270,7271,7270,7271,7273,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,5380,5381,5382,5383,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,286,0,0,0,5231,5232,5233,5234,5235,5236,5237,5238,0,0,0,0,0,286,0,0,0,7274,7275,7276,7277,7276,7277,7276,7277,7279,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,5400,5401,5402,5403,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,286,0,0,0,5251,5252,5253,5254,5255,5256,5257,5258,0,0,0,0,0,286,286,286,286,0,0,0,0,0,0,0,0,0,286,286,286,286,286,286,286,286,286,286,286,286,286,286,0,0,0,0,286,5420,5421,5422,5423,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,286,0,0,0,5271,5272,5273,5274,5275,5276,5277,5278,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,286,286,5172,5172,5172,5172,5172,5172,5172,5172,5172,5172,5172,5172,286,0,0,0,0,286,5440,5441,5442,5443,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,286,0,0,0,0,5292,5293,5294,5295,5296,5297,5298,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,286,0,5192,5192,5192,5192,5192,5192,5192,5192,5192,5192,5192,5192,286,0,0,0,0,286,5460,5461,5462,5463,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,286,0,0,0,0,5312,5313,5314,5315,5316,5317,5318,0,0,0,0,0,0,0,0,286,286,0,0,0,0,0,0,0,286,0,0,0,0,0,5470,6620,6621,6622,6623,6624,6625,6626,286,0,0,0,0,286,5380,5381,5382,5383,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,286,0,0,0,6759,5332,5333,5334,5335,5336,5337,5338,0,0,0,0,0,0,0,0,0,286,286,286,286,286,286,286,286,286,286,0,0,0,0,0,6640,6641,6642,6643,6644,6645,6646,286,0,0,0,0,286,5400,5401,5402,5403,0,0,0,0,7280,7281,0,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,286,0,0,286,286,5352,5353,5354,5355,5356,5357,5358,0,0,0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,5380,5381,5382,0,0,6660,6661,6662,6663,6664,6665,6666,286,0,0,0,0,286,5420,5421,5422,5423,0,0,0,0,7284,7285,0,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,286,0,0,286,0,0,0,7246,7247,0,0,286,286,286,286,286,286,286,286,286,286,286,286,286,0,0,0,0,0,0,286,5400,5401,5402,5403,5530,6680,6681,6682,6683,6684,6685,6686,286,0,0,0,0,286,5440,5441,5442,5443,0,0,0,0,7288,7289,0,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,286,0,0,286,0,0,0,7254,7255,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,5420,5421,5422,5423,6699,6700,6701,6702,6703,6704,6705,6706,286,0,0,0,0,286,5460,5461,5462,5463,0,0,0,0,7292,7293,0,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,286,0,0,286,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,5440,5441,5442,5443,6719,6720,6721,6722,6723,6724,6725,6726,286,0,0,0,0,286,5380,5381,5382,5383,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,286,0,0,286,0,0,0,0,0,0,0,0,286,286,286,286,286,286,286,286,286,286,286,286,0,0,0,0,0,0,286,5460,5461,5462,5463,6739,6740,6741,6742,6743,6744,6745,6746,286,0,0,0,0,286,5400,5401,5402,5403,0,0,0,0,5448,5449,5450,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,286,0,0,286,0,0,0,0,0,0,0,0,5468,5469,5470,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,286,5480,5481,5482,5483,6759,6760,6761,6762,6763,6764,6765,6766,286,0,0,0,0,286,5420,5421,5422,5423,0,0,0,0,5468,5469,5470,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,286,0,0,286,0,0,0,0,0,0,0,0,5488,5489,5490,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,286,286,286,286,286,286,6780,6781,6782,6783,6784,6785,286,286,0,0,0,0,286,5440,5441,5442,5443,0,0,0,0,5488,5489,5490,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,286,0,0,286,0,0,0,0,0,0,0,0,5508,5509,5510,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,0,6799,6800,6801,6802,6803,6804,6805,6806,0,0,0,0,0,286,5460,5461,5462,5463,0,0,0,0,5508,5509,5510,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,286,0,0,286,286,286,286,286,286,286,286,286,286,5529,5530,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,5480,5481,5482,5483,0,0,0,0,5528,5529,5530,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,0,0,0,0,0,0,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,286,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+</map>

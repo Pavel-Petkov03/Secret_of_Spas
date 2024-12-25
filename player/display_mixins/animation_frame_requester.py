@@ -1,7 +1,7 @@
 from collections import deque
 from abc import ABC, abstractmethod
 
-from errors import RedirectToVillageError, RemoveEnemyFromScreenError
+from errors import RedirectToVillageError, RemoveEnemyFromScreenError, DeadError
 
 
 class AnimationFrameDoneError(Exception):
@@ -77,12 +77,20 @@ class InfantryAttackAnimationFrameRequester(AnimationFrameRequester):
     """
 
     def cleanup_func_after_animation(self, screen, additional_data):
-        additional_data["player"].health -= additional_data["damage"]
+        try:
+            additional_data["player"].health -= additional_data["damage"]
+        except DeadError:
+            additional_data["player"].main_animation_frame_requester = DiePlayerAnimationFrameRequester(
+                additional_data["player"].animation_frames[9],
+                20,
+                5,
+                is_repeated=False,
+            )
 
 
 class PlayerAttackAnimationFrameRequester(AnimationFrameRequester):
     def cleanup_func_after_animation(self, screen, additional_data):
-        print("baba")
+        pass
 
 
 class ArcherAttackAnimationFrameRequester(AnimationFrameRequester):

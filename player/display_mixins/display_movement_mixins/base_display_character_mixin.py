@@ -64,7 +64,7 @@ class DisplayMixin(ABC):
     def collides_with_block(self, x, y):
         for layer in self.tmx_data.layers:
             result = self.get_tile_properties(x, y, layer)
-            if result and result["is_block"]:
+            if result and result.get("is_block"):
                 return True
         return False
 
