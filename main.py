@@ -2,10 +2,13 @@ import random
 
 import pygame
 from pytmx.util_pygame import load_pygame
+
 import settings
+from car.car_display import Car
 from decorators.is_in_blit_range import IsInBlitRange
+from errors import RedirectToVillageError
 from player.utils import init_player, enemy_factory
-from errors import RedirectToVillageError, DeadError
+from spritesheet.utils import get_animation_matrix
 
 
 class Game:
@@ -103,6 +106,44 @@ class Dungeon(BaseDungeon):
 
 class Village(BaseDungeon):
     is_shooting_allowed = False
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        animation_frames = get_animation_matrix("car_movement")
+        result = [
+            [animation_frames[0][1]],
+            [animation_frames[0][3]],
+            [animation_frames[0][5]],
+            [animation_frames[0][7]],
+        ]
+        self.car = Car(1200, 400, result[0], result, self)
+        self.car_switch = None
+
+    def update(self, screen, delta_time, event_list):
+        for event in event_list:
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_f:
+                self.car.is_mount = not self.car.is_mount
+        self.update_car(screen, delta_time, event_list)
+
+    def update_car(self, screen, delta_time, event_list):
+        if self.car.is_mount:
+            if self.car_switch is True:
+                self.car.x, self.car.y = self.player.x, self.player.y
+                self.car_switch = False
+            self.car.update(screen, delta_time, event_list)
+            self.player.x, self.player.y = self.car.x, self.car.y
+        else:
+            if self.car_switch is False:
+                print("baba")
+                self.car.x, self.car.y = self.player.x + settings.SCREEN_WIDTH / 2 / settings.SCALE_FACTOR, self.player.y + settings.SCREEN_WIDTH / 2 / settings.SCALE_FACTOR
+            self.car_switch = True
+            super().update(screen, delta_time, event_list)
+
+    def blit(self, screen):
+        self.render_map(screen)
+        self.car.blit(screen)
+        if not self.car.is_mount:
+            self.player.blit(screen)
 
 
 if __name__ == "__main__":

@@ -13,11 +13,6 @@ import pygame
 class PlayerDisplayMixin(CharacterDisplayMixin):
     def __init__(self, *args, **kwargs):
         CharacterDisplayMixin.__init__(self, *args, **kwargs)
-        self.die_animation_frame_requester = DiePlayerAnimationFrameRequester(self.animation_frames[9],
-                                                                              20,
-                                                                              5,
-                                                                              is_repeated=False
-                                                                              )
 
     def _trigger_update(self, screen):
         return True
@@ -45,11 +40,14 @@ class PlayerDisplayMixin(CharacterDisplayMixin):
             if self.trig_movement_in_direction(screen, direction, animation_props):
                 break
         else:
-            if animation_props.get(self.direction):
-                self.main_animation_frame_requester.current_animation_frame = animation_props[self.direction][
-                    "stand_animation_frame"]
-            if self.direction in directions:
-                self.direction = "stand_" + self.direction
+            self.handle_stand_animation(animation_props, directions)
+
+    def handle_stand_animation(self, animation_props, directions):
+        if animation_props.get(self.direction):
+            self.main_animation_frame_requester.current_animation_frame = animation_props[self.direction][
+                "stand_animation_frame"]
+        if self.direction in directions:
+            self.direction = "stand_" + self.direction
 
     def trig_movement_in_direction(self, screen, direction, animation_props):
         if self.is_triggered_movement(screen,
@@ -79,7 +77,11 @@ class PlayerDisplayMixin(CharacterDisplayMixin):
         return self.collides_with_block(player_map_x, player_map_y)
 
     def die(self):
-        self.main_animation_frame_requester = self.die_animation_frame_requester
+        self.main_animation_frame_requester = DiePlayerAnimationFrameRequester(self.animation_frames[9],
+                                                                               20,
+                                                                               5,
+                                                                               is_repeated=False
+                                                                               )
 
 
 class PlayerAttackDisplayMixin(PlayerDisplayMixin):

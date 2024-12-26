@@ -39,6 +39,3 @@ def enemy_factory(name, health, damage, dungeon_data, is_infantry):
         player_matrix,
         dungeon_data
     )
-
-
-

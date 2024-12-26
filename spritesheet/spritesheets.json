@@ -41,5 +41,20 @@
       2,
       2
     ]
+  },
+  "car_movement": {
+    "filename": "src/images/sprite_sheets/red_vehicles.png",
+    "rows": 8,
+    "cols": 8,
+    "row_max_cols": [
+      8,
+      8,
+      8,
+      8,
+      8,
+      8,
+      8,
+      8
+    ]
   }
 }

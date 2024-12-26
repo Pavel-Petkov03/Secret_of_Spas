@@ -1,5 +1,6 @@
 import pygame
 
+
 class AnimationFrame:
     def __init__(self, animations_array, frame_duration):
         self.animations_array = animations_array

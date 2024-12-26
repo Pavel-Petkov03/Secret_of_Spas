@@ -1,9 +1,4 @@
 import math
-
-import pygame.draw
-
-from decorators.is_in_blit_range import IsInBlitRange
-from errors import DeadError
 from player.display_mixins.display_movement_mixins.base_display_character_mixin import CharacterDisplayMixin
 import settings
 from collections import deque
