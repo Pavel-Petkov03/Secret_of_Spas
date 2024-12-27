@@ -1,6 +1,10 @@
-import pygame
+from collections import deque
 
+import pygame
+import vlc
+import ctypes
 import settings
+import car.settings as car_settings
 from decorators.is_in_blit_range import IsInBlitRange
 from player.display_mixins.display_movement_mixins.player_display_mixin import PlayerDisplayMixin
 
@@ -10,7 +14,7 @@ class CarDisplayMixin(PlayerDisplayMixin):
         super().__init__(*args, **kwargs)
         self.is_mount = False
         self.player = self.dungeon_data.player
-        self.movement_speed = 8
+        self.movement_speed = 4
 
     def get_map_position(self, screen):
         if self.is_mount:
@@ -68,4 +72,15 @@ class CarDisplayMixin(PlayerDisplayMixin):
 
 
 class Car(CarDisplayMixin):
-    pass
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        ctypes.windll.ole32.CoInitialize(None)
+        self.radio_deque = deque(car_settings.RADIO_URLS)
+        self.media_player = vlc.MediaPlayer(self.radio_deque[1])
+        self.music_started = None
+
+    def change_stream(self):
+        self.radio_deque.append(self.radio_deque.popleft())
+        self.media_player.stop()
+        self.media_player.set_media(vlc.Media(self.radio_deque[0]))
+        self.media_player.play()

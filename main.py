@@ -1,3 +1,4 @@
+import math
 import random
 
 import pygame
@@ -120,22 +121,31 @@ class Village(BaseDungeon):
         self.car_switch = None
 
     def update(self, screen, delta_time, event_list):
-        for event in event_list:
-            if event.type == pygame.KEYDOWN and event.key == pygame.K_f:
-                self.car.is_mount = not self.car.is_mount
         self.update_car(screen, delta_time, event_list)
+        for event in event_list:
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_f and self.distance_between_car_and_player(
+                    screen) < 3:
+                self.car.is_mount = not self.car.is_mount
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_n and self.car.is_mount:
+                self.car.change_stream()
+
+    def distance_between_car_and_player(self, screen):
+        x1, y1 = self.player.get_map_position(screen)
+        x2, y2 = self.car.get_map_position(screen)
+        return int(math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2))
 
     def update_car(self, screen, delta_time, event_list):
         if self.car.is_mount:
             if self.car_switch is True:
                 self.car.x, self.car.y = self.player.x, self.player.y
+                self.car.media_player.play()
                 self.car_switch = False
             self.car.update(screen, delta_time, event_list)
             self.player.x, self.player.y = self.car.x, self.car.y
         else:
             if self.car_switch is False:
-                print("baba")
                 self.car.x, self.car.y = self.player.x + settings.SCREEN_WIDTH / 2 / settings.SCALE_FACTOR, self.player.y + settings.SCREEN_WIDTH / 2 / settings.SCALE_FACTOR
+                self.car.media_player.stop()
             self.car_switch = True
             super().update(screen, delta_time, event_list)
 
