@@ -1,6 +1,5 @@
 import math
 import random
-import events.event_types.dungeos as dungeon_events
 import events.event_types.modals as modal_events
 import pygame
 from pytmx.util_pygame import load_pygame
@@ -8,7 +7,8 @@ import settings
 from car.car_display import Car
 from decorators.is_in_blit_range import IsInBlitRange
 from events.base_event import EventManager
-from events.redirect_event import RedirectEvent, ShowRedirectToAnotherMapEvent
+from events.redirect_event import ShowRedirectToAnotherMapEvent
+from item_inventory.inventory import Inventory
 from player.utils import init_player, enemy_factory
 from snitches.missions.base_mission import Mission
 from spritesheet.utils import get_animation_matrix
@@ -62,6 +62,8 @@ class BaseDungeon:
         self.tmx_data = load_pygame(tmx_string)
         self.scale_grid()
         self.player = init_player(self)
+        self.items = []
+        self.inventory = Inventory()
         self.popup_menu = None
 
     def scale_grid(self):
@@ -85,7 +87,6 @@ class BaseDungeon:
             # })
             pass
         elif (gate_data := self.player.collides_with_gate(screen)) and not self.popup_menu:
-            print(gate_data)
             current_event = ShowRedirectToAnotherMapEvent(modal_events.REDIRECT_MODAL_EVENT, additional_state=gate_data,
                                                           dungeon_state=self)
             EventManager.register_event(current_event)
@@ -109,6 +110,7 @@ class Dungeon(BaseDungeon):
     def __init__(self, tmx_string):
         super().__init__(tmx_string)
         self.enemies = [enemy_factory("Gosho", 100, 100, self, random.choice([True, False])) for _ in range(50)]
+        self.items = []
 
     def blit(self, screen):
         self.render_map(screen)
@@ -117,11 +119,27 @@ class Dungeon(BaseDungeon):
         self.player.blit(screen)
         if self.popup_menu:
             self.popup_menu.draw(screen)
+        for item in self.items:
+            item.blit(screen)
+        self.inventory.blit(screen)
 
     def update(self, screen, delta_time, event_list):
         super().update(screen, delta_time, event_list)
+        self.update_inventory()
         for enemy in self.enemies:
             enemy.update(screen, delta_time, event_list)
+
+    def update_inventory(self):
+        for item in self.items:
+            if self.distance(item, self.player) < 1:
+                self.items.remove(item)
+                self.inventory.add_item(item)
+                break
+
+    def distance(self, first, second):
+        dx = first.x - second.x
+        dy = first.y - second.y
+        return math.sqrt(dx ** 2 + + dy ** 2)
 
 
 class Village(BaseDungeon):
@@ -168,6 +186,7 @@ class Village(BaseDungeon):
             self.player.blit(screen)
         if self.popup_menu:
             self.popup_menu.draw(screen)
+        self.inventory.blit(screen)
 
 
 if __name__ == "__main__":

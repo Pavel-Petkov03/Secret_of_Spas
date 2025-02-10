@@ -1,8 +1,7 @@
 from errors import DeadError
 from player.display_mixins.display_movement_mixins.archer_enemy_display_mixin import ArcherEnemyDisplayMixin
 from player.display_mixins.display_movement_mixins.infantry_enemy_display_mixin import InfantryEnemyDisplayMixin
-from player.display_mixins.display_movement_mixins.player_display_mixin import PlayerDisplayMixin, \
-    PlayerAttackDisplayMixin
+from player.display_mixins.display_movement_mixins.player_display_mixin import PlayerAttackDisplayMixin
 
 
 class Character:
@@ -27,7 +26,6 @@ class Player(Character, PlayerAttackDisplayMixin):
         Character.__init__(self, name, health, damage)
         PlayerAttackDisplayMixin.__init__(self, x, y, current_animation_frame, animations_frames, dungeon_data)
         self.arrows = []
-        self.inventory = None
         self.current_mission = None
 
     def update(self, *args, **kwargs):
