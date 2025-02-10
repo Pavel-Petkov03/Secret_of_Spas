@@ -15,8 +15,14 @@ SCREEN_WIDTH = CURRENT_MAX_DIMENSION - 1 / 8 * CURRENT_MAX_DIMENSION
 SCREEN_HEIGHT = CURRENT_MAX_DIMENSION - 1 / 8 * CURRENT_MAX_DIMENSION
 SCALE_FACTOR = SCREEN_HEIGHT / TILE_WIDTH / VIEW_PORT_TILES_H
 
-
 PLAYER_POS_DUNGEON_LOGGER = {
-    "first_level": "",
+    "first_level": (700, 500),
     "village": (1100, 0)
+}
+
+GATE_LEVEL_INFO = {
+    "first_level": {
+        "village_name": "Rakiq dungeon",
+        "village_image_location": "src/images/dungeon_pictures/first_dungeon.png"
+    }
 }

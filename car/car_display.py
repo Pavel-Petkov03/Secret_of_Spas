@@ -1,6 +1,4 @@
 from collections import deque
-
-import pygame
 import vlc
 import ctypes
 import settings
@@ -76,11 +74,36 @@ class Car(CarDisplayMixin):
         super().__init__(*args, **kwargs)
         ctypes.windll.ole32.CoInitialize(None)
         self.radio_deque = deque(car_settings.RADIO_URLS)
-        self.media_player = vlc.MediaPlayer(self.radio_deque[1])
+        self.media_player = vlc.MediaPlayer(self.radio_deque[0])
         self.music_started = None
+        self.car_switch = None
 
     def change_stream(self):
         self.radio_deque.append(self.radio_deque.popleft())
         self.media_player.stop()
         self.media_player.set_media(vlc.Media(self.radio_deque[0]))
         self.media_player.play()
+
+    def change_pos(self, new_x, new_y):
+        self.x = new_x
+        self.y = new_y
+
+    def get_x_y_pos(self):
+        return self.x, self.y
+
+    def is_player_in_car(self):
+        return self.is_mount
+
+    def handle_player_in_car(self):
+        if self.car_switch is True:
+            self.change_pos(self.player.x, self.player.y)
+            self.media_player.play()
+            self.car_switch = False
+
+    def handle_player_out_of_car(self):
+        if self.car_switch is False:
+            new_x = self.player.x + settings.SCREEN_WIDTH / 2 / settings.SCALE_FACTOR
+            new_y = self.player.y + settings.SCREEN_WIDTH / 2 / settings.SCALE_FACTOR
+            self.change_pos(new_x, new_y)
+            self.media_player.stop()
+        self.car_switch = True

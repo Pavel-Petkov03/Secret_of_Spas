@@ -1,5 +1,4 @@
 import pygame
-import functools
 pygame.init()
 
 VALID_RESOLUTIONS = [

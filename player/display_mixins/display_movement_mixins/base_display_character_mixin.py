@@ -62,11 +62,13 @@ class DisplayMixin(ABC):
         return None
 
     def collides_with_block(self, x, y):
+        return self.find_tile_with_property(x, y, "is_block") is not None
+
+    def find_tile_with_property(self, x, y, prop):
         for layer in self.tmx_data.layers:
             result = self.get_tile_properties(x, y, layer)
-            if result and result.get("is_block"):
-                return True
-        return False
+            if result and result.get(prop):
+                return result
 
 
 class CharacterDisplayMixin(DisplayMixin):

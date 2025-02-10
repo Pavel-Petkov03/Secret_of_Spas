@@ -1,5 +1,3 @@
-from collections import deque
-
 import settings
 from errors import DeadError
 from player.display_mixins.animation_frame_requester import MoveAnimationFrameRequester, \
@@ -82,6 +80,12 @@ class PlayerDisplayMixin(CharacterDisplayMixin):
                                                                                5,
                                                                                is_repeated=False
                                                                                )
+
+    def collides_with_snitch(self, screen):
+        return self.find_tile_with_property(*self.get_map_position(screen), "is_snitch")
+
+    def collides_with_gate(self, screen):
+        return self.find_tile_with_property(*self.get_map_position(screen), "gate")
 
 
 class PlayerAttackDisplayMixin(PlayerDisplayMixin):

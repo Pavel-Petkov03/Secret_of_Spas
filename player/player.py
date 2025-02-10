@@ -27,6 +27,8 @@ class Player(Character, PlayerAttackDisplayMixin):
         Character.__init__(self, name, health, damage)
         PlayerAttackDisplayMixin.__init__(self, x, y, current_animation_frame, animations_frames, dungeon_data)
         self.arrows = []
+        self.inventory = None
+        self.current_mission = None
 
     def update(self, *args, **kwargs):
         for arrow in self.arrows:
@@ -37,6 +39,10 @@ class Player(Character, PlayerAttackDisplayMixin):
         for arrow in self.arrows:
             arrow.blit(screen)
         super().blit(screen)
+
+    def change_pos(self, new_x, new_y):
+        self.x = new_x
+        self.y = new_y
 
 
 class EnemyInfantry(Character, InfantryEnemyDisplayMixin):

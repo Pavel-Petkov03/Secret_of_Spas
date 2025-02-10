@@ -2,6 +2,9 @@ from collections import deque
 from abc import ABC, abstractmethod
 
 from errors import RedirectToVillageError, RemoveEnemyFromScreenError, DeadError
+from events.base_event import EventManager
+from events.redirect_event import RedirectEvent
+from events.event_types.dungeos import REDIRECT_TO_ANOTHER_MAP
 
 
 class AnimationFrameDoneError(Exception):
@@ -113,7 +116,10 @@ class DieEnemyAnimationFrameRequester(AnimationFrameRequester):
 
 class DiePlayerAnimationFrameRequester(AnimationFrameRequester):
     def cleanup_func_after_animation(self, screen, additional_data):
-        raise RedirectToVillageError("redirect to village")
+        current_event = RedirectEvent(REDIRECT_TO_ANOTHER_MAP, additional_state={
+            "redirect_url": "village"
+        })
+        EventManager.register_event(current_event)
 
 
 class ArrowAttackAnimationFrameRequester(AnimationFrameRequester):
