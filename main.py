@@ -7,7 +7,6 @@ from pytmx.util_pygame import load_pygame
 import settings
 from car.car_display import Car
 from decorators.is_in_blit_range import IsInBlitRange
-from errors import RedirectToVillageError
 from events.base_event import EventManager
 from events.redirect_event import RedirectEvent, ShowRedirectToAnotherMapEvent
 from player.utils import init_player, enemy_factory
@@ -47,11 +46,8 @@ class Game:
             pygame.display.flip()
 
     def update(self, delta_time, event_list):
-        try:
-            self.dungeon.update(self.screen, delta_time, event_list)
-            # self.mission.menu.update(event_list)
-        except RedirectToVillageError:
-            self.change_dungeon("village", is_village=True)
+        self.dungeon.update(self.screen, delta_time, event_list)
+        # self.mission.menu.update(event_list)
 
     def change_dungeon(self, dungeon_name, is_village=False):
         create_class = Village if is_village else Dungeon

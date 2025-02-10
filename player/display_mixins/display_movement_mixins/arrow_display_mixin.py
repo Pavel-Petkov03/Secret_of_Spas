@@ -2,7 +2,10 @@ import math
 from abc import ABC, abstractmethod
 
 import settings
-from errors import DeadError, RedirectToVillageError
+from errors import DeadError
+from events.base_event import EventManager
+from events.event_types.dungeos import REDIRECT_TO_ANOTHER_MAP
+from events.redirect_event import RedirectEvent
 from player.display_mixins.animation_frame_requester import ArrowAttackAnimationFrameRequester, \
     DieEnemyAnimationFrameRequester
 from player.display_mixins.display_movement_mixins.base_display_character_mixin import DisplayMixin
@@ -119,7 +122,10 @@ class EnemyArrowDisplayMixin(ArrowDisplayMixin):
         try:
             target.health -= self.damage
         except DeadError:
-            raise RedirectToVillageError()
+            current_event = RedirectEvent(REDIRECT_TO_ANOTHER_MAP, additional_state={
+                "redirect_url": "village"
+            })
+            EventManager.register_event(current_event)
 
 
 class PlayerArrow(PlayerArrowDisplayMixin):

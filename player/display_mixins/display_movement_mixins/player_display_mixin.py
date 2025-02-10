@@ -19,12 +19,13 @@ class PlayerDisplayMixin(CharacterDisplayMixin):
         self.move_to_x_y_plane(screen)
 
     def blit(self, screen):
-        width = screen.get_width()
-        height = screen.get_height()
-        current_animation = self.main_animation_frame_requester.current_animation
-        new_x = (width - current_animation.get_width()) / 2
-        new_y = (height - current_animation.get_height()) / 2
-        screen.blit(current_animation, (new_x, new_y))
+        if self.main_animation_frame_requester:
+            width = screen.get_width()
+            height = screen.get_height()
+            current_animation = self.main_animation_frame_requester.current_animation
+            new_x = (width - current_animation.get_width()) / 2
+            new_y = (height - current_animation.get_height()) / 2
+            screen.blit(current_animation, (new_x, new_y))
 
     def get_map_position(self, screen):
         tile_x = int(self.x // settings.TILE_WIDTH) + int(settings.VIEW_PORT_TILES_W // 2)
@@ -73,13 +74,6 @@ class PlayerDisplayMixin(CharacterDisplayMixin):
         player_map_x = int(current_x + new_x / settings.TILE_WIDTH)
         player_map_y = int(current_y + new_y / settings.TILE_HEIGHT)
         return self.collides_with_block(player_map_x, player_map_y)
-
-    def die(self):
-        self.main_animation_frame_requester = DiePlayerAnimationFrameRequester(self.animation_frames[9],
-                                                                               20,
-                                                                               5,
-                                                                               is_repeated=False
-                                                                               )
 
     def collides_with_snitch(self, screen):
         return self.find_tile_with_property(*self.get_map_position(screen), "is_snitch")

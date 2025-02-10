@@ -9,7 +9,9 @@ from settings import GATE_LEVEL_INFO
 class RedirectEvent(Event):
     def run_event_listener(self, game_state):
         # todo create to village redirect
-        game_state.change_dungeon(self.additional_state["redirect_url"], is_village=False)
+        url = self.additional_state["redirect_url"]
+        game_state.change_dungeon(url, is_village=True if url == settings.VILLAGE_URL else False
+                                  )
 
 
 class ShowRedirectToAnotherMapEvent(Event):
