@@ -1,6 +1,8 @@
 from abc import ABC, abstractmethod
 import pygame
 
+from utils.singeton_meta import SingletonMeta
+
 
 class Event(ABC):
     event_type = None
@@ -20,15 +22,6 @@ class Event(ABC):
             custom_event = pygame.event.Event(self.event_type)
         pygame.event.post(custom_event)
         EventManager.register_event(self)
-
-
-class SingletonMeta(type):
-    _instances = {}
-
-    def __call__(cls, *args, **kwargs):
-        if cls not in cls._instances:
-            cls._instances[cls] = super().__call__(*args, **kwargs)
-        return cls._instances[cls]
 
 
 class EventManager(metaclass=SingletonMeta):

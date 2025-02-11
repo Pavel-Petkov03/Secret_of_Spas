@@ -132,7 +132,6 @@ class Dungeon(BaseDungeon):
     def update_inventory(self, screen):
         for item in self.items:
             dis = item.get_distance_to_player(screen)
-            print(dis)
             if dis < 1:
                 self.items.remove(item)
                 self.inventory.add_item(item)

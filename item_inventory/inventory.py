@@ -5,13 +5,12 @@ import pygame_menu
 
 import settings
 from decorators.is_in_blit_range import IsInBlitRange
+from utils.singeton_meta import SingletonMeta
 
 
-class Inventory:
+class Inventory(metaclass=SingletonMeta):
     def __init__(self):
         self.items = {}
-        self.menu = pygame_menu.Menu("Inventory", settings.SCREEN_WIDTH / 4, settings.SCREEN_WIDTH / 4)
-        self.menu.set_relative_position(0, 0)
 
     def add_item(self, item):
         if item.name in self.items:
@@ -24,7 +23,7 @@ class Inventory:
         menu.set_relative_position(0, 0)
         for item_name, count in self.items.items():
             menu.add.label(f"{item_name}: {count}")
-        self.menu.draw(screen)
+        menu.draw(screen)
 
 
 class Item:

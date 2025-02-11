@@ -137,7 +137,8 @@ class PlayerAttackDisplayMixin(PlayerDisplayMixin):
                         )
                     custom_event = ItemDropEvent(dungeon_state=self.dungeon_data,
                                                  additional_state={
-
+                                                     "x": self.x,
+                                                     "y": self.y
                                                  })
                     custom_event.start()
 

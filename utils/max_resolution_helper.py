@@ -1,4 +1,5 @@
 import pygame
+
 pygame.init()
 
 VALID_RESOLUTIONS = [
@@ -8,6 +9,7 @@ VALID_RESOLUTIONS = [
     768,
     512,
 ]
+
 
 def get_max_dimension():
     display_info = pygame.display.Info()

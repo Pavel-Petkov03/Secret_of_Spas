@@ -1,4 +1,4 @@
-from utils import get_max_dimension
+from utils.max_resolution_helper import get_max_dimension
 import pygame
 
 CURRENT_MAX_DIMENSION = get_max_dimension()
