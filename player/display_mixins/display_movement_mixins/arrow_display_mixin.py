@@ -3,8 +3,8 @@ from abc import ABC, abstractmethod
 
 import settings
 from errors import DeadError
-from events.base_event import EventManager
-from events.event_types.dungeos import REDIRECT_TO_ANOTHER_MAP
+from events.event_types.dungeos import REDIRECT_TO_ANOTHER_MAP, ITEM_DROP
+from events.item_drop_event import ItemDropEvent
 from events.redirect_event import RedirectEvent
 from player.display_mixins.animation_frame_requester import ArrowAttackAnimationFrameRequester, \
     DieEnemyAnimationFrameRequester
@@ -33,7 +33,7 @@ class ArrowDisplayMixin(DisplayMixin, ABC):
     def update_state(self, screen, delta_time, event_list, *args, **kwargs):
         target_attacked = self.target_touched(screen)
         if target_attacked:
-            self.decrease_damage_to_target(target_attacked)
+            self.decrease_damage_to_target(target_attacked, screen)
             self.executor.arrows.remove(self)
             target_attacked.get_map_position(screen)
         elif self.arrow_out_of_range() or self.collides_with_block(*self.get_map_position(screen)):
@@ -41,7 +41,7 @@ class ArrowDisplayMixin(DisplayMixin, ABC):
         else:
             self.move_arrow_on_x_y_plane()
 
-    def decrease_damage_to_target(self, target):
+    def decrease_damage_to_target(self, target, screen):
         pass
 
     @abstractmethod
@@ -77,7 +77,7 @@ class PlayerArrowDisplayMixin(ArrowDisplayMixin):
             if current_pos == enemy.get_map_position(screen):
                 return enemy
 
-    def decrease_damage_to_target(self, target):
+    def decrease_damage_to_target(self, target, screen):
         try:
             target.health -= self.damage
         except DeadError:
@@ -89,6 +89,11 @@ class PlayerArrowDisplayMixin(ArrowDisplayMixin):
                     is_repeated=False,
                     to_remove=target
                 )
+                current_event = ItemDropEvent(dungeon_state=self.dungeon_data, additional_state={
+                    "x": target.x,
+                    "y": target.y
+                })
+                current_event.start()
 
     def get_map_position(self, screen):
         current_x = screen.get_width() / 2 / settings.SCALE_FACTOR / settings.TILE_WIDTH
@@ -118,14 +123,14 @@ class EnemyArrowDisplayMixin(ArrowDisplayMixin):
         screen_y = self.y // settings.TILE_HEIGHT
         return screen_x, screen_y
 
-    def decrease_damage_to_target(self, target):
+    def decrease_damage_to_target(self, target, screen):
         try:
             target.health -= self.damage
         except DeadError:
             current_event = RedirectEvent(REDIRECT_TO_ANOTHER_MAP, additional_state={
                 "redirect_url": "village"
             })
-            EventManager.register_event(current_event)
+            current_event.start()
 
 
 class PlayerArrow(PlayerArrowDisplayMixin):

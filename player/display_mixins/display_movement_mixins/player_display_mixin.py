@@ -1,5 +1,6 @@
 import settings
 from errors import DeadError
+from events.item_drop_event import ItemDropEvent
 from player.display_mixins.animation_frame_requester import MoveAnimationFrameRequester, \
     DiePlayerAnimationFrameRequester, PlayerAttackAnimationFrameRequester, DieEnemyAnimationFrameRequester
 from player.display_mixins.display_movement_mixins.arrow_display_mixin import PlayerArrow
@@ -134,6 +135,11 @@ class PlayerAttackDisplayMixin(PlayerDisplayMixin):
                             is_repeated=False,
                             to_remove=enemy
                         )
+                    custom_event = ItemDropEvent(dungeon_state=self.dungeon_data,
+                                                 additional_state={
+
+                                                 })
+                    custom_event.start()
 
     def get_attack_props(self):
         return {

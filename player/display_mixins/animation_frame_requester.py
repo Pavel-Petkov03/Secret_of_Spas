@@ -1,8 +1,6 @@
 from collections import deque
 from abc import ABC, abstractmethod
-
 from errors import DeadError
-from events.base_event import EventManager
 from events.redirect_event import RedirectEvent
 from events.event_types.dungeos import REDIRECT_TO_ANOTHER_MAP
 
@@ -120,7 +118,7 @@ class DiePlayerAnimationFrameRequester(AnimationFrameRequester):
             "redirect_url": "village",
             "is_village": True
         })
-        EventManager.register_event(current_event)
+        current_event.start()
 
 
 class ArrowAttackAnimationFrameRequester(AnimationFrameRequester):

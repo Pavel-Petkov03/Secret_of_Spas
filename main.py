@@ -15,7 +15,6 @@ from spritesheet.utils import get_animation_matrix
 
 
 class Game:
-    DUNGEON_FOLDER_DIR = "src/tile_maps/"
 
     def __init__(self):
         self.screen = pygame.display.set_mode(
@@ -51,15 +50,17 @@ class Game:
 
     def change_dungeon(self, dungeon_name, is_village=False):
         create_class = Village if is_village else Dungeon
-        self.dungeon = create_class(self.DUNGEON_FOLDER_DIR + dungeon_name + ".tmx")
+        self.dungeon = create_class(dungeon_name)
         self.dungeon.player.x, self.dungeon.player.y = settings.PLAYER_POS_DUNGEON_LOGGER[dungeon_name]
 
 
 class BaseDungeon:
+    DUNGEON_FOLDER_DIR = "src/tile_maps/"
     is_shooting_allowed = None
 
-    def __init__(self, tmx_string):
-        self.tmx_data = load_pygame(tmx_string)
+    def __init__(self, dungeon_name):
+        self.name = dungeon_name
+        self.tmx_data = load_pygame(self.DUNGEON_FOLDER_DIR + dungeon_name + ".tmx")
         self.scale_grid()
         self.player = init_player(self)
         self.items = []
@@ -87,9 +88,8 @@ class BaseDungeon:
             # })
             pass
         elif (gate_data := self.player.collides_with_gate(screen)) and not self.popup_menu:
-            current_event = ShowRedirectToAnotherMapEvent(modal_events.REDIRECT_MODAL_EVENT, additional_state=gate_data,
-                                                          dungeon_state=self)
-            EventManager.register_event(current_event)
+            current_event = ShowRedirectToAnotherMapEvent(additional_state=gate_data, dungeon_state=self)
+            current_event.start()
 
     def render_map(self, screen):
         for layer in self.tmx_data.visible_layers:
@@ -125,21 +125,18 @@ class Dungeon(BaseDungeon):
 
     def update(self, screen, delta_time, event_list):
         super().update(screen, delta_time, event_list)
-        self.update_inventory()
+        self.update_inventory(screen)
         for enemy in self.enemies:
             enemy.update(screen, delta_time, event_list)
 
-    def update_inventory(self):
+    def update_inventory(self, screen):
         for item in self.items:
-            if self.distance(item, self.player) < 1:
+            dis = item.get_distance_to_player(screen)
+            print(dis)
+            if dis < 1:
                 self.items.remove(item)
                 self.inventory.add_item(item)
                 break
-
-    def distance(self, first, second):
-        dx = first.x - second.x
-        dy = first.y - second.y
-        return math.sqrt(dx ** 2 + + dy ** 2)
 
 
 class Village(BaseDungeon):

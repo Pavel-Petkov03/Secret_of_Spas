@@ -12,7 +12,7 @@ class CarDisplayMixin(PlayerDisplayMixin):
         super().__init__(*args, **kwargs)
         self.is_mount = False
         self.player = self.dungeon_data.player
-        self.movement_speed = 4
+        self.movement_speed = 10
 
     def get_map_position(self, screen):
         if self.is_mount:

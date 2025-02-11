@@ -3,10 +3,13 @@ import pygame_menu
 import settings
 from events.base_event import Event, EventManager
 from events.event_types.dungeos import REDIRECT_TO_ANOTHER_MAP
+from events.event_types.modals import REDIRECT_MODAL_EVENT
 from settings import GATE_LEVEL_INFO
 
 
 class RedirectEvent(Event):
+    event_type = REDIRECT_TO_ANOTHER_MAP
+
     def run_event_listener(self, game_state):
         # todo create to village redirect
         url = self.additional_state["redirect_url"]
@@ -15,6 +18,7 @@ class RedirectEvent(Event):
 
 
 class ShowRedirectToAnotherMapEvent(Event):
+    event_type = REDIRECT_MODAL_EVENT
 
     def run_event_listener(self, game_state):
         self.dungeon_state.popup_menu = self.create_menu()
@@ -36,5 +40,5 @@ class ShowRedirectToAnotherMapEvent(Event):
         self.dungeon_state.popup_menu = None
 
     def redirect(self):
-        current_event = RedirectEvent(REDIRECT_TO_ANOTHER_MAP, additional_state=self.additional_state)
-        EventManager.register_event(current_event)
+        current_event = RedirectEvent(additional_state=self.additional_state)
+        current_event.start()
