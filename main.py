@@ -1,16 +1,14 @@
 import math
 import random
-import events.event_types.modals as modal_events
 import pygame
 from pytmx.util_pygame import load_pygame
 import settings
 from car.car_display import Car
 from decorators.is_in_blit_range import IsInBlitRange
 from events.base_event import EventManager
-from events.redirect_event import ShowRedirectToAnotherMapEvent
+from events.redirect_event import ShowRedirectToAnotherMapEvent, ShowMissionEvent
 from item_inventory.inventory import Inventory
 from player.utils import init_player, enemy_factory
-from snitches.missions.base_mission import Mission
 from spritesheet.utils import get_animation_matrix
 
 
@@ -25,8 +23,6 @@ class Game:
         self.dungeon = None
         self.change_dungeon("village", is_village=True)
         self.fps = 60
-        self.mission = Mission(["Take 1000 water droplets", "qga", "Kill 100 archers", "Come back to me"],
-                               "src/images/blonde_girl.png")
 
     def run(self):
         running = True
@@ -40,13 +36,11 @@ class Game:
             self.screen.fill((255, 0, 0))
             self.update(delta_time, event_list)
             self.dungeon.blit(self.screen)
-            # self.mission.menu.draw(self.screen)
             pygame.display.update()
             pygame.display.flip()
 
     def update(self, delta_time, event_list):
         self.dungeon.update(self.screen, delta_time, event_list)
-        # self.mission.menu.update(event_list)
 
     def change_dungeon(self, dungeon_name, is_village=False):
         create_class = Village if is_village else Dungeon
@@ -83,10 +77,11 @@ class BaseDungeon:
 
     def handle_events(self, screen):
         if snitch_data := self.player.collides_with_snitch(screen):
-            # current_event = ShowRedirectToAnotherMapEvent(modal_events.REDIRECT_MODAL_EVENT, additional_state={
-            #     "redirect_url" : snitch_data[]
-            # })
-            pass
+            current_event = ShowMissionEvent(additional_state={
+                "snitch_name": snitch_data["snitch_name"],
+                "inventory": self.inventory
+            }, dungeon_state=self)
+            current_event.start()
         elif (gate_data := self.player.collides_with_gate(screen)) and not self.popup_menu:
             current_event = ShowRedirectToAnotherMapEvent(additional_state=gate_data, dungeon_state=self)
             current_event.start()
