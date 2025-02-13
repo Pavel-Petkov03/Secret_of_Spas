@@ -133,19 +133,19 @@
   <tile id="32">
    <properties>
     <property name="gate" type="bool" value="true"/>
-    <property name="redirect_url" value="second_level"/>
+    <property name="redirect_url" value="third_level"/>
    </properties>
   </tile>
   <tile id="39">
    <properties>
     <property name="gate" type="bool" value="true"/>
-    <property name="redirect_url" value="second_level"/>
+    <property name="redirect_url" value="third_level"/>
    </properties>
   </tile>
   <tile id="46">
    <properties>
     <property name="gate" type="bool" value="true"/>
-    <property name="redirect_url" value="second_level"/>
+    <property name="redirect_url" value="third_level"/>
    </properties>
   </tile>
  </tileset>
@@ -305,7 +305,7 @@
   <tile id="334">
    <properties>
     <property name="gate" type="bool" value="true"/>
-    <property name="redirect_url" value="third_level"/>
+    <property name="redirect_url" value="second_level"/>
    </properties>
   </tile>
   <tile id="349">

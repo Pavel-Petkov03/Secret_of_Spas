@@ -2233,25 +2233,25 @@
   <image source="../images/sprite_sheets/browserquest-images/img/1/rick.png" width="128" height="32"/>
   <tile id="0">
    <properties>
-    <property name="snitch" type="bool" value="true"/>
+    <property name="is_snitch" type="bool" value="true"/>
     <property name="snitch_name" value="Vladi"/>
    </properties>
   </tile>
   <tile id="1">
    <properties>
-    <property name="snitch" type="bool" value="true"/>
+    <property name="is_snitch" type="bool" value="true"/>
     <property name="snitch_name" value="Vladi"/>
    </properties>
   </tile>
   <tile id="8">
    <properties>
-    <property name="snitch" type="bool" value="true"/>
+    <property name="is_snitch" type="bool" value="true"/>
     <property name="snitch_name" value="Vladi"/>
    </properties>
   </tile>
   <tile id="9">
    <properties>
-    <property name="snitch" type="bool" value="true"/>
+    <property name="is_snitch" type="bool" value="true"/>
     <property name="snitch_name" value="Vladi"/>
    </properties>
   </tile>

@@ -8,16 +8,17 @@ from utils.singeton_meta import SingletonMeta
 
 class Inventory(metaclass=SingletonMeta):
     def __init__(self):
-        self.items = {i: i for i in range(20)}
+        self.items = {}
         self.menu = self.update_menu()
 
     def update_menu(self):
         theme = pygame_menu.themes.THEME_DARK.copy()
         theme.widget_alignment = pygame_menu.locals.ALIGN_LEFT
+        theme.title_font_size = int(settings.SCREEN_WIDTH / 3 * 0.12)
         menu = pygame_menu.Menu("Inventory", settings.SCREEN_WIDTH / 3, settings.SCREEN_WIDTH / 4, theme=theme)
         menu.set_relative_position(0, 0)
         for item_name, count in self.items.items():
-            menu.add.label(f"{item_name}: {count}")
+            menu.add.label(f"{item_name}: {count}", font_size=int(settings.SCREEN_WIDTH / 3 * 0.08))
         return menu
 
     def add_item(self, item):

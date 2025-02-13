@@ -5,7 +5,9 @@ import settings
 
 IMAGE_URLS = {
     "Vili": "src/images/Vili.png",
-    "Spas": "src/images/Spas.png"
+    "Spas": "src/images/Spas.png",
+    "Eva": "src/images/Spas.png",
+    "Vladi": "src/images/Spas.png"
 }
 
 SNITCH_TARGET_DUNGEONS = {
@@ -22,15 +24,19 @@ class MissionState(Enum):
 
 
 class BaseMission(ABC):
+    TITLE_FONT_SIZE = int(settings.SCREEN_WIDTH / 2 * 0.12)
+    LABEL_FONT_SIZE = int(settings.SCREEN_WIDTH / 2 * 0.08)
 
     def __init__(self, snitch):
         self.snitch = snitch
 
     @abstractmethod
     def get_modal(self, **kwargs):
+        theme = pygame_menu.themes.THEME_DARK.copy()
+        theme.title_font_size = self.TITLE_FONT_SIZE
         menu = pygame_menu.Menu("Mission", settings.SCREEN_WIDTH / 2, settings.SCREEN_WIDTH / 2,
                                 theme=pygame_menu.themes.THEME_DARK)
-        menu.add.label(f"{kwargs['snitch_name']} the keeper", font_size=int(settings.SCALE_FACTOR * 20))
+        menu.add.label(f"{kwargs['snitch_name']} the keeper", font_size=self.LABEL_FONT_SIZE)
         menu.add.image(IMAGE_URLS[self.snitch.name],
                        scale=(settings.SCALE_FACTOR / 10, settings.SCALE_FACTOR / 10))
         return menu
@@ -56,9 +62,9 @@ class ActionMission(BaseMission):
 
     def get_modal(self, **kwargs):
         menu = super().get_modal(**kwargs)
-        menu.add.label(self.get_mission_place_string(), font_size=int(settings.SCALE_FACTOR * 20))
-        menu.add.label(self.get_mission_target_string(), font_size=int(settings.SCALE_FACTOR * 20))
-        menu.add.label("", font_size=int(settings.SCALE_FACTOR * 20))
+        menu.add.label(self.get_mission_place_string(), font_size=self.LABEL_FONT_SIZE)
+        menu.add.label(self.get_mission_target_string(), font_size=self.LABEL_FONT_SIZE)
+        menu.add.label("", font_size=self.LABEL_FONT_SIZE)
         if self.state == MissionState.NOT_TAKEN:
             menu.add.button("Accept", lambda: self.accept_mission(kwargs["dungeon_state"]))
         elif self.is_done(kwargs["inventory"]):
@@ -92,7 +98,7 @@ class InfoMessage(BaseMission):
         menu = super().get_modal(**kwargs)
         for text_row in self.group_words():
             string_row = "".join(text_row)
-            menu.add.label(string_row, font_size=int(settings.SCALE_FACTOR * 20))
+            menu.add.label(string_row, font_size=self.LABEL_FONT_SIZE)
         menu.add.button("Continue", lambda: self.continue_mission(kwargs["dungeon_state"]))
         return menu
 
@@ -110,11 +116,12 @@ class InfoMessage(BaseMission):
 class EndOfMissionsMessage(BaseMission):
     def get_modal(self, **kwargs):
         menu = super().get_modal(**kwargs)
-        menu.add.label("This is the information I know", font_size=int(settings.SCALE_FACTOR * 20))
-        menu.add.label(f"Go to {self.snitch.next_snitch.name}", font_size=int(settings.SCALE_FACTOR * 20))
-        menu.add.button("Continue", lambda: self.continue_mission(kwargs["dungeon_state"]))
+        menu.add.label("This is the information I know", font_size=self.LABEL_FONT_SIZE)
+        menu.add.label(f"Go to {self.snitch.next_snitch.name}", font_size=self.LABEL_FONT_SIZE)
+        menu.add.button("Continue",
+                        lambda: self.continue_mission(kwargs["dungeon_state"], kwargs["available_snitches"]))
         return menu
 
-    @staticmethod
-    def continue_mission(dungeon_state):
+    def continue_mission(self, dungeon_state, available_snitches):
+        available_snitches.add(self.snitch.next_snitch)
         dungeon_state.popup_menu = None

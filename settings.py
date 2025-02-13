@@ -20,7 +20,9 @@ VILLAGE_URL = "village"
 PLAYER_POS_DUNGEON_LOGGER = {
     "first_level": (700, 0),
     VILLAGE_URL: (1100, 0),
-    "second_level": (320, 0)
+    "second_level": (320, 0),
+    "third_level": (100, 100),
+    "fourth_level": (320, 0),
 }
 
 GATE_LEVEL_INFO = {
@@ -35,5 +37,13 @@ GATE_LEVEL_INFO = {
     "second_level": {
         "village_name": "Gin dungeon",
         "village_image_location": "src/images/dungeon_pictures/second_dungeon.png"
+    },
+    "third_level": {
+        "village_name": "Wine dungeon",
+        "village_image_location": "src/images/dungeon_pictures/third_dungeon.png"
+    },
+    "fourth_level": {
+        "village_name": "Vodka dungeon",
+        "village_image_location": "src/images/dungeon_pictures/fourth_dungeon.png"
     }
 }

@@ -9,6 +9,7 @@ from events.base_event import EventManager
 from events.redirect_event import ShowRedirectToAnotherMapEvent, ShowMissionEvent
 from item_inventory.inventory import Inventory
 from player.utils import init_player, enemy_factory
+from snitches.settings import Spas, SNITCHES
 from spritesheet.utils import get_animation_matrix
 
 
@@ -21,6 +22,8 @@ class Game:
         )
         self.clock = pygame.time.Clock()
         self.dungeon = None
+        self.available_snitches = set()
+        self.available_snitches.add(Spas)
         self.change_dungeon("village", is_village=True)
         self.fps = 60
 
@@ -40,12 +43,17 @@ class Game:
             pygame.display.flip()
 
     def update(self, delta_time, event_list):
-        self.dungeon.update(self.screen, delta_time, event_list)
+        self.dungeon.update(self.screen, delta_time, event_list, self.additional_kwargs())
 
     def change_dungeon(self, dungeon_name, is_village=False):
         create_class = Village if is_village else Dungeon
         self.dungeon = create_class(dungeon_name)
         self.dungeon.player.x, self.dungeon.player.y = settings.PLAYER_POS_DUNGEON_LOGGER[dungeon_name]
+
+    def additional_kwargs(self):
+        return {
+            "available_snitches": self.available_snitches
+        }
 
 
 class BaseDungeon:
@@ -69,22 +77,29 @@ class BaseDungeon:
                 scaled_image = pygame.transform.scale(image, (new_width, new_height))
                 self.tmx_data.images[gid] = scaled_image
 
-    def update(self, screen, delta_time, event_list):
-        self.handle_events(screen)
+    def update(self, screen, delta_time, event_list, additional_kwargs):
+        self.handle_events(screen, additional_kwargs)
         self.player.update(screen, delta_time, event_list, is_shooting_allowed=self.is_shooting_allowed)
         if self.popup_menu:
             self.popup_menu.update(event_list)
 
-    def handle_events(self, screen):
+    def handle_events(self, screen, additional_kwargs):
         if (snitch_data := self.player.collides_with_snitch(screen)) and not self.popup_menu:
-            current_event = ShowMissionEvent(additional_state={
-                "snitch_name": snitch_data["snitch_name"],
-                "inventory": self.inventory
-            }, dungeon_state=self)
-            current_event.start()
+            available_snitches = additional_kwargs["available_snitches"]
+            snitch_name = snitch_data["snitch_name"]
+            if self.is_snitch_available(available_snitches, snitch_name):
+                current_event = ShowMissionEvent(additional_state={
+                    "snitch_name": snitch_name,
+                    "inventory": self.inventory,
+                    "available_snitches": available_snitches
+                }, dungeon_state=self)
+                current_event.start()
         elif (gate_data := self.player.collides_with_gate(screen)) and not self.popup_menu:
             current_event = ShowRedirectToAnotherMapEvent(additional_state=gate_data, dungeon_state=self)
             current_event.start()
+
+    def is_snitch_available(self, available_snitches, name):
+        return SNITCHES[name] in available_snitches
 
     def render_map(self, screen):
         for layer in self.tmx_data.visible_layers:
@@ -118,18 +133,19 @@ class Dungeon(BaseDungeon):
             item.blit(screen)
         self.inventory.blit(screen)
 
-    def update(self, screen, delta_time, event_list):
-        super().update(screen, delta_time, event_list)
+    def update(self, screen, delta_time, event_list, additional_data):
+        super().update(screen, delta_time, event_list, additional_data)
         self.update_inventory(screen, event_list)
         for enemy in self.enemies:
             enemy.update(screen, delta_time, event_list)
 
     def update_inventory(self, screen, event_list):
-        self.inventory.menu.update(event_list)
         for item in self.items:
             if item.get_distance_to_player(screen) < 1:
                 self.items.remove(item)
                 self.inventory.add_item(item)
+                break
+        self.inventory.menu.update(event_list)
 
 
 class Village(BaseDungeon):
@@ -146,9 +162,9 @@ class Village(BaseDungeon):
         ]
         self.car = Car(1200, 400, result[0], result, self)
 
-    def update(self, screen, delta_time, event_list):
+    def update(self, screen, delta_time, event_list, additional_data):
         self.inventory.menu.update(event_list)
-        self.update_car(screen, delta_time, event_list)
+        self.update_car(screen, delta_time, event_list, additional_data)
         for event in event_list:
             if event.type == pygame.KEYDOWN and event.key == pygame.K_f and self.distance_between_car_and_player(
                     screen) < 3:
@@ -161,14 +177,14 @@ class Village(BaseDungeon):
         x2, y2 = self.car.get_map_position(screen)
         return int(math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2))
 
-    def update_car(self, screen, delta_time, event_list):
+    def update_car(self, screen, delta_time, event_list, additional_data):
         if self.car.is_player_in_car():
             self.car.handle_player_in_car()
             self.car.update(screen, delta_time, event_list)
             self.player.change_pos(*self.car.get_x_y_pos())
         else:
             self.car.handle_player_out_of_car()
-            super().update(screen, delta_time, event_list)
+            super().update(screen, delta_time, event_list, additional_data)
 
     def blit(self, screen):
         self.render_map(screen)
