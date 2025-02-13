@@ -76,7 +76,7 @@ class BaseDungeon:
             self.popup_menu.update(event_list)
 
     def handle_events(self, screen):
-        if snitch_data := self.player.collides_with_snitch(screen):
+        if (snitch_data := self.player.collides_with_snitch(screen)) and not self.popup_menu:
             current_event = ShowMissionEvent(additional_state={
                 "snitch_name": snitch_data["snitch_name"],
                 "inventory": self.inventory
@@ -120,17 +120,16 @@ class Dungeon(BaseDungeon):
 
     def update(self, screen, delta_time, event_list):
         super().update(screen, delta_time, event_list)
-        self.update_inventory(screen)
+        self.update_inventory(screen, event_list)
         for enemy in self.enemies:
             enemy.update(screen, delta_time, event_list)
 
-    def update_inventory(self, screen):
+    def update_inventory(self, screen, event_list):
+        self.inventory.menu.update(event_list)
         for item in self.items:
-            dis = item.get_distance_to_player(screen)
-            if dis < 1:
+            if item.get_distance_to_player(screen) < 1:
                 self.items.remove(item)
                 self.inventory.add_item(item)
-                break
 
 
 class Village(BaseDungeon):
@@ -148,6 +147,7 @@ class Village(BaseDungeon):
         self.car = Car(1200, 400, result[0], result, self)
 
     def update(self, screen, delta_time, event_list):
+        self.inventory.menu.update(event_list)
         self.update_car(screen, delta_time, event_list)
         for event in event_list:
             if event.type == pygame.KEYDOWN and event.key == pygame.K_f and self.distance_between_car_and_player(

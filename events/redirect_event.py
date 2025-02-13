@@ -49,8 +49,9 @@ class ShowMissionEvent(Event):
     def run_event_listener(self, game_state):
         current_snitch = snitch_info.SNITCHES[self.additional_state["snitch_name"]]
         mission = current_snitch.get_current_mission()
-        modal = mission.get_modal({
-            "inventory": self.additional_state["inventory"],
-            "dungeon_state": self.dungeon_state
-        })
+        modal = mission.get_modal(
+            inventory=self.additional_state["inventory"],
+            dungeon_state=self.dungeon_state,
+            snitch_name=self.additional_state["snitch_name"]
+        )
         self.dungeon_state.popup_menu = modal

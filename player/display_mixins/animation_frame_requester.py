@@ -59,10 +59,6 @@ class AnimationFrameRequester(ABC):
         pass
 
 
-# class CustomImageChangingAnimationFrameRequester(AnimationFrameRequester):
-#     pass
-
-
 class MoveAnimationFrameRequester(AnimationFrameRequester):
     """
     No cleanup function for movement because it is not ending animation

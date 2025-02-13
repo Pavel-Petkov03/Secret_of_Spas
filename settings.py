@@ -15,17 +15,25 @@ SCREEN_WIDTH = CURRENT_MAX_DIMENSION - 1 / 8 * CURRENT_MAX_DIMENSION
 SCREEN_HEIGHT = CURRENT_MAX_DIMENSION - 1 / 8 * CURRENT_MAX_DIMENSION
 SCALE_FACTOR = SCREEN_HEIGHT / TILE_WIDTH / VIEW_PORT_TILES_H
 
-
 VILLAGE_URL = "village"
 
 PLAYER_POS_DUNGEON_LOGGER = {
-    "first_level": (700, 500),
-    VILLAGE_URL: (1100, 0)
+    "first_level": (700, 0),
+    VILLAGE_URL: (1100, 0),
+    "second_level": (320, 0)
 }
 
 GATE_LEVEL_INFO = {
+    VILLAGE_URL: {
+        "village_name": "Village",
+        "village_image_location": "src/images/dungeon_pictures/village.png"
+    },
     "first_level": {
         "village_name": "Rakiq dungeon",
         "village_image_location": "src/images/dungeon_pictures/first_dungeon.png"
+    },
+    "second_level": {
+        "village_name": "Gin dungeon",
+        "village_image_location": "src/images/dungeon_pictures/second_dungeon.png"
     }
 }

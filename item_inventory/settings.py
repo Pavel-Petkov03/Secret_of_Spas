@@ -2,10 +2,27 @@ import random
 
 ITEM_DROP_FOR_MAPS = {
     "first_level": {
-        "Grapes": (10, "src/images/food/fruit/grapes.png"),
-        "Apples": (40, "src/images/food/fruit/apple.png"),
-        "Cherries": (30, "src/images/food/fruit/cherries.png"),
-        "Blueberries": (20, "src/images/food/fruit/blueberries.png")
+        "Grapes(for rakiq)": (40, "src/images/food/fruit/grapes.png"),
+        "Apples(for rakiq)": (40, "src/images/food/fruit/apple.png"),
+        "Cherries(for rakiq)": (30, "src/images/food/fruit/cherries.png"),
+        "Blueberries(for rakiq)": (20, "src/images/food/fruit/blueberries.png")
+    },
+    "second_level": {
+        "Pineapples(for wine)": (40, "src/images/food/fruit/pineapple_01.png"),
+        "Cucumbers(for wine)": (50, "src/images/food/vegetable/cucumber.png"),
+        "Lemons(for wine)": (10, "src/images/food/fruit/lemon.png")
+    },
+    "third_level": {
+        "Grapes(for gin)": (40, "src/images/food/fruit/grapes.png"),
+        "Bananas(for gin)": (20, "src/images/food/fruit/banana.png"),
+        "Pears(for gin)": (30, "src/images/food/fruit/pear.png"),
+        "Potatoes(for gin)": (10, "src/images/food/vegetable/potato.png"),
+    },
+    "fourth_level": {
+        "Potatoes(for vodka)": (40, "src/images/food/vegetable/potato.png"),
+        "Bananas(for vodka)": (30, "src/images/food/fruit/banana.png"),
+        "Plums(for vodka)": (20, "src/images/food/fruit/plum.png"),
+        "Pears(for vodka)": (10, "src/images/food/fruit/pear.png"),
     },
 }
 

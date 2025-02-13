@@ -1,8 +1,6 @@
 import math
-
 import pygame.image
 import pygame_menu
-
 import settings
 from decorators.is_in_blit_range import IsInBlitRange
 from utils.singeton_meta import SingletonMeta
@@ -10,20 +8,30 @@ from utils.singeton_meta import SingletonMeta
 
 class Inventory(metaclass=SingletonMeta):
     def __init__(self):
-        self.items = {}
+        self.items = {i: i for i in range(20)}
+        self.menu = self.update_menu()
+
+    def update_menu(self):
+        theme = pygame_menu.themes.THEME_DARK.copy()
+        theme.widget_alignment = pygame_menu.locals.ALIGN_LEFT
+        menu = pygame_menu.Menu("Inventory", settings.SCREEN_WIDTH / 3, settings.SCREEN_WIDTH / 4, theme=theme)
+        menu.set_relative_position(0, 0)
+        for item_name, count in self.items.items():
+            menu.add.label(f"{item_name}: {count}")
+        return menu
 
     def add_item(self, item):
         if item.name in self.items:
             self.items[item.name] += 1
         else:
             self.items[item.name] = 1
+        self.menu = self.update_menu()
 
     def blit(self, screen):
-        menu = pygame_menu.Menu("Inventory", settings.SCREEN_WIDTH / 4, settings.SCREEN_WIDTH / 4)
-        menu.set_relative_position(0, 0)
-        for item_name, count in self.items.items():
-            menu.add.label(f"{item_name}: {count}")
-        menu.draw(screen)
+        self.menu.draw(screen)
+
+    def remove_items_from_mission(self, mission):
+        self.items[mission.ingredient_name] -= mission.ingredient_quantity
 
 
 class Item:
