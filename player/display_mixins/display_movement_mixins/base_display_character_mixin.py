@@ -1,6 +1,8 @@
 from collections import deque
 from abc import ABC, abstractmethod
 
+import pygame
+
 import settings
 from decorators.is_in_blit_range import IsInBlitRange
 from player.display_mixins.animation_frame_requester import AnimationFrameDoneError, MoveAnimationFrameRequester, \
@@ -79,6 +81,11 @@ class CharacterDisplayMixin(DisplayMixin):
         self.move_animation_frame_requester = MoveAnimationFrameRequester(self.current_animation_frame, 20, 5)
         self.main_animation_frame_requester = self.move_animation_frame_requester
         self.movement_speed = 2
+
+    @staticmethod
+    def play_dead_sound():
+        hit_sound = pygame.mixer.Sound("audio/dead.ogg")
+        hit_sound.play()
 
     def move_to_x_y_plane(self, screen):
         pass

@@ -1,9 +1,11 @@
 import math
 from abc import ABC, abstractmethod
 
+import pygame
+
 import settings
 from errors import DeadError
-from events.event_types.dungeos import REDIRECT_TO_ANOTHER_MAP, ITEM_DROP
+from events.event_types.dungeos import REDIRECT_TO_ANOTHER_MAP
 from events.item_drop_event import ItemDropEvent
 from events.redirect_event import RedirectEvent
 from player.display_mixins.animation_frame_requester import ArrowAttackAnimationFrameRequester, \
@@ -89,11 +91,17 @@ class PlayerArrowDisplayMixin(ArrowDisplayMixin):
                     is_repeated=False,
                     to_remove=target
                 )
+                self.play_dead_sound()
                 current_event = ItemDropEvent(dungeon_state=self.dungeon_data, additional_state={
                     "x": target.x,
                     "y": target.y
                 })
                 current_event.start()
+
+    @staticmethod
+    def play_dead_sound():
+        hit_sound = pygame.mixer.Sound("audio/dead.ogg")
+        hit_sound.play()
 
     def get_map_position(self, screen):
         current_x = screen.get_width() / 2 / settings.SCALE_FACTOR / settings.TILE_WIDTH

@@ -146,6 +146,8 @@ class Dungeon(BaseDungeon):
     def update_inventory(self, screen, event_list):
         for item in self.items:
             if item.get_distance_to_player(screen) < 1:
+                sound = pygame.mixer.Sound("audio/item_take.ogg")
+                sound.play()
                 self.items.remove(item)
                 self.inventory.add_item(item)
                 break

@@ -106,6 +106,8 @@ class PlayerAttackDisplayMixin(PlayerDisplayMixin):
                         next_animation_request=self.move_animation_frame_requester
                     )
             elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                arrow_sound = pygame.mixer.Sound("audio/shoot.ogg")
+                arrow_sound.play()
                 self.dungeon_data.player.arrows.append(
                     init_arrow(1000, self.dungeon_data, self.dungeon_data.player, PlayerArrow)
                 )
@@ -136,12 +138,13 @@ class PlayerAttackDisplayMixin(PlayerDisplayMixin):
                             is_repeated=False,
                             to_remove=enemy
                         )
-                    custom_event = ItemDropEvent(dungeon_state=self.dungeon_data,
-                                                 additional_state={
-                                                     "x": self.x,
-                                                     "y": self.y
-                                                 })
-                    custom_event.start()
+                        self.play_dead_sound()
+                        custom_event = ItemDropEvent(dungeon_state=self.dungeon_data,
+                                                     additional_state={
+                                                         "x": self.x,
+                                                         "y": self.y
+                                                     })
+                        custom_event.start()
 
     def get_attack_props(self):
         return {
