@@ -11,6 +11,7 @@ SNITCHES_ARRAY = [Spas, Vili, Vladi, Eva]
 
 SNITCHES = {snitch.name: snitch for snitch in SNITCHES_ARRAY}
 
+
 Spas.add_missions([
     InfoMessage(Spas, SPAS_INTRO_MESSAGE),
     ActionMission(Spas, "Grapes(for rakiq)", 10),
@@ -20,23 +21,24 @@ Spas.add_missions([
     EndOfMissionsMessage(Spas)
 ])
 
+Vili.add_missions([
+    InfoMessage(Vili, VILI_INTRO_MESSAGE),
+    ActionMission(Vili, "Grapes(for wine)", 10),
+    ActionMission(Vili, "Bananas(for wine)", 20),
+    ActionMission(Vili, "Pears(for wine)", 15),
+    ActionMission(Vili, "Potatoes(for wine)", 20),
+    EndOfMissionsMessage(Vili)
+])
+
 Eva.add_missions([
     InfoMessage(Eva, EVA_INTRO_MESSAGE),
-    ActionMission(Eva, "Grapes(for gin)", 10),
-    ActionMission(Eva, "Bananas(for gin)", 20),
+    ActionMission(Eva, "Pineapples(for gin)", 10),
+    ActionMission(Eva, "Cucumbers(for gin)", 20),
     ActionMission(Eva, "Lemons(for gin)", 15),
     ActionMission(Eva, "Carrots(for gin)", 20),
     EndOfMissionsMessage(Eva)
 ])
 
-Vili.add_missions([
-    InfoMessage(Vili, VILI_INTRO_MESSAGE),
-    ActionMission(Vili, "Pineapples(for wine)", 10),
-    ActionMission(Vili, "Cucumbers(for wine)", 20),
-    ActionMission(Vili, "Pears(for wine)", 15),
-    ActionMission(Vili, "Potatoes(for wine)", 20),
-    EndOfMissionsMessage(Vili)
-])
 
 Vladi.add_missions([
     InfoMessage(Vladi, VLADI_INTRO_MESSAGE),

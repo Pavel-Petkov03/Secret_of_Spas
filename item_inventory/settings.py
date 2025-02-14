@@ -8,15 +8,16 @@ ITEM_DROP_FOR_MAPS = {
         "Blueberries(for rakiq)": (20, "src/images/food/fruit/blueberries.png")
     },
     "second_level": {
-        "Pineapples(for wine)": (40, "src/images/food/fruit/pineapple_01.png"),
-        "Cucumbers(for wine)": (50, "src/images/food/vegetable/cucumber.png"),
-        "Lemons(for wine)": (10, "src/images/food/fruit/lemon.png")
+        "Grapes(for wine)": (40, "src/images/food/fruit/grapes.png"),
+        "Bananas(for wine)": (20, "src/images/food/fruit/banana.png"),
+        "Pears(for wine)": (30, "src/images/food/fruit/pear.png"),
+        "Potatoes(for wine)": (10, "src/images/food/vegetable/potato.png"),
     },
     "third_level": {
-        "Grapes(for gin)": (40, "src/images/food/fruit/grapes.png"),
-        "Bananas(for gin)": (20, "src/images/food/fruit/banana.png"),
-        "Pears(for gin)": (30, "src/images/food/fruit/pear.png"),
-        "Potatoes(for gin)": (10, "src/images/food/vegetable/potato.png"),
+        "Pineapples(for gin)": (40, "src/images/food/fruit/pineapple_01.png"),
+        "Cucumbers(for gin)": (30, "src/images/food/vegetable/cucumber.png"),
+        "Lemons(for gin)": (10, "src/images/food/fruit/lemon.png"),
+        "Carrots(for gin)": (20, "src/images/food/fruit/vegetable/carrot.png")
     },
     "fourth_level": {
         "Potatoes(for vodka)": (40, "src/images/food/vegetable/potato.png"),
