@@ -1,5 +1,5 @@
 from player.display_mixins.animation_frame_requester import MoveAnimationFrameRequester, \
-    ArcherAttackAnimationFrameRequester
+    ArcherAttackAnimationFrameRequester, DieEnemyAnimationFrameRequester
 from player.display_mixins.display_movement_mixins.arrow_display_mixin import EnemyArrow
 from player.display_mixins.display_movement_mixins.arrow_utils import init_arrow
 from player.display_mixins.display_movement_mixins.enemy_display_mixin import EnemyDisplayMixin
@@ -20,7 +20,8 @@ class ArcherEnemyDisplayMixin(EnemyDisplayMixin):
 
     def update_state(self, screen, event_list, *args, **kwargs):
         if self.get_distance_to_player(screen) <= 4 and len(self.get_position_array()) == 1:
-            if not isinstance(self.main_animation_frame_requester, ArcherAttackAnimationFrameRequester):
+            if not isinstance(self.main_animation_frame_requester,
+                              (ArcherAttackAnimationFrameRequester, DieEnemyAnimationFrameRequester)):
                 self.main_animation_frame_requester = self.stay_animation_frame_requester
                 self.arrows.append(init_arrow(1, self.dungeon_data, self, EnemyArrow))
         else:

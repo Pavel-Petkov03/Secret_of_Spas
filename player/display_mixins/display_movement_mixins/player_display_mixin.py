@@ -17,7 +17,8 @@ class PlayerDisplayMixin(CharacterDisplayMixin):
         return True
 
     def update_state(self, screen, delta_time, event_list, *args, **kwargs):
-        self.move_to_x_y_plane(screen)
+        if not isinstance(self.main_animation_frame_requester, DiePlayerAnimationFrameRequester):
+            self.move_to_x_y_plane(screen)
 
     def blit(self, screen):
         if self.main_animation_frame_requester:
