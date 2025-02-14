@@ -10,10 +10,11 @@ Spas makes Kuncho an intriguing offer: if he can track down the thief and reclai
 Now, it’s up to Kuncho to embark on this unusual quest, uncovering mysteries and facing unexpected challenges along the way.
 
 ## 📖 Missions
-Every mission is given from someone who is called `snitch`
-`Snitch` is a npc who knows some information for the burgler
-but the snitch wants something in return from Kuncho
-Every snitch gives mission on only one game map
+In Secret of Spas, missions are assigned by mysterious figures known as Snitches.
+
+Each Snitch is an NPC with valuable information about the burglar, but they won’t share it for free. In exchange for clues, they demand a favor from Kuncho.
+
+Every Snitch operates within a single game map, offering a unique mission that Kuncho must complete before uncovering the next piece of the puzzle.
 ##### 4 mission snitches
 - ### `Spas`
     - <img src="src/images/snitches_pictures/Spas.png" alt="Description" width="300">
