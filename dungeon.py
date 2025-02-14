@@ -60,10 +60,17 @@ class BaseDungeon:
         return SNITCHES[name] in available_snitches
 
     def render_map(self, screen):
-        for layer in self.tmx_data.visible_layers:
-            if hasattr(layer, "tiles"):
-                for x, y, tile in layer.tiles():
-                    self.blit_tile(x * settings.TILE_WIDTH, y * settings.TILE_WIDTH, screen, tile)
+        map_x, map_y = self.player.get_map_position(screen)
+        start_x = max(0, map_x - settings.VIEW_PORT_TILES_W // 2)
+        start_y = max(map_y - settings.VIEW_PORT_TILES_W // 2, 0)
+        for layer in self.tmx_data.layers:
+            for x in range(start_x, start_x + settings.VIEW_PORT_TILES_W + 1):
+                for y in range(start_y, start_y + settings.VIEW_PORT_TILES_W + 1):
+                    if 0 <= x <= settings.TILES - 1 and 0 <= y <= settings.TILES - 1:
+                        gid = layer.data[y][x]
+                        tile = self.tmx_data.get_tile_image_by_gid(gid)
+                        if tile:
+                            self.blit_tile(x * settings.TILE_WIDTH, y * settings.TILE_WIDTH, screen, tile)
 
     @IsInBlitRange
     def blit_tile(self, x, y, screen, tile):

@@ -33,6 +33,7 @@ class Inventory(metaclass=SingletonMeta):
 
     def remove_items_from_mission(self, mission):
         self.items[mission.ingredient_name] -= mission.ingredient_quantity
+        self.menu = self.update_menu()
 
 
 class Item:

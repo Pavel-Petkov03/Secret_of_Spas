@@ -78,7 +78,7 @@ class CharacterDisplayMixin(DisplayMixin):
         super().__init__(*args, **kwargs)
         self.tmx_data = self.dungeon_data.tmx_data
         self.direction = "down"
-        self.move_animation_frame_requester = MoveAnimationFrameRequester(self.current_animation_frame, 20, 5)
+        self.move_animation_frame_requester = MoveAnimationFrameRequester(self.current_animation_frame, 10, 5)
         self.main_animation_frame_requester = self.move_animation_frame_requester
         self.movement_speed = 2
 

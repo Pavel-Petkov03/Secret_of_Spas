@@ -18,19 +18,23 @@ class RedirectEvent(Event):
 
 class ShowRedirectToAnotherMapEvent(Event):
     event_type = REDIRECT_MODAL_EVENT
+    TITLE_FONT_SIZE = int(settings.SCREEN_WIDTH / 2 * 0.1)
+    LABEL_FONT_SIZE = int(settings.SCREEN_WIDTH / 2 * 0.08)
 
     def run_event_listener(self, game_state):
         self.dungeon_state.popup_menu = self.create_menu()
 
     def create_menu(self):
+        theme = pygame_menu.themes.THEME_DARK.copy()
+        theme.title_font_size = self.TITLE_FONT_SIZE
         modal = pygame_menu.Menu(
             "Do you want to go to",
             settings.SCREEN_WIDTH / 2, settings.SCREEN_WIDTH / 2,
-            theme=pygame_menu.themes.THEME_DARK
+            theme=theme,
         )
         props = GATE_LEVEL_INFO[self.additional_state["redirect_url"]]
-        modal.add.label(props["village_name"])
-        modal.add.image(props["village_image_location"], scale=(settings.SCALE_FACTOR / 5, settings.SCALE_FACTOR / 5))
+        modal.add.label(props["village_name"], font_size=self.LABEL_FONT_SIZE)
+        modal.add.image(props["village_image_location"], scale=(settings.SCALE_FACTOR / 10, settings.SCALE_FACTOR / 10))
         modal.add.button("No", self.remove_modal)
         modal.add.button("Yes", self.redirect)
         return modal

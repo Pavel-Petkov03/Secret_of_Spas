@@ -113,7 +113,6 @@ class InfoMessage(BaseMission):
         dungeon_state.popup_menu = None
 
 
-
 class EndOfMissionsMessage(BaseMission):
     def get_modal(self, **kwargs):
         menu = super().get_modal(**kwargs)
