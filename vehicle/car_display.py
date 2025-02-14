@@ -2,7 +2,7 @@ from collections import deque
 import vlc
 import ctypes
 import settings
-import car.settings as car_settings
+import vehicle.radio_urls as car_settings
 from decorators.is_in_blit_range import IsInBlitRange
 from player.display_mixins.display_movement_mixins.player_display_mixin import PlayerDisplayMixin
 

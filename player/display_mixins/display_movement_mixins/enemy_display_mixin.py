@@ -1,4 +1,6 @@
 import math
+
+from player.display_mixins.animation_frame_requester import DieEnemyAnimationFrameRequester
 from player.display_mixins.display_movement_mixins.base_display_character_mixin import CharacterDisplayMixin
 import settings
 from collections import deque
@@ -48,9 +50,10 @@ class EnemyDisplayMixin(CharacterDisplayMixin):
         return math.sqrt(dx ** 2 + dy ** 2)
 
     def update_state(self, screen, event_list, *args, **kwargs):
-        current_pos = self.get_map_position(screen)
-        self.track_main_player(screen, current_pos)
-        self.move_to_x_y_plane(screen)
+        if not isinstance(self.main_animation_frame_requester, DieEnemyAnimationFrameRequester):
+            current_pos = self.get_map_position(screen)
+            self.track_main_player(screen, current_pos)
+            self.move_to_x_y_plane(screen)
 
     def track_main_player(self, screen, current_pos):
         current_main_player_pos = self.player.get_map_position(screen)

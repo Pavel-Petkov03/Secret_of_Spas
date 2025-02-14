@@ -1,7 +1,5 @@
 import pygame
-
 import settings
-from settings import TILE_WIDTH, TILE_HEIGHT
 
 
 class SpriteSheet:
