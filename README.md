@@ -1,13 +1,13 @@
 # Secret of Spas
 
 ## 📖 Description
-Secret of Spas is single player RPG game which follows a story:
-An old name named Spas is a heavy drinker in the small village Mogilovo
-He very likes to drink but someone has stolen his alcohol stash
-So in help comes Kuncho who is young boy(20 year old) from the village
-Spas tells Kuncho that if he retrieves his alcohol stash from the burgler
-He will tell him the secret of life
-So it is Kuncho's responsibility to find the stash.
+Secret of Spas is a single-player RPG that unfolds in the quiet village of Mogilovo.
+
+Spas, an old man known for his love of drinking, wakes up to a terrible discovery—his precious stash of alcohol has been stolen. Desperate to recover it, he enlists the help of Kuncho, a spirited 20-year-old from the village.
+
+Spas makes Kuncho an intriguing offer: if he can track down the thief and reclaim the stolen stash, he will reveal to him the ultimate secret of life.
+
+Now, it’s up to Kuncho to embark on this unusual quest, uncovering mysteries and facing unexpected challenges along the way.
 
 ## 📖 Missions
 Every mission is given from someone who is called `snitch`
