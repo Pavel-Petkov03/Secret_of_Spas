@@ -98,7 +98,8 @@ class BaseDungeon:
             current_event = ShowRedirectToAnotherMapEvent(additional_state=gate_data, dungeon_state=self)
             current_event.start()
 
-    def is_snitch_available(self, available_snitches, name):
+    @staticmethod
+    def is_snitch_available(available_snitches, name):
         return SNITCHES[name] in available_snitches
 
     def render_map(self, screen):

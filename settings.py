@@ -20,8 +20,8 @@ VILLAGE_URL = "village"
 PLAYER_POS_DUNGEON_LOGGER = {
     "first_level": (700, 0),
     VILLAGE_URL: (1100, 0),
-    "second_level": (320, 0),
-    "third_level": (100, 100),
+    "second_level": (250, 1100),
+    "third_level": (0, 900),
     "fourth_level": (320, 0),
 }
 

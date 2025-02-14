@@ -17,7 +17,7 @@ ITEM_DROP_FOR_MAPS = {
         "Pineapples(for gin)": (40, "src/images/food/fruit/pineapple_01.png"),
         "Cucumbers(for gin)": (30, "src/images/food/vegetable/cucumber.png"),
         "Lemons(for gin)": (10, "src/images/food/fruit/lemon.png"),
-        "Carrots(for gin)": (20, "src/images/food/fruit/vegetable/carrot.png")
+        "Carrots(for gin)": (20, "src/images/food/vegetable/carrot.png")
     },
     "fourth_level": {
         "Potatoes(for vodka)": (40, "src/images/food/vegetable/potato.png"),

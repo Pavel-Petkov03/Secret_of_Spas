@@ -4,10 +4,10 @@ import pygame_menu
 import settings
 
 IMAGE_URLS = {
-    "Vili": "src/images/Vili.png",
-    "Spas": "src/images/Spas.png",
-    "Eva": "src/images/Spas.png",
-    "Vladi": "src/images/Spas.png"
+    "Vili": "src/images/snitches_pictures/Vili.png",
+    "Spas": "src/images/snitches_pictures/Spas.png",
+    "Eva": "src/images/snitches_pictures/Eva.png",
+    "Vladi": "src/images/snitches_pictures/Vladi.png"
 }
 
 SNITCH_TARGET_DUNGEONS = {
