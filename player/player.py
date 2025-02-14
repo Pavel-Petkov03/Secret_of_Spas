@@ -16,9 +16,9 @@ class Character:
 
     @health.setter
     def health(self, value):
+        self._health = value  # for the health bar to show empty
         if value <= 0:
             raise DeadError("You are dead", self)
-        self._health = value
 
 
 class Player(Character, PlayerAttackDisplayMixin):

@@ -7,6 +7,7 @@ from car.car_display import Car
 from decorators.is_in_blit_range import IsInBlitRange
 from events.base_event import EventManager
 from events.redirect_event import ShowRedirectToAnotherMapEvent, ShowMissionEvent
+from health_bar import HealthBar
 from item_inventory.inventory import Inventory
 from player.utils import init_player, enemy_factory
 from snitches.settings import Spas, SNITCHES
@@ -67,6 +68,7 @@ class BaseDungeon:
         self.player = init_player(self)
         self.items = []
         self.inventory = Inventory()
+        self.health_bar = HealthBar(self.player)
         self.popup_menu = None
 
     def scale_grid(self):
@@ -133,6 +135,7 @@ class Dungeon(BaseDungeon):
         for item in self.items:
             item.blit(screen)
         self.inventory.blit(screen)
+        self.health_bar.draw(screen)
 
     def update(self, screen, delta_time, event_list, additional_data):
         super().update(screen, delta_time, event_list, additional_data)
