@@ -1,0 +1,9 @@
+pip=21.3.1
+pygame=2.6.1
+pygame-menu=4.4.8
+pyperclip=1.9.0
+python-vlc=3.0.21203
+PyTMX=3.32
+setuptools=60.2.0
+typing_extensions=4.12.2
+wheel=0.37.1
